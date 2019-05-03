@@ -8,9 +8,7 @@
 //      protoc --go_out=plugins=grpc:$GOPATH/src *.proto
 syntax = "proto3";
 package iotextypes;
-option go_package = "github.com/iotexproject/iotex-core/protogen/iotextypes";
-
-import "google/protobuf/timestamp.proto";
+option go_package = "github.com/iotexproject/iotex-proto/golang/iotextypes";
 
 message Transfer {
   // used by state-based model
