@@ -14,10 +14,15 @@ import "proto/types/action.proto";
 import "proto/types/blockchain.proto";
 import "proto/types/node.proto";
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 
 service APIService {
   // get the address detail of an address
-  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse) {}
+  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse) {
+    option (google.api.http) = {
+      get: "/v1/accounts/{address}"
+    };
+  }
 
   // get action(s) by:
   // 1. start index and action count
@@ -39,7 +44,12 @@ service APIService {
   rpc GetServerMeta(GetServerMetaRequest) returns (GetServerMetaResponse) {}
 
   // sendAction
-  rpc SendAction(SendActionRequest) returns (SendActionResponse) {}
+  rpc SendAction(SendActionRequest) returns (SendActionResponse) {
+    option (google.api.http) = {
+      post: "/v1/actions"
+      body: "action"
+    };
+  }
 
   // get receipt by action Hash
   rpc GetReceiptByAction(GetReceiptByActionRequest) returns (GetReceiptByActionResponse) {}
@@ -61,6 +71,15 @@ service APIService {
 
   // get raw blocks data
   rpc GetRawBlocks(GetRawBlocksRequest) returns (GetRawBlocksResponse) {}
+
+  // get actions by addr
+  // this is to WA grpc-gateway cannot handle oneof message
+  // refer to https://github.com/grpc-ecosystem/grpc-gateway/issues/753
+  rpc GetActionsByAddress(GetActionsByAddressRequest) returns (GetActionsResponse) {
+    option (google.api.http) = {
+      get: "/v1/actions/addr/{address}/start/{start}/count/{count}"
+    };
+  }
 }
 
 message GetAccountRequest {
