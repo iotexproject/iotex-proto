@@ -153,6 +153,7 @@ message BlockInfo {
 }
 
 message GetActionsResponse {
+  uint64 total = 2;
   repeated ActionInfo actionInfo = 1;
 }
 
@@ -173,6 +174,7 @@ message GetBlockMetaByHashRequest {
 }
 
 message GetBlockMetasResponse {
+  uint64 total = 2;
   repeated iotextypes.BlockMeta blkMetas = 1;
 }
 
