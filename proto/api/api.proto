@@ -30,7 +30,11 @@ service APIService {
   // 3. address with start index and action count
   // 4. get unconfirmed actions by address with start index and action count
   // 5. block hash with start index and action count
-  rpc GetActions(GetActionsRequest) returns (GetActionsResponse) {}
+  rpc GetActions(GetActionsRequest) returns (GetActionsResponse) {
+    option (google.api.http) = {
+      get: "/v1/actions/hash/{byHash.actionHash}"
+    };
+  }
 
   // get block metadata(s) by:
   // 1. start index and block count
@@ -77,7 +81,7 @@ service APIService {
   // refer to https://github.com/grpc-ecosystem/grpc-gateway/issues/753
   rpc GetActionsByAddress(GetActionsByAddressRequest) returns (GetActionsResponse) {
     option (google.api.http) = {
-      get: "/v1/actions/addr/{address}/start/{start}/count/{count}"
+      get: "/v1/actions/addr/{address}"
     };
   }
 }
@@ -132,6 +136,7 @@ message ActionInfo {
   iotextypes.Action action = 1;
   string actHash = 2;
   string blkHash = 3;
+  uint64 blkHeight = 5;
   google.protobuf.Timestamp timestamp = 4;
 }
 
