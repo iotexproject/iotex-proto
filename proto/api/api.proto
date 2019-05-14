@@ -137,6 +137,7 @@ message ActionInfo {
   string actHash = 2;
   string blkHash = 3;
   uint64 blkHeight = 5;
+  string sender = 6;
   google.protobuf.Timestamp timestamp = 4;
 }
 
