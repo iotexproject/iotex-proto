@@ -84,6 +84,13 @@ service APIService {
       get: "/v1/actions/addr/{address}"
     };
   }
+
+  // send signed transaction bytes
+  rpc SendSignedActionBytes(SendSignedActionBytesRequest) returns (SendActionResponse) {
+    option (google.api.http) = {
+      post: "/v1/actionbytes/{signedActionBytes}"
+    };
+  }
 }
 
 message GetAccountRequest {
@@ -138,6 +145,7 @@ message ActionInfo {
   string blkHash = 3;
   uint64 blkHeight = 5;
   string sender = 6;
+  string fee = 7;
   google.protobuf.Timestamp timestamp = 4;
 }
 
@@ -198,6 +206,10 @@ message GetServerMetaResponse  {
 
 message SendActionRequest {
   iotextypes.Action action = 1;
+}
+
+message SendSignedActionBytesRequest {
+    string signedActionBytes = 1;
 }
 
 message SendActionResponse {
