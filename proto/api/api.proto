@@ -76,9 +76,11 @@ service APIService {
   // get raw blocks data
   rpc GetRawBlocks(GetRawBlocksRequest) returns (GetRawBlocksResponse) {}
 
-  // get actions by addr
+  // below API are for trustwallet use only
   // this is to WA grpc-gateway cannot handle oneof message
   // refer to https://github.com/grpc-ecosystem/grpc-gateway/issues/753
+
+  // get actions by addr
   rpc GetActionsByAddress(GetActionsByAddressRequest) returns (GetActionsResponse) {
     option (google.api.http) = {
       get: "/v1/actions/addr/{address}"
@@ -145,7 +147,7 @@ message ActionInfo {
   string blkHash = 3;
   uint64 blkHeight = 5;
   string sender = 6;
-  string fee = 7;
+  string gasFee = 7;
   google.protobuf.Timestamp timestamp = 4;
 }
 
