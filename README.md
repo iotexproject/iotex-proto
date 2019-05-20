@@ -33,7 +33,7 @@ The signature is in 65-byte [R, S, V] format where the last byte V is the recove
 The following guide used sender address `io1mwekae7qqwlr23220k5n9z3fmjxz72tuchra3m` and recipient address `io187wzp08vnhjjpkydnr97qlh8kh0dpkkytfam8j` as example. Replace your actual address and recipient address when creating and signing the transaction
 
 ### Create raw transaction
-1. construct a message Transfer as defined in \proto\type\action.proto, amount is in unit of 10^-18 IOTX token
+1. construct a message Transfer as defined in `\proto\type\action.proto`, amount is in unit of 10^-18 IOTX token
 
 For example, to transfer 1.2 IOTX token, set amount = “1200000000000000000”
 
@@ -41,11 +41,11 @@ Set recipient = "io187wzp08vnhjjpkydnr97qlh8kh0dpkkytfam8j"
 
 payload = hex-bytes of message you want to attach to transaction, can be nil/NULL
 
-2. construct a message ActionCore as defined in \proto\type\action.proto, with action = transfer message in 1
+2. construct a message ActionCore as defined in `\proto\type\action.proto`, with action = transfer message in 1
 
 Set version = 1, gasLimit = 10000, gasPrice = 1000000000000, that is 0.000001 IOTX
 
-For nonce, send an http GET to https://pharos.iotex.io/v1/accounts/io1mwekae7qqwlr23220k5n9z3fmjxz72tuchra3m, use the value of "pendingNonce" field in the reply
+For nonce, issue a gRPC request GetAccount(GetAccountRequest) as defined in `\proto\api\api.proto` use the value of "pendingNonce" field in the reply
 
 ### Sign raw transaction
 1. serialize the ActionCore message using protobuf
@@ -66,12 +66,123 @@ sig = secp256k1.Sign(hash)
 
 Set action = ActionCore above, senderPubKey = bytes representation of sender's public key, signature = sig above
 
-2. serialize this Action message using protobuf
-```
-signedbytes = proto.Serialize(Action message above)
-```
-3. convert the signed transaction bytes to a hex-string
+2. issue a gRPC request SendAction(SendActionRequest) to IoTeX blockchain endpoint
 
-For example, signedbytes = [1, 2, 3, 4, 5, 6, 7, 15], then the string should be "010203040506070f"
+### Go exmaple
+Here's an example in golang:
 
-4. send an HTTP POST to https://pharos.iotex.io/v1/actionbytes/010203040506070f, replace 010203040506070f with the actual hex-string of signed bytes
+Return value of SendIoTeXTransaction() is the hash of signed transaction, you can query it on https://www.iotexscan.io to confirm that it has been committed to IoTeX blockchain
+```
+import (
+	"github.com/golang/protobuf/proto"
+	"github.com/iotexproject/iotex-antenna-go/iotx"
+	"github.com/iotexproject/go-pkgs/crypto"
+	"github.com/iotexproject/go-pkgs/hash"
+	"github.com/iotexproject/iotex-proto/golang/iotexapi"
+	"github.com/iotexproject/iotex-proto/golang/iotextypes"
+)
+
+// replace with actual endpoint ip:port you want to use
+const endpoint = "localhost:14014"
+
+func getAccount(sender string) (*iotextypes.AccountMeta, error) {
+	// establish gRPC connection
+	conn, err := iotx.NewIotx(endpoint, true)
+	if err != nil {
+		return nil, err
+	}
+	defer conn.Close()
+	
+	resp, err := conn.GetAccount(&iotexapi.GetAccountRequest{
+		Address: sender,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return resp.AccountMeta, nil
+}
+
+func createTx(nonce uint64, amount, recipient string) *iotextypes.ActionCore {
+	transfer := &iotextypes.Transfer{
+		Amount: amount,
+		Recipient: recipient,
+	}
+
+	rawTx := &iotextypes.ActionCore{
+		Version: 1,
+		Nonce: nonce,
+		GasLimit: 10000,
+		GasPrice: "0",
+		Action: &iotextypes.ActionCore_Transfer{transfer},
+	}
+	return rawTx
+}
+
+func signTx(tx *iotextypes.ActionCore, prvkey string) (*iotextypes.Action, error) {
+	// serialize the raw tx
+	bytes, err := proto.Marshal(tx)
+	if err != nil {
+		return nil, err
+	}
+
+	// compute hash
+	hash := hash.Hash256b(bytes)
+
+	// we use github.com/iotexproject/go-pkgs/crypto to handle private key and signing
+	// you may use your own key management package (like Ethereum keystore)
+	sk, err := crypto.HexStringToPrivateKey(prvkey)
+	if err != nil {
+		return nil, err
+	}
+	defer sk.Zero()
+
+	// sign the tx
+	sig, err := sk.Sign(hash[:])
+	if err != nil {
+		return nil, err
+	}
+	sk.Zero()
+	return &iotextypes.Action{
+		Core: tx,
+		SenderPubKey: sk.PublicKey().Bytes(),
+		Signature: sig,
+	}, nil
+}
+
+func sendAction(tx *iotextypes.Action) (string, error) {
+	// establish gRPC connection
+	conn, err := iotx.NewIotx(endpoint, true)
+	if err != nil {
+		return "", err
+	}
+	defer conn.Close()
+
+	resp, err := conn.SendAction(&iotexapi.SendActionRequest{
+		Action: tx,
+	})
+	if err != nil {
+		return "", err
+	}
+	return resp.ActionHash, nil
+}
+
+func SendIoTeXTransaction(amount, sender, recipient, prvkey string) (string, error) {
+	// get sender's account detail
+	account, err := getAccount(sender)
+	if err != nil {
+		return "", err
+	}
+
+	// step 1: create raw transaction
+	tx := createTx(account.PendingNonce, "1200000000000000000", "io187wzp08vnhjjpkydnr97qlh8kh0dpkkytfam8j")
+
+	// step 2: sign raw transaction
+	signedTx, err := signTx(tx, prvkey)
+	if err != nil {
+		return "", err
+	}
+
+	// step 3: send signed transaction IoTeX blockchain
+	return sendAction(signedTx)
+}
+```
