@@ -1,9 +1,9 @@
 # iotex-proto
-Protobuf and utility package for IoTeX block transaction and gRPC API
+Protobuf and utility package for IoTeX blockchain transaction and gRPC API
 
-- \proto includes protobuf definition for all core data objects and gRPC API used by IoTeX blockchain
+- `\proto` includes protobuf definition for all core data objects and gRPC API used by IoTeX blockchain
 
-- \golang includes the generated protobuf files for go language
+- `\golang` includes the generated protobuf files for go language
 
 # Getting Started
 ## Installing
@@ -174,7 +174,7 @@ func SendIoTeXTransaction(amount, sender, recipient, prvkey string) (string, err
 	}
 
 	// step 1: create raw transaction
-	tx := createTx(account.PendingNonce, "1200000000000000000", "io187wzp08vnhjjpkydnr97qlh8kh0dpkkytfam8j")
+	tx := createTx(account.PendingNonce, amount, recipient)
 
 	// step 2: sign raw transaction
 	signedTx, err := signTx(tx, prvkey)
