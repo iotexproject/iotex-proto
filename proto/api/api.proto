@@ -76,6 +76,9 @@ service APIService {
   // get raw blocks data
   rpc GetRawBlocks(GetRawBlocksRequest) returns (GetRawBlocksResponse) {}
 
+  // get block info in stream
+  rpc StreamBlocks(StreamBlocksRequest) returns (stream StreamBlocksResponse) {}
+
   // below API are for trustwallet use only
   // this is to WA grpc-gateway cannot handle oneof message
   // refer to https://github.com/grpc-ecosystem/grpc-gateway/issues/753
@@ -278,4 +281,10 @@ message GetRawBlocksRequest {
 
 message GetRawBlocksResponse {
     repeated BlockInfo blocks = 1;
+}
+
+message StreamBlocksRequest {}
+
+message StreamBlocksResponse {
+    BlockInfo block = 1;
 }
