@@ -78,24 +78,6 @@ service APIService {
 
   // get block info in stream
   rpc StreamBlocks(StreamBlocksRequest) returns (stream StreamBlocksResponse) {}
-
-  // below API are for trustwallet use only
-  // this is to WA grpc-gateway cannot handle oneof message
-  // refer to https://github.com/grpc-ecosystem/grpc-gateway/issues/753
-
-  // get actions by addr
-  rpc GetActionsByAddress(GetActionsByAddressRequest) returns (GetActionsResponse) {
-    option (google.api.http) = {
-      get: "/v1/actions/addr/{address}"
-    };
-  }
-
-  // send signed transaction bytes
-  rpc SendSignedActionBytes(SendSignedActionBytesRequest) returns (SendActionResponse) {
-    option (google.api.http) = {
-      post: "/v1/actionbytes/{signedActionBytes}"
-    };
-  }
 }
 
 message GetAccountRequest {
