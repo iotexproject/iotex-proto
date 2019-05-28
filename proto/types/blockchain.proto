@@ -29,6 +29,7 @@ message BlockHeaderCore {
   bytes txRoot = 5;
   bytes deltaStateDigest = 6;
   bytes receiptRoot = 7;
+  bytes logsBloom = 8;
 }
 
 // footer of a block
