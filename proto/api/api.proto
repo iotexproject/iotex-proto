@@ -14,15 +14,10 @@ import "proto/types/action.proto";
 import "proto/types/blockchain.proto";
 import "proto/types/node.proto";
 import "google/protobuf/timestamp.proto";
-import "google/api/annotations.proto";
 
 service APIService {
   // get the address detail of an address
-  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse) {
-    option (google.api.http) = {
-      get: "/v1/accounts/{address}"
-    };
-  }
+  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse) {}
 
   // get action(s) by:
   // 1. start index and action count
@@ -30,11 +25,7 @@ service APIService {
   // 3. address with start index and action count
   // 4. get unconfirmed actions by address with start index and action count
   // 5. block hash with start index and action count
-  rpc GetActions(GetActionsRequest) returns (GetActionsResponse) {
-    option (google.api.http) = {
-      get: "/v1/actions/hash/{byHash.actionHash}"
-    };
-  }
+  rpc GetActions(GetActionsRequest) returns (GetActionsResponse) {}
 
   // get block metadata(s) by:
   // 1. start index and block count
@@ -48,12 +39,7 @@ service APIService {
   rpc GetServerMeta(GetServerMetaRequest) returns (GetServerMetaResponse) {}
 
   // sendAction
-  rpc SendAction(SendActionRequest) returns (SendActionResponse) {
-    option (google.api.http) = {
-      post: "/v1/actions"
-      body: "action"
-    };
-  }
+  rpc SendAction(SendActionRequest) returns (SendActionResponse) {}
 
   // get receipt by action Hash
   rpc GetReceiptByAction(GetReceiptByActionRequest) returns (GetReceiptByActionResponse) {}
