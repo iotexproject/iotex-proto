@@ -71,118 +71,100 @@ Set action = ActionCore above, senderPubKey = bytes representation of sender's p
 ### Go exmaple
 Here's an example in golang:
 
-Return value of SendIoTeXTransaction() is the hash of signed transaction, you can query it on https://www.iotexscan.io to confirm that it has been committed to IoTeX blockchain
+Return value of SendTransfer() is the hash of signed transaction, you can query it on https://www.iotexscan.io to confirm that it has been committed to IoTeX blockchain
 ```
 import (
-	"github.com/golang/protobuf/proto"
-	"github.com/iotexproject/iotex-antenna-go/iotx"
+	"log"
+	"os"
+
 	"github.com/iotexproject/go-pkgs/crypto"
-	"github.com/iotexproject/go-pkgs/hash"
+	"github.com/iotexproject/iotex-antenna-go/account"
+	"github.com/iotexproject/iotex-antenna-go/iotx"
 	"github.com/iotexproject/iotex-proto/golang/iotexapi"
-	"github.com/iotexproject/iotex-proto/golang/iotextypes"
+	"github.com/pkg/errors"
 )
 
-// replace with actual endpoint ip:port you want to use
-const endpoint = "localhost:14014"
-
-func getAccount(sender string) (*iotextypes.AccountMeta, error) {
-	// establish gRPC connection
-	conn, err := iotx.NewIotx(endpoint, true)
-	if err != nil {
-		return nil, err
-	}
-	defer conn.Close()
-	
-	resp, err := conn.GetAccount(&iotexapi.GetAccountRequest{
-		Address: sender,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return resp.AccountMeta, nil
+// IotxProxy represents a proxy of iotex blockchain
+type IotxProxy struct {
+	sender string
+	*iotx.Iotx
 }
 
-func createTx(nonce uint64, amount, recipient string) *iotextypes.ActionCore {
-	transfer := &iotextypes.Transfer{
-		Amount: amount,
-		Recipient: recipient,
-	}
-
-	rawTx := &iotextypes.ActionCore{
-		Version: 1,
-		Nonce: nonce,
-		GasLimit: 10000,
-		GasPrice: "0",
-		Action: &iotextypes.ActionCore_Transfer{transfer},
-	}
-	return rawTx
-}
-
-func signTx(tx *iotextypes.ActionCore, prvkey string) (*iotextypes.Action, error) {
-	// serialize the raw tx
-	bytes, err := proto.Marshal(tx)
+// NewIoProxy creates a new iotex proxy
+func NewIotxProxy(server, pk string) (*IotxProxy, error) {
+	service, err := iotx.NewIotx(server, true)
 	if err != nil {
 		return nil, err
 	}
-
-	// compute hash
-	hash := hash.Hash256b(bytes)
-
-	// we use github.com/iotexproject/go-pkgs/crypto to handle private key and signing
-	// you may use your own key management package (like Ethereum keystore)
-	sk, err := crypto.HexStringToPrivateKey(prvkey)
+	if len(pk) == 0 {
+		return nil, errors.New("empty private key")
+	}
+	sk, err := crypto.HexStringToPrivateKey(pk)
 	if err != nil {
 		return nil, err
 	}
-	defer sk.Zero()
-
-	// sign the tx
-	sig, err := sk.Sign(hash[:])
+	acc, err := account.PrivateKeyToAccount(sk)
 	if err != nil {
 		return nil, err
 	}
-	sk.Zero()
-	return &iotextypes.Action{
-		Core: tx,
-		SenderPubKey: sk.PublicKey().Bytes(),
-		Signature: sig,
+	if err := service.Accounts.AddAccount(acc); err != nil {
+		return nil, err
+	}
+
+	return &IotxProxy{
+		sender: acc.Address(),
+		Iotx:   service,
 	}, nil
 }
 
-func sendAction(tx *iotextypes.Action) (string, error) {
-	// establish gRPC connection
-	conn, err := iotx.NewIotx(endpoint, true)
-	if err != nil {
-		return "", err
+// SendTransfer sends a signed transfer to IoTeX blockchain
+// returns the hash of the pending transfer
+func (p *IotxProxy) SendTransfer(amount, recipient string) (string, error) {
+	req := &iotx.TransferRequest{
+		From:     p.sender,
+		To:       recipient,
+		Value:    amount,
+		GasLimit: "20000",
+		GasPrice: "1",
 	}
-	defer conn.Close()
-
-	resp, err := conn.SendAction(&iotexapi.SendActionRequest{
-		Action: tx,
-	})
-	if err != nil {
-		return "", err
-	}
-	return resp.ActionHash, nil
+	return p.Iotx.SendTransfer(req)
 }
 
-func SendIoTeXTransaction(amount, sender, recipient, prvkey string) (string, error) {
-	// get sender's account detail
-	account, err := getAccount(sender)
+// CheckTx checks whether a Tx has been committed to IoTeX blockchain
+func (p *IotxProxy) CheckTx(hash string) error {
+	req := &iotexapi.GetReceiptByActionRequest{
+		ActionHash: hash,
+	}
+	_, err := p.Iotx.GetReceiptByAction(req)
+	return err
+}
+
+func main() {
+	// import private key string
+	pk := os.Getenv("PRIVATE_KEY")
+
+	// create an IoTeX proxy
+	iotex, err := NewIotxProxy("api.iotex.one:443", pk)
 	if err != nil {
-		return "", err
+		log.Fatalln(err)
+	}
+	defer iotex.Close()
+
+	// send 2 IOTX token to io14s0vgnj0pjnazu4hsqlksdk7slah9vcfscn9ks
+	// note amount is in unit of 10^-18
+	amount := "2000000000000000000"
+	recipient := "io14s0vgnj0pjnazu4hsqlksdk7slah9vcfscn9ks"
+	tsf, err := iotex.SendTransfer(amount, recipient)
+	if err != nil {
+		log.Fatalln(err)
 	}
 
-	// step 1: create raw transaction
-	tx := createTx(account.PendingNonce, amount, recipient)
+	// note that our blockchain has a block time of 10 seconds
+	// it would be best to wait 15 seconds before verifying the transaction
 
-	// step 2: sign raw transaction
-	signedTx, err := signTx(tx, prvkey)
-	if err != nil {
-		return "", err
+	// check the transfer success or not
+	if err := iotex.CheckTx(tsf); err != nil {
+		log.Fatalln(err)
 	}
-
-	// step 3: send signed transaction IoTeX blockchain
-	return sendAction(signedTx)
 }
 ```
