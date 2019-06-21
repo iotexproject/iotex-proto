@@ -64,6 +64,9 @@ service APIService {
 
   // get block info in stream
   rpc StreamBlocks(StreamBlocksRequest) returns (stream StreamBlocksResponse) {}
+
+  // get filtered logs in stream
+  rpc StreamFilterLogs(FilterLogsRequest) returns (stream iotextypes.Log) {}
 }
 
 message GetAccountRequest {
@@ -255,4 +258,16 @@ message StreamBlocksRequest {}
 
 message StreamBlocksResponse {
     BlockInfo block = 1;
+}
+
+message Topics {
+    repeated bytes topic = 1;
+}
+
+message FilterLogsRequest {
+    bytes    blockHash = 1;
+    uint64   fromBlock = 2;
+    uint64   toBlock = 3;
+    string   address = 4;
+    repeated Topics topics = 10;
 }
