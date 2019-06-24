@@ -62,11 +62,18 @@ service APIService {
   // get raw blocks data
   rpc GetRawBlocks(GetRawBlocksRequest) returns (GetRawBlocksResponse) {}
 
+  // get logs filtered by contract address and topics
+  rpc GetLogs(GetLogsRequest) returns (GetLogsResponse) {}
+
+  /*
+   * below are streaming APIs
+   */
+
   // get block info in stream
   rpc StreamBlocks(StreamBlocksRequest) returns (stream StreamBlocksResponse) {}
 
-  // get filtered logs in stream
-  rpc StreamFilterLogs(FilterLogsRequest) returns (stream iotextypes.Log) {}
+  // get logs filtered by contract address and topics in stream
+  rpc StreamLogs(StreamLogsRequest) returns (stream iotextypes.Log) {}
 }
 
 message GetAccountRequest {
@@ -131,15 +138,15 @@ message ReceiptInfo {
 }
 
 message BlockProducerInfo {
-    string address = 1;
-    string votes = 2;
-    bool active = 3;
-    uint64 production = 4;
+  string address = 1;
+  string votes = 2;
+  bool active = 3;
+  uint64 production = 4;
 }
 
 message BlockInfo {
-    iotextypes.Block block = 1;
-    repeated iotextypes.Receipt receipts = 2;
+  iotextypes.Block block = 1;
+  repeated iotextypes.Receipt receipts = 2;
 }
 
 message GetActionsResponse {
@@ -185,11 +192,11 @@ message SendActionRequest {
 }
 
 message SendSignedActionBytesRequest {
-    string signedActionBytes = 1;
+  string signedActionBytes = 1;
 }
 
 message SendActionResponse {
-    string actionHash = 1;
+  string actionHash = 1;
 }
 
 message GetReceiptByActionRequest {
@@ -235,39 +242,64 @@ message ReadStateResponse {
 }
 
 message GetEpochMetaRequest {
-    uint64 epochNumber = 1;
+  uint64 epochNumber = 1;
 }
 
 message GetEpochMetaResponse {
-    iotextypes.EpochData epochData = 1;
-    uint64 totalBlocks = 2;
-    repeated BlockProducerInfo blockProducersInfo = 3;
+  iotextypes.EpochData epochData = 1;
+  uint64 totalBlocks = 2;
+  repeated BlockProducerInfo blockProducersInfo = 3;
 }
 
 message GetRawBlocksRequest {
-    uint64 startHeight = 1;
-    uint64 count = 2;
-    bool withReceipts = 3;
+  uint64 startHeight = 1;
+  uint64 count = 2;
+  bool withReceipts = 3;
 }
 
 message GetRawBlocksResponse {
-    repeated BlockInfo blocks = 1;
+  repeated BlockInfo blocks = 1;
 }
 
-message StreamBlocksRequest {}
+message GetLogsByBlock {
+  bytes blockHash = 1;
+}
 
-message StreamBlocksResponse {
-    BlockInfo block = 1;
+message GetLogsByRange {
+  uint64 fromBlock = 1;
+  uint64 count = 2;
 }
 
 message Topics {
     repeated bytes topic = 1;
 }
 
-message FilterLogsRequest {
-    bytes    blockHash = 1;
-    uint64   fromBlock = 2;
-    uint64   toBlock = 3;
-    string   address = 4;
-    repeated Topics topics = 10;
+message LogsFilter {
+  repeated string address = 1;
+  repeated Topics topics = 2;
+}
+
+message GetLogsRequest {
+  LogsFilter filter = 1;
+  oneof lookup {
+    GetLogsByBlock byBlock = 2;
+    GetLogsByRange byRange = 3;
+  }
+}
+
+message GetLogsResponse {
+  repeated iotextypes.Log logs = 1;
+}
+
+/*
+ * below are streaming APIs
+ */
+message StreamBlocksRequest {}
+
+message StreamBlocksResponse {
+    BlockInfo block = 1;
+}
+
+message StreamLogsRequest {
+    LogsFilter filter = 1;
 }
