@@ -73,7 +73,7 @@ service APIService {
   rpc StreamBlocks(StreamBlocksRequest) returns (stream StreamBlocksResponse) {}
 
   // get logs filtered by contract address and topics in stream
-  rpc StreamLogs(StreamLogsRequest) returns (stream iotextypes.Log) {}
+  rpc StreamLogs(StreamLogsRequest) returns (stream StreamLogsResponse) {}
 }
 
 message GetAccountRequest {
@@ -302,4 +302,8 @@ message StreamBlocksResponse {
 
 message StreamLogsRequest {
     LogsFilter filter = 1;
+}
+
+message StreamLogsResponse {
+    iotextypes.Log log = 1;
 }
