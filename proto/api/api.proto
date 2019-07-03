@@ -53,6 +53,9 @@ service APIService {
   // estimate gas for action
   rpc EstimateGasForAction(EstimateGasForActionRequest) returns (EstimateGasForActionResponse) {}
 
+  // estimate gas for action not sealed
+  rpc EstimateGasForActionNew(EstimateGasForActionRequestNew) returns (EstimateGasForActionResponse) {}
+
   // read state from blockchain
   rpc ReadState(ReadStateRequest) returns (ReadStateResponse) {}
 
