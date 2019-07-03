@@ -223,7 +223,12 @@ message SuggestGasPriceResponse {
   uint64 gasPrice = 1;
 }
 
+// To be deprecated
 message EstimateGasForActionRequest {
+  iotextypes.Action action = 1;
+}
+
+message EstimateGasForActionRequestNew {
   iotextypes.Execution execution = 1;
   string callerAddress = 2;
 }
