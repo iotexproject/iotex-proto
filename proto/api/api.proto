@@ -224,8 +224,7 @@ message SuggestGasPriceResponse {
 }
 
 message EstimateGasForActionRequest {
-  iotextypes.Execution execution = 1;
-  string callerAddress = 2;
+  iotextypes.Action action = 1;
 }
 
 message EstimateGasForActionResponse {
