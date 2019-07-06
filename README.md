@@ -75,6 +75,6 @@ The examples folder contains a few [examples](https://github.com/iotexproject/io
 To run an example, navigate to it's directory, then go run the file. For example:
 
 ```
-$ cd golang/examples/send_transfer
-$ go run send_transfer.go
+$ cd golang/examples/transfer
+$ go run main.go
 ```

@@ -4,10 +4,10 @@ Example representing a transfer transaction on IoTeX blockchain.
 
 ## Running
 
-Compile and run `send_transfer.go`
+Compile and run `main.go`
 
 ```
-$ go run send_transfer.go
+$ go run main.go
 ```
 
 ## Result
