@@ -54,7 +54,7 @@ service APIService {
   rpc EstimateGasForAction(EstimateGasForActionRequest) returns (EstimateGasForActionResponse) {}
 
   // estimate gas for action and transfer not sealed
-  rpc EstimateGasForActionNew(EstimateGasForActionRequestNew) returns (EstimateGasForActionResponse) {}
+  rpc EstimateGasForActionV2(EstimateGasForActionRequestV2) returns (EstimateGasForActionResponse) {}
 
   // read state from blockchain
   rpc ReadState(ReadStateRequest) returns (ReadStateResponse) {}
@@ -240,7 +240,7 @@ message EstimateGasForTransferRequest {
   iotextypes.Transfer transfer = 1;
 }
 
-message EstimateGasForActionRequestNew {
+message EstimateGasForActionRequestV2 {
   oneof lookup {
     EstimateGasForActionsRequest byAction = 1;
     EstimateGasForTransferRequest byTransfer = 2;
