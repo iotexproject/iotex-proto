@@ -70,7 +70,7 @@ Set action = ActionCore above, senderPubKey = bytes representation of sender's p
 
 ### Go example
 
-The examples folder contains a few [examples](https://github.com/iotexproject/iotex-proto/golang/examples) demonstrating functionality.
+The examples folder contains a few [examples](golang/examples) demonstrating functionality.
 
 To run an example, navigate to it's directory, then go run the file. For example:
 
