@@ -50,7 +50,7 @@ service APIService {
   // suggest gas price
   rpc SuggestGasPrice(SuggestGasPriceRequest) returns (SuggestGasPriceResponse) {}
 
-  // estimate gas for action
+  // estimate gas for action, to be deprecated
   rpc EstimateGasForAction(EstimateGasForActionRequest) returns (EstimateGasForActionResponse) {}
 
   // estimate gas for action and transfer not sealed
@@ -236,7 +236,7 @@ message EstimateActionGasConsumptionRequest {
     iotextypes.Transfer transfer = 1;
     iotextypes.Execution execution = 2;
   }
-  string callerAddress = 3;
+  string callerAddress = 100;
 }
 
 message EstimateActionGasConsumptionResponse {
