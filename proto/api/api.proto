@@ -68,6 +68,9 @@ service APIService {
   // get logs filtered by contract address and topics
   rpc GetLogs(GetLogsRequest) returns (GetLogsResponse) {}
 
+  // GetVotes get a single address' votes
+  rpc GetVotes(GetVotesRequest) returns (GetVotesResponse) {}
+
   /*
    * below are streaming APIs
    */
@@ -77,6 +80,26 @@ service APIService {
 
   // get logs filtered by contract address and topics in stream
   rpc StreamLogs(StreamLogsRequest) returns (stream StreamLogsResponse) {}
+}
+
+message GetVotesRequest {
+  string votee = 1;
+  string height = 2;
+  uint32 offset = 3;
+  uint32 limit = 4;
+}
+
+message GetVotesResponse {
+  repeated Bucket buckets = 1;
+}
+
+message Bucket {
+  // hex string
+  string voter = 1;
+  string votes = 2;
+  string weightedVotes = 3;
+  // human readable duration
+  string remainingDuration = 4;
 }
 
 message GetAccountRequest {
