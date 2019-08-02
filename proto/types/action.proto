@@ -226,3 +226,21 @@ message GrantReward {
   RewardType type = 1;
   uint64 height = 2;
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// BELOW ARE DEFINITIONS FOR EVM ERROR CLASSIFICATION IN RECEIPT STATUS 
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+enum ReceiptStatus {
+  FailureReceiptStatus               = 0;
+  SuccessReceiptStatus               = 1;
+  FailureErrOutOfGas                 = 2;
+  FailureErrCodeStoreOutOfGas        = 3;
+  FailureErrDepth                    = 4;
+  FailureErrContractAddressCollision = 5;
+  FailureErrNoCompatibleInterpreter  = 6;
+  FailureErrExecutionReverted        = 7;
+  FailureErrMaxCodeSizeExceeded      = 8;
+  FailureErrWriteProtection          = 9;
+  FailureUnknown                     = 10;
+}
