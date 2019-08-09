@@ -13,10 +13,10 @@ option go_package = "github.com/iotexproject/iotex-proto/golang/iotextypes";
 
 // BELOW ARE DEFINITIONS FOR EVM ERROR CLASSIFICATION IN RECEIPT STATUS 
 enum ReceiptStatus {
-  FailureReceiptStatus              = 0;
-  SuccessReceiptStatus              = 1;
+  Failure              = 0;
+  Success              = 1;
 
-  //1xx for ErrorCode
+  //1xx for EVM ErrorCode
   ErrUnknown                  		= 100;
   ErrOutOfGas                 		= 101;
   ErrCodeStoreOutOfGas        		= 102;
