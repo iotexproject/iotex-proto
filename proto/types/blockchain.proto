@@ -82,7 +82,6 @@ message BlockMeta {
   string txRoot = 7;
   string receiptRoot = 8;
   string deltaStateDigest = 9;
-  bytes logsBloom = 10;
 }
 
 // Account Metadata
