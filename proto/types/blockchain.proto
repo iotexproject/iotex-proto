@@ -30,6 +30,7 @@ message BlockHeaderCore {
   bytes deltaStateDigest = 6;
   bytes receiptRoot = 7;
   bytes logsBloom = 8;
+  uint64 numActions = 9;
 }
 
 // footer of a block
