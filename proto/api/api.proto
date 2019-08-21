@@ -10,6 +10,7 @@ syntax = "proto3";
 package iotexapi;
 option go_package = "github.com/iotexproject/iotex-proto/golang/iotexapi";
 
+import "google/api/annotations.proto";
 import "proto/types/action.proto";
 import "proto/types/blockchain.proto";
 import "proto/types/node.proto";
@@ -17,7 +18,11 @@ import "google/protobuf/timestamp.proto";
 
 service APIService {
   // get the address detail of an address
-  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse) {}
+  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse) {
+    option (google.api.http) = {
+      get: "/v1/getAccount"
+    };
+  }
 
   // get action(s) by:
   // 1. start index and action count
@@ -25,61 +30,137 @@ service APIService {
   // 3. address with start index and action count
   // 4. get unconfirmed actions by address with start index and action count
   // 5. block hash with start index and action count
-  rpc GetActions(GetActionsRequest) returns (GetActionsResponse) {}
+  rpc GetActions(GetActionsRequest) returns (GetActionsResponse) {
+    option (google.api.http) = {
+      post: "/v1/getActions"
+      body: "*"
+    };
+  }
 
   // get block metadata(s) by:
   // 1. start index and block count
   // 2. block hash
-  rpc GetBlockMetas(GetBlockMetasRequest) returns (GetBlockMetasResponse) {}
+  rpc GetBlockMetas(GetBlockMetasRequest) returns (GetBlockMetasResponse) {
+    option (google.api.http) = {
+      post: "/v1/getBlockMetas"
+      body: "*"
+    };
+}
 
   // get chain metadata
-  rpc GetChainMeta(GetChainMetaRequest) returns (GetChainMetaResponse) {}
+  rpc GetChainMeta(GetChainMetaRequest) returns (GetChainMetaResponse) {
+    option (google.api.http) = {
+        get: "/v1/getChainMeta"
+    };
+}
 
   // get server version
-  rpc GetServerMeta(GetServerMetaRequest) returns (GetServerMetaResponse) {}
+  rpc GetServerMeta(GetServerMetaRequest) returns (GetServerMetaResponse) {
+    option (google.api.http) = {
+        get: "/v1/getServerMeta"
+    };
+}
 
   // sendAction
-  rpc SendAction(SendActionRequest) returns (SendActionResponse) {}
+  rpc SendAction(SendActionRequest) returns (SendActionResponse) {
+    option (google.api.http) = {
+      post: "/v1/sendAction"
+      body: "*"
+    };
+}
 
   // get receipt by action Hash
-  rpc GetReceiptByAction(GetReceiptByActionRequest) returns (GetReceiptByActionResponse) {}
+  rpc GetReceiptByAction(GetReceiptByActionRequest) returns (GetReceiptByActionResponse) {
+    option (google.api.http) = {
+        get: "/v1/getReceiptByAction"
+    };
+}
 
   // TODO: read contract
-  rpc ReadContract(ReadContractRequest) returns (ReadContractResponse) {}
+  rpc ReadContract(ReadContractRequest) returns (ReadContractResponse) {
+    option (google.api.http) = {
+      post: "/v1/readContract"
+      body: "*"
+    };
+}
 
   // suggest gas price
-  rpc SuggestGasPrice(SuggestGasPriceRequest) returns (SuggestGasPriceResponse) {}
+  rpc SuggestGasPrice(SuggestGasPriceRequest) returns (SuggestGasPriceResponse) {
+    option (google.api.http) = {
+      get: "/v1/suggestGasPrice"
+    };
+}
 
   // estimate gas for action, to be deprecated
-  rpc EstimateGasForAction(EstimateGasForActionRequest) returns (EstimateGasForActionResponse) {}
+  rpc EstimateGasForAction(EstimateGasForActionRequest) returns (EstimateGasForActionResponse) {
+    option (google.api.http) = {
+      post: "/v1/estimateGasForAction"
+      body: "*"
+    };
+}
 
   // estimate gas for action and transfer not sealed
-  rpc EstimateActionGasConsumption(EstimateActionGasConsumptionRequest) returns (EstimateActionGasConsumptionResponse) {}
+  rpc EstimateActionGasConsumption(EstimateActionGasConsumptionRequest) returns (EstimateActionGasConsumptionResponse) {
+    option (google.api.http) = {
+      post: "/v1/estimateActionGasConsumption"
+      body: "*"
+    };
+}
 
   // read state from blockchain
-  rpc ReadState(ReadStateRequest) returns (ReadStateResponse) {}
+  rpc ReadState(ReadStateRequest) returns (ReadStateResponse) {
+    option (google.api.http) = {
+        get: "/v1/readState"
+    };
+}
 
   // get epoch metadata
-  rpc GetEpochMeta(GetEpochMetaRequest) returns (GetEpochMetaResponse) {}
+  rpc GetEpochMeta(GetEpochMetaRequest) returns (GetEpochMetaResponse) {
+    option (google.api.http) = {
+        get: "/v1/getEpochMeta"
+    };
+}
 
   // get raw blocks data
-  rpc GetRawBlocks(GetRawBlocksRequest) returns (GetRawBlocksResponse) {}
+  rpc GetRawBlocks(GetRawBlocksRequest) returns (GetRawBlocksResponse) {
+    option (google.api.http) = {
+        get: "/v1/getRawBlocks"
+    };
+}
 
   // get logs filtered by contract address and topics
-  rpc GetLogs(GetLogsRequest) returns (GetLogsResponse) {}
+  rpc GetLogs(GetLogsRequest) returns (GetLogsResponse) {
+    option (google.api.http) = {
+      post: "/v1/getLogs"
+      body: "*"
+    };
+}
 
   // GetVotes get a single address' votes
-  rpc GetVotes(GetVotesRequest) returns (GetVotesResponse) {}
+  rpc GetVotes(GetVotesRequest) returns (GetVotesResponse) {
+    option (google.api.http) = {
+        get: "/v1/getVotes"
+    };
+}
 
   /*
    * below are streaming APIs
    */
 
   // get block info in stream
-  rpc StreamBlocks(StreamBlocksRequest) returns (stream StreamBlocksResponse) {}
+  rpc StreamBlocks(StreamBlocksRequest) returns (stream StreamBlocksResponse) {
+    option (google.api.http) = {
+      get: "/v1/streamBlocks"
+    };
+  }
 
   // get logs filtered by contract address and topics in stream
-  rpc StreamLogs(StreamLogsRequest) returns (stream StreamLogsResponse) {}
+  rpc StreamLogs(StreamLogsRequest) returns (stream StreamLogsResponse) {
+    option (google.api.http) = {
+      post: "/v1/streamLogs"
+      body: "*"
+    };
+  }
 }
 
 message GetVotesRequest {
