@@ -13,6 +13,7 @@ option go_package = "github.com/iotexproject/iotex-proto/golang/iotexapi";
 import "proto/types/action.proto";
 import "proto/types/blockchain.proto";
 import "proto/types/node.proto";
+import "proto/types/election.proto";
 import "google/protobuf/timestamp.proto";
 
 service APIService {
@@ -80,6 +81,11 @@ service APIService {
 
   // get logs filtered by contract address and topics in stream
   rpc StreamLogs(StreamLogsRequest) returns (stream StreamLogsResponse) {}
+
+  /*
+   * election APIs
+   */
+  rpc GetElectionBuckets(GetElectionBucketsRequest) returns (GetElectionBucketsResponse) {}
 }
 
 message GetVotesRequest {
@@ -345,4 +351,15 @@ message StreamLogsRequest {
 
 message StreamLogsResponse {
     iotextypes.Log log = 1;
+}
+
+ /*
+  * election APIs
+  */
+message GetElectionBucketsRequest{
+  uint64 epochNum = 1;
+}
+
+message GetElectionBucketsResponse{
+  repeated iotextypes.ElectionBucket buckets = 1;
 }
