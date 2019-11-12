@@ -219,6 +219,19 @@ message GetServerMetaResponse  {
   iotextypes.ServerMeta serverMeta = 1;
 }
 
+message SendActionErrorCode {
+  enum ErrorCode { 
+    INVALID_BALANCE = 0;
+    INSUFFICIENT_BALANCE_FOR_GAS = 1;
+    INVALID_NONCE = 2;
+    BLACKLISTED_ADDRESS = 3;
+    INVALID_ACTPOOL = 4;
+    INVALID_GAS_PRICE = 5; 
+    INTERNAL_UNKNOWN = 6;
+  }
+  ErrorCode errorDetails = 1;
+}
+
 message SendActionRequest {
   iotextypes.Action action = 1;
 }
