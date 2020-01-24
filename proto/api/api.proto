@@ -336,6 +336,14 @@ message GetLogsResponse {
   repeated iotextypes.Log logs = 1;
 }
 
+message GetStakingBucketsByAddressRequest {
+  string address = 1;
+}
+
+message GetStakingBucketsByAddressResponse {
+  repeated iotextypes.Pygg buckets = 1;
+}
+
 /*
  * below are streaming APIs
  */

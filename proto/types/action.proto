@@ -10,11 +10,13 @@ syntax = "proto3";
 package iotextypes;
 option go_package = "github.com/iotexproject/iotex-proto/golang/iotextypes";
 
+import "google/protobuf/timestamp.proto";
+
 message Transfer {
   // used by state-based model
-  string amount  = 1;
+  string amount = 1;
   string recipient = 2;
-  bytes payload  = 3;
+  bytes payload = 3;
 }
 
 // Candidates and list of candidates
@@ -35,9 +37,30 @@ message PutPollResult {
 }
 
 message Execution {
-  string amount  = 1;
+  string amount = 1;
   string contract = 2;
   bytes data = 3;
+}
+
+message Pygg {
+  bytes canName = 1;
+  bytes stakedAmount = 2;
+  bytes stakedDuration = 3;
+  google.protobuf.Timestamp createTime = 4;
+  google.protobuf.Timestamp stakeStartTime = 5;
+  google.protobuf.Timestamp unstakeStartTime = 6;
+  bool nonDecay = 7;
+  string pyggOwner = 8;
+}
+
+message Staking {
+  uint32 type = 1;
+  bytes canName = 2;
+  bytes stakedAmount = 3;
+  bytes stakedDuration = 4;
+  bool nonDecay = 5;
+  uint64 pyggIndex = 6;
+  bytes payload = 7;
 }
 
 message StartSubChain {
