@@ -42,25 +42,36 @@ message Execution {
   bytes data = 3;
 }
 
-message Pygg {
-  bytes canName = 1;
-  bytes stakedAmount = 2;
-  bytes stakedDuration = 3;
+message Bucket {
+  string candidateName = 1;
+  string stakedAmount = 2;
+  uint32 stakedDuration = 3;
   google.protobuf.Timestamp createTime = 4;
   google.protobuf.Timestamp stakeStartTime = 5;
   google.protobuf.Timestamp unstakeStartTime = 6;
   bool nonDecay = 7;
-  string pyggOwner = 8;
+  string owner = 8;
 }
 
-message Staking {
-  uint32 type = 1;
-  bytes canName = 2;
-  bytes stakedAmount = 3;
-  bytes stakedDuration = 4;
-  bool nonDecay = 5;
-  uint64 pyggIndex = 6;
-  bytes payload = 7;
+message StakeCreate {
+  string candidateName = 1;
+  string stakedAmount = 2;
+  uint32 stakedDuration = 3;
+  bool nonDecay = 4;
+  bytes payload = 5;
+}
+
+// add, unstake, or withdraw
+message StakeUpdate {
+  uint64 bucketIndex = 1;
+  bytes payload = 2;
+}
+
+// move the bucket to vote for another candidate
+message StakeMove {
+  string candidateName = 1;
+  uint64 bucketIndex = 2;
+  bytes payload = 3;
 }
 
 message StartSubChain {
@@ -196,6 +207,13 @@ message ActionCore {
     DepositToRewardingFund depositToRewardingFund = 30;
     ClaimFromRewardingFund claimFromRewardingFund = 31;
     GrantReward grantReward = 32;
+
+    // Native staking
+    StakeCreate stakeCreate = 40;
+    StakeUpdate stakeUnstake = 41;
+    StakeUpdate stakeAddstake = 42;
+    StakeUpdate stakeWithdraw = 43;
+    StakeMove stakeMove = 44;
 
     PutPollResult putPollResult = 50;
   }
