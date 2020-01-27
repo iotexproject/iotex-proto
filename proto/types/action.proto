@@ -10,11 +10,13 @@ syntax = "proto3";
 package iotextypes;
 option go_package = "github.com/iotexproject/iotex-proto/golang/iotextypes";
 
+import "google/protobuf/timestamp.proto";
+
 message Transfer {
   // used by state-based model
-  string amount  = 1;
+  string amount = 1;
   string recipient = 2;
-  bytes payload  = 3;
+  bytes payload = 3;
 }
 
 // Candidates and list of candidates
@@ -35,9 +37,41 @@ message PutPollResult {
 }
 
 message Execution {
-  string amount  = 1;
+  string amount = 1;
   string contract = 2;
   bytes data = 3;
+}
+
+message Bucket {
+  string candidateName = 1;
+  string stakedAmount = 2;
+  uint32 stakedDuration = 3;
+  google.protobuf.Timestamp createTime = 4;
+  google.protobuf.Timestamp stakeStartTime = 5;
+  google.protobuf.Timestamp unstakeStartTime = 6;
+  bool nonDecay = 7;
+  string owner = 8;
+}
+
+message StakeCreate {
+  string candidateName = 1;
+  string stakedAmount = 2;
+  uint32 stakedDuration = 3;
+  bool nonDecay = 4;
+  bytes payload = 5;
+}
+
+// add, unstake, or withdraw
+message StakeUpdate {
+  uint64 bucketIndex = 1;
+  bytes payload = 2;
+}
+
+// move the bucket to vote for another candidate
+message StakeMove {
+  string candidateName = 1;
+  uint64 bucketIndex = 2;
+  bytes payload = 3;
 }
 
 message StartSubChain {
@@ -173,6 +207,13 @@ message ActionCore {
     DepositToRewardingFund depositToRewardingFund = 30;
     ClaimFromRewardingFund claimFromRewardingFund = 31;
     GrantReward grantReward = 32;
+
+    // Native staking
+    StakeCreate stakeCreate = 40;
+    StakeUpdate stakeUnstake = 41;
+    StakeUpdate stakeAddstake = 42;
+    StakeUpdate stakeWithdraw = 43;
+    StakeMove stakeMove = 44;
 
     PutPollResult putPollResult = 50;
   }
