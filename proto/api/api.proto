@@ -86,6 +86,12 @@ service APIService {
    * election APIs
    */
   rpc GetElectionBuckets(GetElectionBucketsRequest) returns (GetElectionBucketsResponse) {}
+
+  /*
+   * slashing APIs
+   */
+   rpc GetKickoutList(GetKickoutListRequest) returns (GetKickoutListResponse) {}
+
 }
 
 message GetVotesRequest {
@@ -362,4 +368,21 @@ message GetElectionBucketsRequest{
 
 message GetElectionBucketsResponse{
   repeated iotextypes.ElectionBucket buckets = 1;
+}
+
+/*
+ * slashing APIs
+ */
+
+message GetKickoutListRequest{
+  uint64 epochNum = 1;
+}
+
+message GetKickoutListResponse{
+  repeated KickoutInfo kickoutList = 1;
+  uint32 intensityRate = 2;
+}
+
+message KickoutInfo{
+  string address = 1;
 }
