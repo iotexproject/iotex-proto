@@ -31,6 +31,16 @@ message CandidateList {
   repeated Candidate candidates = 1;
 }
 
+// KickoutInfo and list of KickoutBlacklist
+message KickoutBlackList {
+  repeated KickoutInfo blacklists = 1;
+  uint32 intensityRate = 2;
+}
+
+message KickoutInfo {
+  string address = 1;
+}
+
 message PutPollResult {
   uint64 height = 1;
   CandidateList	candidates = 2;
