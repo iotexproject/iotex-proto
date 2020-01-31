@@ -31,14 +31,15 @@ message CandidateList {
   repeated Candidate candidates = 1;
 }
 
-// KickoutInfo and list of KickoutBlacklist
-message KickoutBlackList {
+// KickoutInfo and list of KickoutCandidateList
+message KickoutCandidateList {
   repeated KickoutInfo blacklists = 1;
   uint32 intensityRate = 2;
 }
 
 message KickoutInfo {
   string address = 1;
+  int32 count = 2;
 }
 
 message PutPollResult {
