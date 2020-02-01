@@ -39,7 +39,7 @@ message KickoutCandidateList {
 
 message KickoutInfo {
   string address = 1;
-  int32 count = 2;
+  uint32 count = 2;
 }
 
 message PutPollResult {

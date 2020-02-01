@@ -86,7 +86,6 @@ service APIService {
    * election APIs
    */
   rpc GetElectionBuckets(GetElectionBucketsRequest) returns (GetElectionBucketsResponse) {}
-
 }
 
 message GetVotesRequest {
