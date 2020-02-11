@@ -72,10 +72,25 @@ message StakeCreate {
   bytes payload = 5;
 }
 
-// add, unstake, or withdraw
+// unstake or withdraw
 message StakeUpdate {
   uint64 bucketIndex = 1;
   bytes payload = 2;
+}
+
+// add the amount of bucket 
+message StakeAdd {
+  uint64 bucketIndex = 1;
+  string amount = 2;
+  bytes payload = 3;
+}
+
+// restake the duration and isDecay flag of bucket 
+message StakeAgain {
+  uint64 bucketIndex = 1;
+  uint32 stakedDuration = 2;
+  bool nonDecay = 3;
+  bytes payload = 4;
 }
 
 // move the bucket to vote for another candidate
@@ -222,9 +237,10 @@ message ActionCore {
     // Native staking
     StakeCreate stakeCreate = 40;
     StakeUpdate stakeUnstake = 41;
-    StakeUpdate stakeAddstake = 42;
-    StakeUpdate stakeWithdraw = 43;
-    StakeMove stakeMove = 44;
+    StakeUpdate stakeWithdraw = 42;
+    StakeAdd stakeAddstake = 43;
+    StakeAgain stakeRestake = 44;
+    StakeMove stakeMove = 45;
 
     PutPollResult putPollResult = 50;
   }
