@@ -60,7 +60,7 @@ message Bucket {
   google.protobuf.Timestamp createTime = 4;
   google.protobuf.Timestamp stakeStartTime = 5;
   google.protobuf.Timestamp unstakeStartTime = 6;
-  bool nonDecay = 7;
+  bool autoStake = 7;
   string owner = 8;
 }
 
@@ -68,7 +68,7 @@ message StakeCreate {
   string candidateName = 1;
   string stakedAmount = 2;
   uint32 stakedDuration = 3;
-  bool nonDecay = 4;
+  bool autoStake = 4;
   bytes payload = 5;
 }
 
@@ -85,17 +85,24 @@ message StakeAdd {
   bytes payload = 3;
 }
 
-// restake the duration and isDecay flag of bucket 
+// restake the duration and autoStake flag of bucket 
 message StakeAgain {
   uint64 bucketIndex = 1;
   uint32 stakedDuration = 2;
-  bool nonDecay = 3;
+  bool autoStake = 3;
   bytes payload = 4;
 }
 
 // move the bucket to vote for another candidate
 message StakeMove {
   string candidateName = 1;
+  uint64 bucketIndex = 2;
+  bytes payload = 3;
+}
+
+// transfer the bucket to another voter 
+message StakeTransfer {
+  string voter = 1;
   uint64 bucketIndex = 2;
   bytes payload = 3;
 }
@@ -241,6 +248,7 @@ message ActionCore {
     StakeAdd stakeAddstake = 43;
     StakeAgain stakeRestake = 44;
     StakeMove stakeMove = 45;
+    StakeTransfer stakeTransfer = 46;
 
     PutPollResult putPollResult = 50;
   }
