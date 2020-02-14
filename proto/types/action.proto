@@ -79,7 +79,7 @@ message StakeUpdate {
 }
 
 // add the amount of bucket 
-message StakeAdd {
+message StakeAddDeposit {
   uint64 bucketIndex = 1;
   string amount = 2;
   bytes payload = 3;
@@ -93,16 +93,9 @@ message StakeAgain {
   bytes payload = 4;
 }
 
-// move the bucket to vote for another candidate
+// move the bucket for another candidate or transfer the ownership of bucket to another voter  
 message StakeMove {
-  string candidateName = 1;
-  uint64 bucketIndex = 2;
-  bytes payload = 3;
-}
-
-// transfer the bucket to another voter 
-message StakeTransfer {
-  string voter = 1;
+  string name = 1;
   uint64 bucketIndex = 2;
   bytes payload = 3;
 }
@@ -245,10 +238,10 @@ message ActionCore {
     StakeCreate stakeCreate = 40;
     StakeUpdate stakeUnstake = 41;
     StakeUpdate stakeWithdraw = 42;
-    StakeAdd stakeAddstake = 43;
+    StakeAddDeposit stakeAddstake = 43;
     StakeAgain stakeRestake = 44;
-    StakeMove stakeMove = 45;
-    StakeTransfer stakeTransfer = 46;
+    StakeMove stakeChangeCandidate = 45;
+    StakeMove stakeTransferOwnership = 46;
 
     PutPollResult putPollResult = 50;
   }
