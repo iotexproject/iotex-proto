@@ -72,10 +72,16 @@ message StakeCreate {
   bytes payload = 5;
 }
 
+enum StakeUpdateType {
+  Unstake = 0;
+  Withdraw = 1;
+}
+
 // unstake or withdraw
 message StakeUpdate {
-  uint64 bucketIndex = 1;
-  bytes payload = 2;
+  StakeUpdateType type = 1;
+  uint64 bucketIndex = 2;
+  bytes payload = 3;
 }
 
 // add the amount of bucket 
@@ -93,11 +99,17 @@ message StakeAgain {
   bytes payload = 4;
 }
 
+enum StakeMoveType {
+  ChangeCandidate = 0;
+  TransferOwnership = 1;
+}
+
 // move the bucket for another candidate or transfer the ownership of bucket to another voter  
 message StakeMove {
-  string name = 1;
-  uint64 bucketIndex = 2;
-  bytes payload = 3;
+  StakeMoveType type = 1;
+  string name = 2;
+  uint64 bucketIndex = 3;
+  bytes payload = 4;
 }
 
 message StartSubChain {
