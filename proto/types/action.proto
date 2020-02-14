@@ -64,6 +64,7 @@ message Bucket {
   string owner = 8;
 }
 
+// create stake
 message StakeCreate {
   string candidateName = 1;
   string stakedAmount = 2;
@@ -72,16 +73,16 @@ message StakeCreate {
   bytes payload = 5;
 }
 
-enum StakeUpdateType {
-  Unstake = 0;
-  Withdraw = 1;
+// unstake 
+message StakeUnstake {
+  uint64 bucketIndex = 1;
+  bytes payload = 2;
 }
 
-// unstake or withdraw
-message StakeUpdate {
-  StakeUpdateType type = 1;
-  uint64 bucketIndex = 2;
-  bytes payload = 3;
+// withdraw
+message StakeWithdraw {
+  uint64 bucketIndex = 1;
+  bytes payload = 2;
 }
 
 // add the amount of bucket 
@@ -92,24 +93,25 @@ message StakeAddDeposit {
 }
 
 // restake the duration and autoStake flag of bucket 
-message StakeAgain {
+message StakeRestake {
   uint64 bucketIndex = 1;
   uint32 stakedDuration = 2;
   bool autoStake = 3;
   bytes payload = 4;
 }
 
-enum StakeMoveType {
-  ChangeCandidate = 0;
-  TransferOwnership = 1;
+// move the bucket to vote for another candidate  
+message StakeChangeCandidate {
+  uint64 bucketIndex = 1;
+  string name = 2;
+  bytes payload = 3;
 }
 
-// move the bucket for another candidate or transfer the ownership of bucket to another voter  
-message StakeMove {
-  StakeMoveType type = 1;
+// transfer the ownership of bucket to another voter  
+message StakeTransferOwnership {
+  uint64 bucketIndex = 1;
   string name = 2;
-  uint64 bucketIndex = 3;
-  bytes payload = 4;
+  bytes payload = 3;
 }
 
 message StartSubChain {
@@ -248,12 +250,12 @@ message ActionCore {
 
     // Native staking
     StakeCreate stakeCreate = 40;
-    StakeUpdate stakeUnstake = 41;
-    StakeUpdate stakeWithdraw = 42;
-    StakeAddDeposit stakeAddstake = 43;
-    StakeAgain stakeRestake = 44;
-    StakeMove stakeChangeCandidate = 45;
-    StakeMove stakeTransferOwnership = 46;
+    StakeUnstake stakeUnstake = 41;
+    StakeWithdraw stakeWithdraw = 42;
+    StakeAddDeposit stakeAddDeposit = 43;
+    StakeRestake stakeRestake = 44;
+    StakeChangeCandidate stakeChangeCandidate = 45;
+    StakeTransferOwnership stakeTransferOwnership = 46;
 
     PutPollResult putPollResult = 50;
   }
