@@ -42,6 +42,18 @@ message KickoutInfo {
   uint32 count = 2;
 }
 
+message NativeCandidate {
+  string owner = 1;
+  string address = 2;
+  string rewardAddress = 3;
+  bytes canName = 4;
+  bytes votes = 5;
+}
+
+message NativeCandidateList {
+  repeated NativeCandidate candidates = 1;
+}
+
 message PutPollResult {
   uint64 height = 1;
   CandidateList	candidates = 2;
