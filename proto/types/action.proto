@@ -73,14 +73,8 @@ message StakeCreate {
   bytes payload = 5;
 }
 
-// unstake 
-message StakeUnstake {
-  uint64 bucketIndex = 1;
-  bytes payload = 2;
-}
-
-// withdraw
-message StakeWithdraw {
+// unstake or withdraw
+message StakeReclaim {
   uint64 bucketIndex = 1;
   bytes payload = 2;
 }
@@ -100,15 +94,8 @@ message StakeRestake {
   bytes payload = 4;
 }
 
-// move the bucket to vote for another candidate  
-message StakeChangeCandidate {
-  uint64 bucketIndex = 1;
-  string name = 2;
-  bytes payload = 3;
-}
-
-// transfer the ownership of bucket to another voter  
-message StakeTransferOwnership {
+// move the bucket to vote for another candidate or transfer the ownership of bucket to another voters
+message StakeMove {
   uint64 bucketIndex = 1;
   string name = 2;
   bytes payload = 3;
@@ -250,12 +237,12 @@ message ActionCore {
 
     // Native staking
     StakeCreate stakeCreate = 40;
-    StakeUnstake stakeUnstake = 41;
-    StakeWithdraw stakeWithdraw = 42;
+    StakeReclaim stakeUnstake = 41;
+    StakeReclaim stakeWithdraw = 42;
     StakeAddDeposit stakeAddDeposit = 43;
     StakeRestake stakeRestake = 44;
-    StakeChangeCandidate stakeChangeCandidate = 45;
-    StakeTransferOwnership stakeTransferOwnership = 46;
+    StakeMove stakeChangeCandidate = 45;
+    StakeMove stakeTransferOwnership = 46;
 
     PutPollResult putPollResult = 50;
   }
