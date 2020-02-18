@@ -60,28 +60,44 @@ message Bucket {
   google.protobuf.Timestamp createTime = 4;
   google.protobuf.Timestamp stakeStartTime = 5;
   google.protobuf.Timestamp unstakeStartTime = 6;
-  bool nonDecay = 7;
+  bool autoStake = 7;
   string owner = 8;
 }
 
+// create stake
 message StakeCreate {
   string candidateName = 1;
   string stakedAmount = 2;
   uint32 stakedDuration = 3;
-  bool nonDecay = 4;
+  bool autoStake = 4;
   bytes payload = 5;
 }
 
-// add, unstake, or withdraw
-message StakeUpdate {
+// unstake or withdraw
+message StakeReclaim {
   uint64 bucketIndex = 1;
   bytes payload = 2;
 }
 
-// move the bucket to vote for another candidate
+// add the amount of bucket 
+message StakeAddDeposit {
+  uint64 bucketIndex = 1;
+  string amount = 2;
+  bytes payload = 3;
+}
+
+// restake the duration and autoStake flag of bucket 
+message StakeRestake {
+  uint64 bucketIndex = 1;
+  uint32 stakedDuration = 2;
+  bool autoStake = 3;
+  bytes payload = 4;
+}
+
+// move the bucket to vote for another candidate or transfer the ownership of bucket to another voters
 message StakeMove {
-  string candidateName = 1;
-  uint64 bucketIndex = 2;
+  uint64 bucketIndex = 1;
+  string name = 2;
   bytes payload = 3;
 }
 
@@ -221,10 +237,12 @@ message ActionCore {
 
     // Native staking
     StakeCreate stakeCreate = 40;
-    StakeUpdate stakeUnstake = 41;
-    StakeUpdate stakeAddstake = 42;
-    StakeUpdate stakeWithdraw = 43;
-    StakeMove stakeMove = 44;
+    StakeReclaim stakeUnstake = 41;
+    StakeReclaim stakeWithdraw = 42;
+    StakeAddDeposit stakeAddDeposit = 43;
+    StakeRestake stakeRestake = 44;
+    StakeMove stakeChangeCandidate = 45;
+    StakeMove stakeTransferOwnership = 46;
 
     PutPollResult putPollResult = 50;
   }
