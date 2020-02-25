@@ -54,7 +54,7 @@ message Execution {
 }
 
 message Bucket {
-  string candidateName = 1;
+  string candidateAddress = 1;
   string stakedAmount = 2;
   uint32 stakedDuration = 3;
   google.protobuf.Timestamp createTime = 4;
@@ -66,7 +66,7 @@ message Bucket {
 
 // create stake
 message StakeCreate {
-  string candidateName = 1;
+  string candidateAddress = 1;
   string stakedAmount = 2;
   uint32 stakedDuration = 3;
   bool autoStake = 4;
@@ -97,7 +97,7 @@ message StakeRestake {
 // move the bucket to vote for another candidate or transfer the ownership of bucket to another voters
 message StakeMove {
   uint64 bucketIndex = 1;
-  string name = 2;
+  string candidateAddress = 2;
   bytes payload = 3;
 }
 
