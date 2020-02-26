@@ -101,18 +101,19 @@ message StakeMove {
   bytes payload = 3;
 }
 
-message CandidateInfo {
+message CandidateBasicInfo {
   string name = 1;
   string operatorAddress = 2;
   string rewardAddress = 3;
 }
 
 message CandidateRegister {
-  CandidateInfo candidate = 1;
+  CandidateBasicInfo candidate = 1;
   string stakedAmount = 2;
   uint32 stakedDuration = 3;
   bool autoStake = 4;
-  bytes payload = 5;
+  string ownerAddress = 5; // if ownerAddress is absent, owner of candidate is the sender
+  bytes payload = 6;
 }
 
 message StartSubChain {
@@ -258,7 +259,7 @@ message ActionCore {
     StakeMove stakeChangeCandidate = 45;
     StakeMove stakeTransferOwnership = 46;
     CandidateRegister candidateRegister = 47;
-    CandidateInfo candidateUpdate = 48;
+    CandidateBasicInfo candidateUpdate = 48;
 
     PutPollResult putPollResult = 50;
   }
