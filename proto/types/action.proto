@@ -101,6 +101,20 @@ message StakeMove {
   bytes payload = 3;
 }
 
+message CandidateInfo {
+  string name = 1;
+  string operatorAddress = 2;
+  string rewardAddress = 3;
+}
+
+message CandidateRegister {
+  CandidateInfo candidate = 1;
+  string stakedAmount = 2;
+  uint32 stakedSuration = 3;
+  bool autoStake = 4;
+  bytes payload = 5;
+}
+
 message StartSubChain {
   // TODO: chainID chould be assigned by system and returned via a receipt
   uint32 chainID = 1;
@@ -243,6 +257,8 @@ message ActionCore {
     StakeRestake stakeRestake = 44;
     StakeMove stakeChangeCandidate = 45;
     StakeMove stakeTransferOwnership = 46;
+    CandidateRegister candidateRegister = 47;
+    CandidateInfo candidateUpdate = 48;
 
     PutPollResult putPollResult = 50;
   }
