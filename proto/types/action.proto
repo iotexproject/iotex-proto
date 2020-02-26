@@ -110,7 +110,7 @@ message CandidateInfo {
 message CandidateRegister {
   CandidateInfo candidate = 1;
   string stakedAmount = 2;
-  uint32 stakedSuration = 3;
+  uint32 stakedDuration = 3;
   bool autoStake = 4;
   bytes payload = 5;
 }
