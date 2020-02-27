@@ -97,8 +97,9 @@ message StakeRestake {
 // move the bucket to vote for another candidate or transfer the ownership of bucket to another voters
 message StakeMove {
   uint64 bucketIndex = 1;
-  string name = 2;
-  bytes payload = 3;
+  string candidateName = 2;
+  string voterAddress = 3;
+  bytes payload = 4;
 }
 
 message CandidateBasicInfo {
