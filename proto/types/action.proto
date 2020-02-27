@@ -95,9 +95,15 @@ message StakeRestake {
 }
 
 // move the bucket to vote for another candidate or transfer the ownership of bucket to another voters
-message StakeMove {
+message StakeChangeCandidate {
   uint64 bucketIndex = 1;
-  string name = 2;
+  string candidateName = 2;
+  bytes payload = 3;
+}
+
+message StakeTransferOwnership {
+  uint64 bucketIndex = 1;
+  string voterAddress = 2;
   bytes payload = 3;
 }
 
@@ -256,8 +262,8 @@ message ActionCore {
     StakeReclaim stakeWithdraw = 42;
     StakeAddDeposit stakeAddDeposit = 43;
     StakeRestake stakeRestake = 44;
-    StakeMove stakeChangeCandidate = 45;
-    StakeMove stakeTransferOwnership = 46;
+    StakeChangeCandidate stakeChangeCandidate = 45;
+    StakeTransferOwnership stakeTransferOwnership = 46;
     CandidateRegister candidateRegister = 47;
     CandidateBasicInfo candidateUpdate = 48;
 
