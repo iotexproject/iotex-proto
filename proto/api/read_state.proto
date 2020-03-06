@@ -1,4 +1,4 @@
-// Copyright (c) 2019 IoTeX
+// Copyright (c) 2020 IoTeX
 // This is an alpha (internal) release and is not suitable for production. This source code is provided 'as is' and no
 // warranties are given as to title or non-infringement, merchantability or fitness for purpose and, to the extent
 // permitted by law, all liability for your use of the code is disclaimed. This source code is governed by Apache
@@ -10,6 +10,11 @@ syntax = "proto3";
 package iotexapi;
 option go_package = "github.com/iotexproject/iotex-proto/golang/iotexapi";
 
+
+message PaginationParam {
+	uint32 offset = 1;
+	uint32 limit = 2;
+}
 
 message ReadStakingDataMethod {
 	enum Name {
@@ -25,24 +30,21 @@ message ReadStakingDataMethod {
 
 message ReadStakingDataRequest {
 	message VoteBuckets {
-		uint32 offset = 1;
-		uint32 limit = 2;
+		PaginationParam pagination = 1;
 	}
+
 	message VoteBucketsByVoter {
 		string voterAddress = 1;
-		uint32 offset = 2;
-		uint32 limit = 3;
+		PaginationParam pagination = 2;
 	}
 
 	message VoteBucketsByCandidate {
 		string candName = 1;
-		uint32 offset = 2;
-		uint32 limit = 3;
+		PaginationParam pagination = 2;
 	}
 
 	message Candidates {
-		uint32 offset = 1;
-		uint32 limit = 2;
+		PaginationParam pagination = 1;
 	}
 
 	message CandidateByName {
