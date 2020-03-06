@@ -10,8 +10,6 @@ syntax = "proto3";
 package iotextypes;
 option go_package = "github.com/iotexproject/iotex-proto/golang/iotextypes";
 
-import "google/protobuf/timestamp.proto";
-
 message Transfer {
   // used by state-based model
   string amount = 1;
@@ -31,37 +29,15 @@ message CandidateList {
   repeated Candidate candidates = 1;
 }
 
-// KickoutInfo and list of KickoutCandidateList
-message KickoutCandidateList {
-  repeated KickoutInfo blacklists = 1;
-  uint32 intensityRate = 2;
-}
-
-message KickoutInfo {
-  string address = 1;
-  uint32 count = 2;
-}
-
 message PutPollResult {
   uint64 height = 1;
-  CandidateList	candidates = 2;
+  CandidateList candidates = 2;
 }
 
 message Execution {
   string amount = 1;
   string contract = 2;
   bytes data = 3;
-}
-
-message Bucket {
-  string candidateName = 1;
-  string stakedAmount = 2;
-  uint32 stakedDuration = 3;
-  google.protobuf.Timestamp createTime = 4;
-  google.protobuf.Timestamp stakeStartTime = 5;
-  google.protobuf.Timestamp unstakeStartTime = 6;
-  bool autoStake = 7;
-  string owner = 8;
 }
 
 // create stake
