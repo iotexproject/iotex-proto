@@ -1,0 +1,47 @@
+// Copyright (c) 2019 IoTeX
+// This is an alpha (internal) release and is not suitable for production. This source code is provided 'as is' and no
+// warranties are given as to title or non-infringement, merchantability or fitness for purpose and, to the extent
+// permitted by law, all liability for your use of the code is disclaimed. This source code is governed by Apache
+// License 2.0 that can be found in the LICENSE file.
+
+// To compile the proto, run:
+//      protoc -I. -I ./../types --go_out=plugins=grpc:$GOPATH/src *.proto
+syntax = "proto3";
+package iotexapi;
+option go_package = "github.com/iotexproject/iotex-proto/golang/iotexapi";
+
+message ReadStakingData {
+	oneof request {
+		ReadStakingVoteBuckets getBuckets = 1;
+		ReadStakingVoteBucketsByVoter getBucketsByVoter = 2;
+		ReadStakingVoteBucketsByCandidate getBucketsByCandidate = 3;
+		ReadStakingCandidates getCandidates = 4;
+		ReadStakingCandidateByName getCandidateByName = 5;
+	}
+}
+
+message ReadStakingVoteBuckets {
+	uint32 offset = 1;
+	uint32 limit = 2;
+}
+
+message ReadStakingVoteBucketsByVoter {
+	string voterAddress = 1;
+	uint32 offset = 2;
+	uint32 limit = 3;
+}
+
+message ReadStakingVoteBucketsByCandidate {
+	string candName = 1;
+	uint32 offset = 2;
+	uint32 limit = 3;
+}
+
+message ReadStakingCandidates {
+	uint32 offset = 1;
+	uint32 limit = 2;
+}
+
+message ReadStakingCandidateByName {
+	string candName = 1;
+}

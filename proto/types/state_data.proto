@@ -51,39 +51,3 @@ message CandidateListV2 {
 message VoteBucketList {
 	repeated VoteBucket buckets = 1;
 }
-
-message ReadStakingData {
-	oneof request {
-		ReadStakingVoteBuckets getBuckets = 1;
-		ReadStakingVoteBucketsByVoter getBucketsByVoter = 2;
-		ReadStakingVoteBucketsByCandidate getBucketsByCandidate = 3;
-		ReadStakingCandidates getCandidates = 4;
-		ReadStakingCandidateByName getCandidateByName = 5;
-	}
-}
-
-message ReadStakingVoteBuckets {
-	uint32 offset = 1;
-	uint32 limit = 2;
-}
-
-message ReadStakingVoteBucketsByVoter {
-	string voterAddress = 1;
-	uint32 offset = 2;
-	uint32 limit = 3;
-}
-
-message ReadStakingVoteBucketsByCandidate {
-	string candName = 1;
-	uint32 offset = 2;
-	uint32 limit = 3;
-}
-
-message ReadStakingCandidates {
-	uint32 offset = 1;
-	uint32 limit = 2;
-}
-
-message ReadStakingCandidateByName {
-	string candName = 1;
-}
