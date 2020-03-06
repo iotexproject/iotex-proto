@@ -1,8 +1,12 @@
 package protocol
 
 const (
-	RewardingProtocolID = "rewarding"
+	RewardingProtocolID            = "rewarding"
 	ReadAvailableBalanceMethodName = "AvailableBalance"
-	ReadTotalBalanceMethodName = "TotalBalance"
+	ReadTotalBalanceMethodName     = "TotalBalance"
 	ReadUnclaimedBalanceMethodName = "UnclaimedBalance"
+)
+
+const (
+	StakingProtcolID = "staking"
 )
