@@ -8,10 +8,5 @@ const (
 )
 
 const (
-	StakingProtcolID                            = "staking"
-	ReadStakingVoteBucketsMethodName            = "getBuckets"
-	ReadStakingVoteBucketsByVoterMethodName     = "getBucketsByVoter"
-	ReadStakingVoteBucketsByCandidateMethodName = "getBucketsByCandidate"
-	ReadStakingCandidatesMethodName             = "getCandidates"
-	ReadStakingCandidatesByNameMethodName       = "getCandidatesByName"
+	StakingProtcolID = "staking"
 )
