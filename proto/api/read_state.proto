@@ -19,11 +19,11 @@ message PaginationParam {
 message ReadStakingDataMethod {
 	enum Name {
 		INVALID = 0;
-		GET_BUCKETS = 1;
-		GET_BUCKETS_BY_VOTER = 2;
-		GET_BUCKETS_BY_CANDIDATE = 3;
-		GET_CANDIDATE = 4;
-		GET_CANDIDATE_BY_NAME = 5;
+		BUCKETS = 1;
+		BUCKETS_BY_VOTER = 2;
+		BUCKETS_BY_CANDIDATE = 3;
+		CANDIDATES = 4;
+		CANDIDATE_BY_NAME = 5;
 	}
 	Name method = 1;
 }
@@ -52,7 +52,7 @@ message ReadStakingDataRequest {
 	}
 
 	oneof request {
-		VoteBuckets voteBuckets = 1;
+		VoteBuckets buckets = 1;
 		VoteBucketsByVoter bucketsByVoter = 2;
 		VoteBucketsByCandidate bucketsByCandidate = 3;
 		Candidates candidates = 4;
