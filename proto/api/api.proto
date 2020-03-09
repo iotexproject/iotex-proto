@@ -279,8 +279,8 @@ message EstimateGasForActionResponse {
 message ReadStateRequest {
   bytes protocolID = 1;
   bytes methodName = 2;
-  uint64 epochHeight = 3;
-  repeated bytes arguments = 4;
+  repeated bytes arguments = 3;
+  uint64 height = 4;
 }
 
 message ReadStateResponse {
