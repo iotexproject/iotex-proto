@@ -12,14 +12,14 @@ option go_package = "github.com/iotexproject/iotex-proto/golang/iotextypes";
 
 import "google/protobuf/timestamp.proto";
 
-message KickoutInfo {
+// ProbationInfo and ProbationCandidateList (slashing #1)
+message ProbationInfo {
   string address = 1;
   uint32 count = 2;
 }
 
-// KickoutInfo and list of KickoutCandidateList
-message KickoutCandidateList {
-  repeated KickoutInfo blacklists = 1;
+message ProbationCandidateList {
+  repeated ProbationInfo probationList = 1;
   uint32 intensityRate = 2;
 }
 
