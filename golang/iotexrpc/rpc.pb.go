@@ -262,7 +262,9 @@ func init() {
 	proto.RegisterType((*UnicastMsg)(nil), "iotexrpc.UnicastMsg")
 }
 
-func init() { proto.RegisterFile("proto/rpc/rpc.proto", fileDescriptor_59d40974ffbedc26) }
+func init() {
+	proto.RegisterFile("proto/rpc/rpc.proto", fileDescriptor_59d40974ffbedc26)
+}
 
 var fileDescriptor_59d40974ffbedc26 = []byte{
 	// 410 bytes of a gzipped FileDescriptorProto

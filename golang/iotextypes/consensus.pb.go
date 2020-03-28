@@ -245,7 +245,9 @@ func init() {
 	proto.RegisterType((*ConsensusMessage)(nil), "iotextypes.ConsensusMessage")
 }
 
-func init() { proto.RegisterFile("proto/types/consensus.proto", fileDescriptor_2637092b19291c2e) }
+func init() {
+	proto.RegisterFile("proto/types/consensus.proto", fileDescriptor_2637092b19291c2e)
+}
 
 var fileDescriptor_2637092b19291c2e = []byte{
 	// 371 bytes of a gzipped FileDescriptorProto

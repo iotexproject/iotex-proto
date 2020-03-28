@@ -681,7 +681,9 @@ func init() {
 	proto.RegisterType((*AccountMeta)(nil), "iotextypes.AccountMeta")
 }
 
-func init() { proto.RegisterFile("proto/types/blockchain.proto", fileDescriptor_0e828f5966a7c29d) }
+func init() {
+	proto.RegisterFile("proto/types/blockchain.proto", fileDescriptor_0e828f5966a7c29d)
+}
 
 var fileDescriptor_0e828f5966a7c29d = []byte{
 	// 769 bytes of a gzipped FileDescriptorProto

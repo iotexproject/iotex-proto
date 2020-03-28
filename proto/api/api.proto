@@ -337,6 +337,22 @@ message GetLogsResponse {
   repeated iotextypes.Log logs = 1;
 }
 
+message GetEvmTransferByActionHashRequest {
+  string actionHash = 1;
+}
+
+message GetEvmTransferByActionHashResponse {
+  iotextypes.ActionEvmTransfer actionEvmTransfers = 1;
+}
+
+message GetEvmTransferByBlockHeightRequest {
+  uint64 blockHeight = 1;
+}
+
+message GetEvmTransferByBlockHeightResponse {
+  iotextypes.BlockEvmTransfer blockEvmTransfers = 1;
+}
+
 /*
  * below are streaming APIs
  */

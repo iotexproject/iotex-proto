@@ -63,7 +63,9 @@ func init() {
 	proto.RegisterType((*TestPayload)(nil), "testingpb.TestPayload")
 }
 
-func init() { proto.RegisterFile("proto/testing/testing.proto", fileDescriptor_9b5c04d05c6a93e8) }
+func init() {
+	proto.RegisterFile("proto/testing/testing.proto", fileDescriptor_9b5c04d05c6a93e8)
+}
 
 var fileDescriptor_9b5c04d05c6a93e8 = []byte{
 	// 136 bytes of a gzipped FileDescriptorProto

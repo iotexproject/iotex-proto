@@ -80,7 +80,9 @@ func init() {
 	proto.RegisterType((*Endorsement)(nil), "iotextypes.Endorsement")
 }
 
-func init() { proto.RegisterFile("proto/types/endorsement.proto", fileDescriptor_8f7e62a7e1c60498) }
+func init() {
+	proto.RegisterFile("proto/types/endorsement.proto", fileDescriptor_8f7e62a7e1c60498)
+}
 
 var fileDescriptor_8f7e62a7e1c60498 = []byte{
 	// 198 bytes of a gzipped FileDescriptorProto

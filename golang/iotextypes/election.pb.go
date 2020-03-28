@@ -105,7 +105,9 @@ func init() {
 	proto.RegisterType((*ElectionBucket)(nil), "iotextypes.ElectionBucket")
 }
 
-func init() { proto.RegisterFile("proto/types/election.proto", fileDescriptor_79eba0ff0cac3135) }
+func init() {
+	proto.RegisterFile("proto/types/election.proto", fileDescriptor_79eba0ff0cac3135)
+}
 
 var fileDescriptor_79eba0ff0cac3135 = []byte{
 	// 260 bytes of a gzipped FileDescriptorProto

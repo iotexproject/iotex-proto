@@ -272,6 +272,32 @@ message Log{
 }
 
 
+message EvmTransfer {
+  bytes amount = 1;
+  string from = 2;
+  string to = 3;
+}
+
+message EvmTransferList {
+  repeated EvmTransfer evmTransfers = 1;
+}
+
+message ActionEvmTransfer {
+  bytes actionHash = 1;
+  int32 numEvmTransfer = 2;
+  repeated EvmTransfer evmTransfers = 3;
+}
+
+message BlockEvmTransfer {
+  uint64 blockHeight = 1;
+  int32 numEvmTransfer = 2;
+  repeated ActionEvmTransfer actionEvmTransfers = 3;
+}
+
+message ActionHashList {
+  repeated bytes actionHashes = 1;
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // BELOW ARE DEFINITIONS FOR BLOCK PRODUCER PROTOCOL
 ////////////////////////////////////////////////////////////////////////////////////////////////////

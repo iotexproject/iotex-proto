@@ -393,7 +393,9 @@ func init() {
 	proto.RegisterType((*CandidateListV2)(nil), "iotextypes.CandidateListV2")
 }
 
-func init() { proto.RegisterFile("proto/types/state_data.proto", fileDescriptor_96e4d0bfa2d89671) }
+func init() {
+	proto.RegisterFile("proto/types/state_data.proto", fileDescriptor_96e4d0bfa2d89671)
+}
 
 var fileDescriptor_96e4d0bfa2d89671 = []byte{
 	// 558 bytes of a gzipped FileDescriptorProto

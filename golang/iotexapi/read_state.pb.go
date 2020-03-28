@@ -318,8 +318,10 @@ type ReadStakingDataRequest_VoteBucketsByVoter struct {
 func (m *ReadStakingDataRequest_VoteBucketsByVoter) Reset() {
 	*m = ReadStakingDataRequest_VoteBucketsByVoter{}
 }
-func (m *ReadStakingDataRequest_VoteBucketsByVoter) String() string { return proto.CompactTextString(m) }
-func (*ReadStakingDataRequest_VoteBucketsByVoter) ProtoMessage()    {}
+func (m *ReadStakingDataRequest_VoteBucketsByVoter) String() string {
+	return proto.CompactTextString(m)
+}
+func (*ReadStakingDataRequest_VoteBucketsByVoter) ProtoMessage() {}
 func (*ReadStakingDataRequest_VoteBucketsByVoter) Descriptor() ([]byte, []int) {
 	return fileDescriptor_a08103f271b0c8be, []int{2, 1}
 }
@@ -499,7 +501,9 @@ func init() {
 	proto.RegisterType((*ReadStakingDataRequest_CandidateByName)(nil), "iotexapi.ReadStakingDataRequest.CandidateByName")
 }
 
-func init() { proto.RegisterFile("proto/api/read_state.proto", fileDescriptor_a08103f271b0c8be) }
+func init() {
+	proto.RegisterFile("proto/api/read_state.proto", fileDescriptor_a08103f271b0c8be)
+}
 
 var fileDescriptor_a08103f271b0c8be = []byte{
 	// 513 bytes of a gzipped FileDescriptorProto

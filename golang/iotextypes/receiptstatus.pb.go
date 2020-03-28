@@ -103,7 +103,9 @@ func init() {
 	proto.RegisterEnum("iotextypes.ReceiptStatus", ReceiptStatus_name, ReceiptStatus_value)
 }
 
-func init() { proto.RegisterFile("proto/types/receiptstatus.proto", fileDescriptor_b91d1deedbe7f532) }
+func init() {
+	proto.RegisterFile("proto/types/receiptstatus.proto", fileDescriptor_b91d1deedbe7f532)
+}
 
 var fileDescriptor_b91d1deedbe7f532 = []byte{
 	// 435 bytes of a gzipped FileDescriptorProto

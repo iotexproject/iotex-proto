@@ -487,7 +487,9 @@ func init() {
 	proto.RegisterType((*GenesisRewarding)(nil), "iotextypes.GenesisRewarding")
 }
 
-func init() { proto.RegisterFile("proto/types/genesis.proto", fileDescriptor_8090b9f9a91af920) }
+func init() {
+	proto.RegisterFile("proto/types/genesis.proto", fileDescriptor_8090b9f9a91af920)
+}
 
 var fileDescriptor_8090b9f9a91af920 = []byte{
 	// 721 bytes of a gzipped FileDescriptorProto

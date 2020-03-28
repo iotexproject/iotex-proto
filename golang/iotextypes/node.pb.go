@@ -96,7 +96,9 @@ func init() {
 	proto.RegisterType((*ServerMeta)(nil), "iotextypes.ServerMeta")
 }
 
-func init() { proto.RegisterFile("proto/types/node.proto", fileDescriptor_3acb45306dda8a73) }
+func init() {
+	proto.RegisterFile("proto/types/node.proto", fileDescriptor_3acb45306dda8a73)
+}
 
 var fileDescriptor_3acb45306dda8a73 = []byte{
 	// 204 bytes of a gzipped FileDescriptorProto
