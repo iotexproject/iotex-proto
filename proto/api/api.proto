@@ -73,6 +73,16 @@ service APIService {
   rpc GetVotes(GetVotesRequest) returns (GetVotesResponse) {}
 
   /*
+   * evm transfers APIs
+   */
+
+  // get evm transfers by action hash
+  rpc GetEvmTransfersByActionHash(GetEvmTransfersByActionHashRequest) returns (GetEvmTransfersByActionHashResponse) {}
+
+  // get evm transfers by block height
+  rpc GetEvmTransfersByBlockHeight(GetEvmTransfersByBlockHeightRequest) returns (GetEvmTransfersByBlockHeightResponse) {}
+
+  /*
    * below are streaming APIs
    */
 
@@ -335,6 +345,22 @@ message GetLogsRequest {
 
 message GetLogsResponse {
   repeated iotextypes.Log logs = 1;
+}
+
+message GetEvmTransfersByActionHashRequest {
+  string actionHash = 1;
+}
+
+message GetEvmTransfersByActionHashResponse {
+  iotextypes.ActionEvmTransfer actionEvmTransfers = 1;
+}
+
+message GetEvmTransfersByBlockHeightRequest {
+  uint64 blockHeight = 1;
+}
+
+message GetEvmTransfersByBlockHeightResponse {
+  iotextypes.BlockEvmTransfer blockEvmTransfers = 1;
 }
 
 /*
