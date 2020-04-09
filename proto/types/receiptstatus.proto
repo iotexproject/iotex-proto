@@ -34,9 +34,10 @@ enum ReceiptStatus {
   ErrUnauthorizedOperator           = 203;
   ErrInvalidBucketType              = 204;
   ErrCandidateNotExist              = 205;
-  ErrUnstakeBeforeMaturity          = 206;
-  ErrWithdrawBeforeUnstake          = 207;
-  ErrWithdrawBeforeMaturity         = 208;
-  ErrCandidateAlreadyExist          = 209;
-  ErrCandidateConflict              = 210;
+  ErrReduceDurationBeforeMaturity   = 206;
+  ErrUnstakeBeforeMaturity          = 207;
+  ErrWithdrawBeforeUnstake          = 208;
+  ErrWithdrawBeforeMaturity         = 209;
+  ErrCandidateAlreadyExist          = 210;
+  ErrCandidateConflict              = 211;
 }
