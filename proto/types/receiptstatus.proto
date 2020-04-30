@@ -28,16 +28,19 @@ enum ReceiptStatus {
   ErrWriteProtection          		= 108;
 
   //2xx for Staking ErrorCode
-  ErrLoadAccount                    = 200;
-  ErrNotEnoughBalance               = 201;
-  ErrInvalidBucketIndex             = 202;
-  ErrUnauthorizedOperator           = 203;
-  ErrInvalidBucketType              = 204;
-  ErrCandidateNotExist              = 205;
-  ErrReduceDurationBeforeMaturity   = 206;
-  ErrUnstakeBeforeMaturity          = 207;
-  ErrWithdrawBeforeUnstake          = 208;
-  ErrWithdrawBeforeMaturity         = 209;
-  ErrCandidateAlreadyExist          = 210;
-  ErrCandidateConflict              = 211;
+  ErrWriteAccount                   = 200;
+  ErrWriteBucket                    = 201;
+  ErrWriteCandidate                 = 202;
+  ErrNotEnoughBalance               = 203;
+  ErrUnauthorizedOperator           = 204;
+  ErrInvalidBucketIndex             = 205;
+  ErrInvalidBucketType              = 206;
+  ErrInvalidBucketAmount            = 207;
+  ErrReduceDurationBeforeMaturity   = 208;
+  ErrUnstakeBeforeMaturity          = 209;
+  ErrWithdrawBeforeUnstake          = 210;
+  ErrWithdrawBeforeMaturity         = 211;
+  ErrCandidateNotExist              = 212;
+  ErrCandidateAlreadyExist          = 213;
+  ErrCandidateConflict              = 214;
 }
