@@ -51,3 +51,7 @@ message CandidateV2 {
 message CandidateListV2 {
 	repeated CandidateV2 candidates = 1;
 }
+
+message Count {
+  uint64 count            = 1;
+}

@@ -24,6 +24,8 @@ message ReadStakingDataMethod {
 		BUCKETS_BY_CANDIDATE = 3;
 		CANDIDATES = 4;
 		CANDIDATE_BY_NAME = 5;
+		BUCKETS_COUNT = 6;
+		CANDIDATES_COUNT = 7;
 	}
 	Name method = 1;
 }
@@ -51,11 +53,15 @@ message ReadStakingDataRequest {
 		string candName = 1;
 	}
 
+	message TotalCount {
+	}
+
 	oneof request {
 		VoteBuckets buckets = 1;
 		VoteBucketsByVoter bucketsByVoter = 2;
 		VoteBucketsByCandidate bucketsByCandidate = 3;
 		Candidates candidates = 4;
 		CandidateByName candidateByName = 5;
+		TotalCount count = 6;
 	}
 }
