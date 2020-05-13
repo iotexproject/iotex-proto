@@ -24,6 +24,7 @@ message ReadStakingDataMethod {
 		BUCKETS_BY_CANDIDATE = 3;
 		CANDIDATES = 4;
 		CANDIDATE_BY_NAME = 5;
+		BUCKET_BY_INDEX = 6;
 	}
 	Name method = 1;
 }
@@ -51,11 +52,16 @@ message ReadStakingDataRequest {
 		string candName = 1;
 	}
 
+	message VoteBucketByIndex {
+		uint64 index = 1;
+	}
+
 	oneof request {
 		VoteBuckets buckets = 1;
 		VoteBucketsByVoter bucketsByVoter = 2;
 		VoteBucketsByCandidate bucketsByCandidate = 3;
 		Candidates candidates = 4;
 		CandidateByName candidateByName = 5;
+		VoteBucketByIndex bucketByIndex = 6;
 	}
 }
