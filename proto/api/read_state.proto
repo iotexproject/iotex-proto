@@ -22,9 +22,9 @@ message ReadStakingDataMethod {
 		BUCKETS = 1;
 		BUCKETS_BY_VOTER = 2;
 		BUCKETS_BY_CANDIDATE = 3;
-		BUCKET_BY_INDEX = 4;
-		CANDIDATES = 5;
-		CANDIDATE_BY_NAME = 6;
+		CANDIDATES = 4;
+		CANDIDATE_BY_NAME = 5;
+		BUCKETS_BY_INDEXES = 6;
 	}
 	Name method = 1;
 }
@@ -52,16 +52,16 @@ message ReadStakingDataRequest {
 		string candName = 1;
 	}
 
-	message VoteBucketByIndex {
-		uint64 index = 1;
+	message VoteBucketsByIndexes {
+		repeated uint64 index = 1;
 	}
 
 	oneof request {
 		VoteBuckets buckets = 1;
 		VoteBucketsByVoter bucketsByVoter = 2;
 		VoteBucketsByCandidate bucketsByCandidate = 3;
-		VoteBucketByIndex bucketByIndex = 4;
-		Candidates candidates = 5;
-		CandidateByName candidateByName = 6;
+		Candidates candidates = 4;
+		CandidateByName candidateByName = 5;
+		VoteBucketsByIndexes bucketsByIndexes = 6;
 	}
 }
