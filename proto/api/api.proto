@@ -260,6 +260,16 @@ message EstimateActionGasConsumptionRequest {
   oneof action {
     iotextypes.Transfer transfer = 1;
     iotextypes.Execution execution = 2;
+    // Native staking
+    iotextypes.StakeCreate stakeCreate = 40;
+    iotextypes.StakeReclaim stakeUnstake = 41;
+    iotextypes.StakeReclaim stakeWithdraw = 42;
+    iotextypes.StakeAddDeposit stakeAddDeposit = 43;
+    iotextypes.StakeRestake stakeRestake = 44;
+    iotextypes.StakeChangeCandidate stakeChangeCandidate = 45;
+    iotextypes.StakeTransferOwnership stakeTransferOwnership = 46;
+    iotextypes.CandidateRegister candidateRegister = 47;
+    iotextypes.CandidateBasicInfo candidateUpdate = 48;
   }
   string callerAddress = 100;
 }
