@@ -58,7 +58,7 @@ message ReadStakingDataRequest {
 	}
 
 	message CandidateByAddress {
-		string addr = 1;
+		string ownerAddr = 1;
 	}
 
 	oneof request {
