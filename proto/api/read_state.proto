@@ -9,7 +9,8 @@
 syntax = "proto3";
 package iotexapi;
 option go_package = "github.com/iotexproject/iotex-proto/golang/iotexapi";
-
+option java_multiple_files = true;
+option java_package = "com.github.iotexproject.grpc.api";
 
 message PaginationParam {
 	uint32 offset = 1;
