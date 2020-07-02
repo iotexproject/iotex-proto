@@ -87,6 +87,12 @@ message BlockMeta {
   string logsBloom = 10;
 }
 
+// BlockIdentifier Metadata
+message BlockIdentifier {
+  string hash = 1;
+  uint64 height = 2;
+}
+
 // Account Metadata
 message AccountMeta {
   string address = 1;

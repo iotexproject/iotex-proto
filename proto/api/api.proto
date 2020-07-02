@@ -112,6 +112,7 @@ message GetAccountRequest {
 
 message GetAccountResponse {
   iotextypes.AccountMeta accountMeta = 1;
+  iotextypes.BlockIdentifier blockIdentifier = 2;
 }
 
 message GetActionsRequest {
