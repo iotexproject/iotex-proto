@@ -264,13 +264,17 @@ message Receipt {
   repeated Log logs = 6;
 }
 
-message Log{
+message Log {
   string contractAddress = 1;
   repeated bytes topics = 2;
   bytes data = 3;
   uint64 blkHeight = 4;
   bytes actHash = 5;
   uint32 index = 6;
+}
+
+message Logs {
+  repeated Log logs = 1;
 }
 
 message EvmTransfer {
