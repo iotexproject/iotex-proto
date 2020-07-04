@@ -305,7 +305,7 @@ message BlockEvmTransfer {
 
 message ActionSystemLog {
   message Operation {
-    string amount = 1;
+    string amount = 1;  // amount can be negative to reflect out going balance
     string address = 2;
   }
   bytes actionHash = 1;
