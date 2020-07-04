@@ -304,13 +304,14 @@ message BlockEvmTransfer {
 }
 
 message ActionSystemLog {
-  message Operation {
-    string amount = 1;  // amount can be negative to reflect out going balance
-    string address = 2;
+  message Transaction {
+    string amount = 1;
+    string sender = 2;
+    string recipient = 3;
   }
   bytes actionHash = 1;
   uint64 numOperations = 2;
-  repeated Operation operations = 3;
+  repeated Transaction transactions = 3;
 }
 
 message BlockSystemLog {
