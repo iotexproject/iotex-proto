@@ -310,12 +310,12 @@ message ActionSystemLog {
     string recipient = 3;
   }
   bytes actionHash = 1;
-  uint64 numOperations = 2;
+  uint64 numTransactions = 2;
   repeated Transaction transactions = 3;
 }
 
 message BlockSystemLog {
-  uint64 numOperations = 1;
+  uint64 numTransactions = 1;
   repeated ActionSystemLog actionSystemLog = 2;
 }
 
