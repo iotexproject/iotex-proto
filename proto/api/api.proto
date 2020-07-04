@@ -384,7 +384,7 @@ message GetSystemLogByBlockHeightRequest {
 
 message GetSystemLogByBlockHeightResponse {
   iotextypes.BlockIdentifier blockIdentifier = 1;
-  iotextypes.BlockSystemLog BlockSystemLog = 2;
+  iotextypes.BlockSystemLog blockSystemLog = 2;
 }
 
 /*
