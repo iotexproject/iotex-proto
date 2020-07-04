@@ -277,26 +277,45 @@ message Logs {
   repeated Log logs = 1;
 }
 
+// Deprecated
 message EvmTransfer {
   bytes amount = 1;
   string from = 2;
   string to = 3;
 }
 
+// Deprecated
 message EvmTransferList {
   repeated EvmTransfer evmTransfers = 1;
 }
 
+// Deprecated
 message ActionEvmTransfer {
   bytes actionHash = 1;
   uint64 numEvmTransfers = 2;
   repeated EvmTransfer evmTransfers = 3;
 }
 
+// Deprecated
 message BlockEvmTransfer {
   uint64 blockHeight = 1;
   uint64 numEvmTransfers = 2;
   repeated ActionEvmTransfer actionEvmTransfers = 3;
+}
+
+message ActionSystemLog {
+  message Operation {
+    string amount = 1;
+    string address = 2;
+  }
+  bytes actionHash = 1;
+  uint64 numOperations = 2;
+  repeated Operation operations = 3;
+}
+
+message BlockSystemLog {
+  uint64 numOperations = 1;
+  repeated ActionSystemLog actionSystemLog = 2;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
