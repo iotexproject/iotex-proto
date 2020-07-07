@@ -2690,6 +2690,9 @@ func (m *BlockEvmTransfer) GetActionEvmTransfers() []*ActionEvmTransfer {
 	return nil
 }
 
+// ImplicitTransferLog captures the transfers that are not explicit such as transfer action, which covers:
+// 1. IOTX transferred via smart contracts
+// 2. Withdraw bucket from nsv2 protocol
 type ImplicitTransferLog struct {
 	ActionHash           []byte                             `protobuf:"bytes,1,opt,name=actionHash,proto3" json:"actionHash,omitempty"`
 	NumTransactions      uint64                             `protobuf:"varint,2,opt,name=numTransactions,proto3" json:"numTransactions,omitempty"`
