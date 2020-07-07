@@ -303,7 +303,7 @@ message BlockEvmTransfer {
   repeated ActionEvmTransfer actionEvmTransfers = 3;
 }
 
-message ActionSystemLog {
+message ImplicitTransferLog {
   message Transaction {
     string amount = 1;
     string sender = 2;
@@ -314,9 +314,9 @@ message ActionSystemLog {
   repeated Transaction transactions = 3;
 }
 
-message BlockSystemLog {
+message BlockImplicitTransferLog {
   uint64 numTransactions = 1;
-  repeated ActionSystemLog actionSystemLog = 2;
+  repeated ImplicitTransferLog implicitTransferLog = 2;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
