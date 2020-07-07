@@ -81,9 +81,9 @@ service APIService {
   // Deprecated
   rpc GetEvmTransfersByBlockHeight(GetEvmTransfersByBlockHeightRequest) returns (GetEvmTransfersByBlockHeightResponse) {}
 
-  rpc GetSystemLogByActionHash(GetSystemLogByActionHashRequest) returns (GetSystemLogByActionHashResponse) {}
+  rpc GetImplicitTransferLogByActionHash(GetImplicitTransferLogByActionHashRequest) returns (GetImplicitTransferLogByActionHashResponse) {}
 
-  rpc GetSystemLogByBlockHeight(GetSystemLogByBlockHeightRequest) returns (GetSystemLogByBlockHeightResponse) {}
+  rpc GetImplicitTransferLogByBlockHeight(GetImplicitTransferLogByBlockHeightRequest) returns (GetImplicitTransferLogByBlockHeightResponse) {}
 
   /*
    * below are streaming APIs
@@ -370,21 +370,21 @@ message GetEvmTransfersByBlockHeightResponse {
   iotextypes.BlockEvmTransfer blockEvmTransfers = 1;
 }
 
-message GetSystemLogByActionHashRequest {
+message GetImplicitTransferLogByActionHashRequest {
   string actionHash = 1;
 }
 
-message GetSystemLogByActionHashResponse {
-  iotextypes.ActionSystemLog actionSystemLog = 1;
+message GetImplicitTransferLogByActionHashResponse {
+  iotextypes.ImplicitTransferLog ImplicitTransferLog = 1;
 }
 
-message GetSystemLogByBlockHeightRequest {
+message GetImplicitTransferLogByBlockHeightRequest {
   uint64 blockHeight = 1;
 }
 
-message GetSystemLogByBlockHeightResponse {
-  iotextypes.BlockIdentifier blockIdentifier = 1;
-  iotextypes.BlockSystemLog blockSystemLog = 2;
+message GetImplicitTransferLogByBlockHeightResponse {
+  iotextypes.ImplicitTransferLog blockImplicitTransferLog = 1;
+  iotextypes.BlockIdentifier blockIdentifier = 2;
 }
 
 /*
