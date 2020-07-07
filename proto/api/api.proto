@@ -375,7 +375,7 @@ message GetImplicitTransferLogByActionHashRequest {
 }
 
 message GetImplicitTransferLogByActionHashResponse {
-  iotextypes.ImplicitTransferLog ImplicitTransferLog = 1;
+  iotextypes.ImplicitTransferLog implicitTransferLog = 1;
 }
 
 message GetImplicitTransferLogByBlockHeightRequest {
@@ -383,7 +383,7 @@ message GetImplicitTransferLogByBlockHeightRequest {
 }
 
 message GetImplicitTransferLogByBlockHeightResponse {
-  iotextypes.ImplicitTransferLog blockImplicitTransferLog = 1;
+  iotextypes.BlockImplicitTransferLog blockImplicitTransferLog = 1;
   iotextypes.BlockIdentifier blockIdentifier = 2;
 }
 
