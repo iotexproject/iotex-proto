@@ -303,6 +303,9 @@ message BlockEvmTransfer {
   repeated ActionEvmTransfer actionEvmTransfers = 3;
 }
 
+// ImplicitTransferLog captures the transfers that are not explicit such as transfer action, which covers:
+// 1. IOTX transferred via smart contracts
+// 2. Withdraw bucket from nsv2 protocol
 message ImplicitTransferLog {
   message Transaction {
     string amount = 1;
