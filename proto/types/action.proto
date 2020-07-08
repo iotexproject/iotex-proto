@@ -308,9 +308,10 @@ message BlockEvmTransfer {
 // 2. Withdraw bucket from nsv2 protocol
 message ImplicitTransferLog {
   message Transaction {
-    string amount = 1;
-    string sender = 2;
-    string recipient = 3;
+    bytes topic = 1;
+    string amount = 2;
+    string sender = 3;
+    string recipient = 4;
   }
   bytes actionHash = 1;
   uint64 numTransactions = 2;
