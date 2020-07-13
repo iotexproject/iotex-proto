@@ -16,6 +16,7 @@ import "proto/types/action.proto";
 import "proto/types/blockchain.proto";
 import "proto/types/node.proto";
 import "proto/types/election.proto";
+import "proto/types/implicit_log.proto";
 import "google/protobuf/timestamp.proto";
 
 service APIService {

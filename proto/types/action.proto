@@ -303,26 +303,6 @@ message BlockEvmTransfer {
   repeated ActionEvmTransfer actionEvmTransfers = 3;
 }
 
-// ImplicitTransferLog captures the transfers that are not explicit such as transfer action, which covers:
-// 1. IOTX transferred via smart contracts
-// 2. Withdraw bucket from nsv2 protocol
-message ImplicitTransferLog {
-  message Transaction {
-    bytes topic = 1;
-    string amount = 2;
-    string sender = 3;
-    string recipient = 4;
-  }
-  bytes actionHash = 1;
-  uint64 numTransactions = 2;
-  repeated Transaction transactions = 3;
-}
-
-message BlockImplicitTransferLog {
-  uint64 numTransactions = 1;
-  repeated ImplicitTransferLog implicitTransferLog = 2;
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 // BELOW ARE DEFINITIONS FOR BLOCK PRODUCER PROTOCOL
 ////////////////////////////////////////////////////////////////////////////////////////////////////
