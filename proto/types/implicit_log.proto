@@ -1,0 +1,42 @@
+// Copyright (c) 2020 IoTeX
+// This is an alpha (internal) release and is not suitable for production. This source code is provided 'as is' and no
+// warranties are given as to title or non-infringement, merchantability or fitness for purpose and, to the extent
+// permitted by law, all liability for your use of the code is disclaimed. This source code is governed by Apache
+// License 2.0 that can be found in the LICENSE file.
+
+// To compile the proto, run:
+//      protoc --go_out=plugins=grpc:$GOPATH/src *.proto
+syntax = "proto3";
+package iotextypes;
+option go_package = "github.com/iotexproject/iotex-proto/golang/iotextypes";
+option java_multiple_files = true;
+option java_package = "com.github.iotexproject.grpc.types";
+
+// ImplicitTransferLog captures the transfers that are not explicit such as transfer action, which covers:
+// 1. IOTX transferred via smart contracts
+// 2. Bucket operations for nsv2 protocol
+message ImplicitTransferLog {
+  message Transaction {
+    bytes topic = 1;
+    string amount = 2;
+    string sender = 3;
+    string recipient = 4;
+  }
+  bytes actionHash = 1;
+  uint64 numTransactions = 2;
+  repeated Transaction transactions = 3;
+}
+
+message BlockImplicitTransferLog {
+  uint64 numTransactions = 1;
+  repeated ImplicitTransferLog implicitTransferLog = 2;
+}
+
+enum ImplicitTransferLogType {
+	IN_CONTRACT_TRANSFER = 0;
+	BUCKET_WITHDRAW_AMOUNT = 1;
+	BUCKET_CREATE_AMOUNT = 2;
+	BUCKET_DEPOSIT_AMOUNT = 3;
+	CANDIDATE_SELF_STAKE = 4;
+	CANDIDATE_REGISTRATION_FEE = 5;
+}
