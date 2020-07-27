@@ -392,7 +392,7 @@ message GetTransactionLogByBlockHeightRequest {
 }
 
 message GetTransactionLogByBlockHeightResponse {
-  iotextypes.BlockTransactionLog blockTransactionLog = 1;
+  iotextypes.TransactionLogs transactionLogs = 1;
   iotextypes.BlockIdentifier blockIdentifier = 2;
 }
 
