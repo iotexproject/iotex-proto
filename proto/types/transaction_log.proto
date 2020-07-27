@@ -18,6 +18,7 @@ message TransactionLog {
     string amount = 2;
     string sender = 3;
     string recipient = 4;
+    TransactionLogType type = 5;
   }
   bytes actionHash = 1;
   uint64 numTransactions = 2;
