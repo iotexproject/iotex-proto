@@ -16,7 +16,7 @@ import "proto/types/action.proto";
 import "proto/types/blockchain.proto";
 import "proto/types/node.proto";
 import "proto/types/election.proto";
-import "proto/types/implicit_log.proto";
+import "proto/types/transaction_log.proto";
 import "google/protobuf/timestamp.proto";
 
 service APIService {
@@ -82,9 +82,9 @@ service APIService {
   // Deprecated
   rpc GetEvmTransfersByBlockHeight(GetEvmTransfersByBlockHeightRequest) returns (GetEvmTransfersByBlockHeightResponse) {}
 
-  rpc GetImplicitTransferLogByActionHash(GetImplicitTransferLogByActionHashRequest) returns (GetImplicitTransferLogByActionHashResponse) {}
+  rpc GetTransactionLogByActionHash(GetTransactionLogByActionHashRequest) returns (GetTransactionLogByActionHashResponse) {}
 
-  rpc GetImplicitTransferLogByBlockHeight(GetImplicitTransferLogByBlockHeightRequest) returns (GetImplicitTransferLogByBlockHeightResponse) {}
+  rpc GetTransactionLogByBlockHeight(GetTransactionLogByBlockHeightRequest) returns (GetTransactionLogByBlockHeightResponse) {}
 
   /*
    * below are streaming APIs
@@ -100,6 +100,13 @@ service APIService {
    * election APIs
    */
   rpc GetElectionBuckets(GetElectionBucketsRequest) returns (GetElectionBucketsResponse) {}
+}
+
+// experiment
+service TransactionLogService {
+  rpc GetTransactionLogByActionHash(GetTransactionLogByActionHashRequest) returns (GetTransactionLogByActionHashResponse) {}
+
+  rpc GetTransactionLogByBlockHeight(GetTransactionLogByBlockHeightRequest) returns (GetTransactionLogByBlockHeightResponse) {}
 }
 
 message Bucket {
@@ -372,20 +379,20 @@ message GetEvmTransfersByBlockHeightResponse {
   iotextypes.BlockEvmTransfer blockEvmTransfers = 1;
 }
 
-message GetImplicitTransferLogByActionHashRequest {
+message GetTransactionLogByActionHashRequest {
   string actionHash = 1;
 }
 
-message GetImplicitTransferLogByActionHashResponse {
-  iotextypes.ImplicitTransferLog implicitTransferLog = 1;
+message GetTransactionLogByActionHashResponse {
+  iotextypes.TransactionLog transactionLog = 1;
 }
 
-message GetImplicitTransferLogByBlockHeightRequest {
+message GetTransactionLogByBlockHeightRequest {
   uint64 blockHeight = 1;
 }
 
-message GetImplicitTransferLogByBlockHeightResponse {
-  iotextypes.BlockImplicitTransferLog blockImplicitTransferLog = 1;
+message GetTransactionLogByBlockHeightResponse {
+  iotextypes.BlockTransactionLog blockTransactionLog = 1;
   iotextypes.BlockIdentifier blockIdentifier = 2;
 }
 
