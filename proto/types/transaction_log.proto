@@ -25,9 +25,8 @@ message TransactionLog {
   repeated Transaction transactions = 3;
 }
 
-message BlockTransactionLog {
-  uint64 numTransactions = 1;
-  repeated TransactionLog transactionLog = 2;
+message TransactionLogs {
+  repeated TransactionLog logs = 1;
 }
 
 enum TransactionLogType {
