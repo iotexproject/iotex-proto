@@ -7,7 +7,7 @@ Protobuf and utility package for IoTeX blockchain transaction and gRPC API
 
 # Getting Started
 ## Installing
-Install the Google protocol buffers compiler `protoc` v3.0.0 or above from https://github.com/protocolbuffers/protobuf/releases
+Install the Google protocol buffers compiler `protoc` v3.11.0 or above from https://github.com/protocolbuffers/protobuf/releases
 
 Enable go mod. Install grpc-gateway https://github.com/grpc-ecosystem/grpc-gateway. Basically this is what you need:
 
