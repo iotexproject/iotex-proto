@@ -28,6 +28,7 @@ message ReadStakingDataMethod {
 		BUCKETS_BY_INDEXES = 6;
 		CANDIDATE_BY_ADDRESS = 7;
 		TOTAL_STAKING_AMOUNT = 8;
+		BUCKETS_COUNT = 9;
 	}
 	Name method = 1;
 }
@@ -65,6 +66,8 @@ message ReadStakingDataRequest {
 
 	message TotalStakingAmount {}
 
+	message BucketsCount {}
+
 	oneof request {
 		VoteBuckets buckets = 1;
 		VoteBucketsByVoter bucketsByVoter = 2;
@@ -74,5 +77,6 @@ message ReadStakingDataRequest {
 		VoteBucketsByIndexes bucketsByIndexes = 6;
 		CandidateByAddress candidateByAddress = 7;
 		TotalStakingAmount totalStakingAmount = 8;
+		BucketsCount bucketsCount = 9;
 	}
 }

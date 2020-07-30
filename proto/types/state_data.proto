@@ -53,3 +53,8 @@ message CandidateV2 {
 message CandidateListV2 {
 	repeated CandidateV2 candidates = 1;
 }
+
+message BucketsCount {
+  uint64 total = 1;
+  uint64 active = 2;
+}
