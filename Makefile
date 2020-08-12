@@ -22,3 +22,10 @@ gogen:
 	@protoc --go_out=plugins=grpc:${GOPATH}/src ./proto/testing/*
 	@protoc -I. -I./proto/types --go_out=plugins=grpc:${GOPATH}/src ./proto/api/*
 	@protoc -I. --grpc-gateway_out=logtostderr=true:${GOPATH}/src ./proto/api/*
+
+.PHONY: mockgen
+mockgen:
+	@./misc/scripts/mockgen.sh
+
+.PHONY: gen
+gen: gogen mockgen
