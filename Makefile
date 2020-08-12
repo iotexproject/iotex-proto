@@ -26,3 +26,6 @@ gogen:
 .PHONY: mockgen
 mockgen:
 	@./misc/scripts/mockgen.sh
+
+.PHONY: gen
+gen: gogen mockgen
