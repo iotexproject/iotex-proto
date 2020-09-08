@@ -85,6 +85,7 @@ message BlockMeta {
   string receiptRoot = 8;
   string deltaStateDigest = 9;
   string logsBloom = 10;
+  string previousBlockHash = 11;
 }
 
 // BlockIdentifier Metadata
