@@ -323,6 +323,7 @@ message GetRawBlocksRequest {
   uint64 startHeight = 1;
   uint64 count = 2;
   bool withReceipts = 3;
+  bool withTransactionLogs = 4;
 }
 
 message GetRawBlocksResponse {
