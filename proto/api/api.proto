@@ -190,6 +190,7 @@ message BlockProducerInfo {
 message BlockInfo {
   iotextypes.Block block = 1;
   repeated iotextypes.Receipt receipts = 2;
+  iotextypes.TransactionLogs transactionLogs = 3;
 }
 
 message GetActionsResponse {
