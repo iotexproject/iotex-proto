@@ -190,6 +190,7 @@ message BlockProducerInfo {
 message BlockInfo {
   iotextypes.Block block = 1;
   repeated iotextypes.Receipt receipts = 2;
+  iotextypes.TransactionLogs transactionLogs = 3;
 }
 
 message GetActionsResponse {
@@ -323,6 +324,7 @@ message GetRawBlocksRequest {
   uint64 startHeight = 1;
   uint64 count = 2;
   bool withReceipts = 3;
+  bool withTransactionLogs = 4;
 }
 
 message GetRawBlocksResponse {
