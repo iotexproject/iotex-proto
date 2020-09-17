@@ -103,3 +103,12 @@ message AccountMeta {
   uint64 numActions = 5;
   bool isContract = 6;
 }
+
+message BlockStore {
+  Block block = 1;
+  repeated Receipt receipts = 2;
+}
+
+message BlockStores {
+  repeated BlockStore blockStores = 1;
+}
