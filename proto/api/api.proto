@@ -72,15 +72,6 @@ service APIService {
   // get logs filtered by contract address and topics
   rpc GetLogs(GetLogsRequest) returns (GetLogsResponse) {}
 
-  /*
-   * evm transfers APIs
-   */
-
-  // Deprecated
-  rpc GetEvmTransfersByActionHash(GetEvmTransfersByActionHashRequest) returns (GetEvmTransfersByActionHashResponse) {}
-
-  // Deprecated
-  rpc GetEvmTransfersByBlockHeight(GetEvmTransfersByBlockHeightRequest) returns (GetEvmTransfersByBlockHeightResponse) {}
 
   rpc GetTransactionLogByActionHash(GetTransactionLogByActionHashRequest) returns (GetTransactionLogByActionHashResponse) {}
 
@@ -96,8 +87,20 @@ service APIService {
   // get logs filtered by contract address and topics in stream
   rpc StreamLogs(StreamLogsRequest) returns (stream StreamLogsResponse) {}
 
+  // get actions from act pool
+  rpc GetActPoolActions(GetActPoolActionsRequest) returns (GetActPoolActionsResponse) {}
+
   /*
-   * election APIs
+   * evm transfers APIs
+   */
+  // Deprecated
+  rpc GetEvmTransfersByActionHash(GetEvmTransfersByActionHashRequest) returns (GetEvmTransfersByActionHashResponse) {}
+
+  // Deprecated
+  rpc GetEvmTransfersByBlockHeight(GetEvmTransfersByBlockHeightRequest) returns (GetEvmTransfersByBlockHeightResponse) {}
+
+  /*
+   * election APIs, Deprecated
    */
   rpc GetElectionBuckets(GetElectionBucketsRequest) returns (GetElectionBucketsResponse) {}
 }
@@ -367,26 +370,6 @@ message GetLogsResponse {
   repeated iotextypes.Log logs = 1;
 }
 
-// Deprecated
-message GetEvmTransfersByActionHashRequest {
-  string actionHash = 1;
-}
-
-// Deprecated
-message GetEvmTransfersByActionHashResponse {
-  iotextypes.ActionEvmTransfer actionEvmTransfers = 1;
-}
-
-// Deprecated
-message GetEvmTransfersByBlockHeightRequest {
-  uint64 blockHeight = 1;
-}
-
-// Deprecated
-message GetEvmTransfersByBlockHeightResponse {
-  iotextypes.BlockEvmTransfer blockEvmTransfers = 1;
-}
-
 message GetTransactionLogByActionHashRequest {
   string actionHash = 1;
 }
@@ -421,6 +404,14 @@ message StreamLogsResponse {
     iotextypes.Log log = 1;
 }
 
+message GetActPoolActionsRequest {
+  repeated string actionHashes = 1;  // if this field is absent, get all actions from actpool
+}
+
+message GetActPoolActionsResponse {
+  repeated iotextypes.Action actions = 1;
+}
+
  /*
   * election APIs
   */
@@ -430,4 +421,24 @@ message GetElectionBucketsRequest{
 
 message GetElectionBucketsResponse{
   repeated iotextypes.ElectionBucket buckets = 1;
+}
+
+// Deprecated
+message GetEvmTransfersByActionHashRequest {
+  string actionHash = 1;
+}
+
+// Deprecated
+message GetEvmTransfersByActionHashResponse {
+  iotextypes.ActionEvmTransfer actionEvmTransfers = 1;
+}
+
+// Deprecated
+message GetEvmTransfersByBlockHeightRequest {
+  uint64 blockHeight = 1;
+}
+
+// Deprecated
+message GetEvmTransfersByBlockHeightResponse {
+  iotextypes.BlockEvmTransfer blockEvmTransfers = 1;
 }
