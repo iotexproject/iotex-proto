@@ -340,6 +340,11 @@ message GetLogsByRange {
   uint64 count = 2;
 }
 
+message GetAllLogsByRange {
+  uint64 fromBlock = 1;
+  uint64 toBlock = 2;
+}
+
 message Topics {
     repeated bytes topic = 1;
 }
@@ -354,6 +359,7 @@ message GetLogsRequest {
   oneof lookup {
     GetLogsByBlock byBlock = 2;
     GetLogsByRange byRange = 3;
+    GetAllLogsByRange byLongRange = 4;
   }
 }
 
