@@ -80,6 +80,21 @@ func (mr *MockAPIServiceServerMockRecorder) GetAccount(arg0, arg1 interface{}) *
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAccount", reflect.TypeOf((*MockAPIServiceServer)(nil).GetAccount), arg0, arg1)
 }
 
+// GetActPoolActions mocks base method.
+func (m *MockAPIServiceServer) GetActPoolActions(arg0 context.Context, arg1 *iotexapi.GetActPoolActionsRequest) (*iotexapi.GetActPoolActionsResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetActPoolActions", arg0, arg1)
+	ret0, _ := ret[0].(*iotexapi.GetActPoolActionsResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetActPoolActions indicates an expected call of GetActPoolActions.
+func (mr *MockAPIServiceServerMockRecorder) GetActPoolActions(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetActPoolActions", reflect.TypeOf((*MockAPIServiceServer)(nil).GetActPoolActions), arg0, arg1)
+}
+
 // GetActions mocks base method.
 func (m *MockAPIServiceServer) GetActions(arg0 context.Context, arg1 *iotexapi.GetActionsRequest) (*iotexapi.GetActionsResponse, error) {
 	m.ctrl.T.Helper()

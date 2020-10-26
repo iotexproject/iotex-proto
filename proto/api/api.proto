@@ -405,7 +405,7 @@ message StreamLogsResponse {
 }
 
 message GetActPoolActionsRequest {
-  string actionHash = 1;  // if this field is absent, get all actions from actpool
+  repeated string actionHashs = 1;  // if this field is absent, get all actions from actpool
 }
 
 message GetActPoolActionsResponse {
