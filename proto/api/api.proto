@@ -340,12 +340,8 @@ message GetLogsByBlock {
 
 message GetLogsByRange {
   uint64 fromBlock = 1;
-  uint64 count = 2;
-}
-
-message GetAllLogsByRange {
-  uint64 fromBlock = 1;
   uint64 toBlock = 2;
+  uint64 paginationSize = 3;
 }
 
 message Topics {
@@ -362,7 +358,6 @@ message GetLogsRequest {
   oneof lookup {
     GetLogsByBlock byBlock = 2;
     GetLogsByRange byRange = 3;
-    GetAllLogsByRange byLongRange = 4;
   }
 }
 
