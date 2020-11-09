@@ -86,6 +86,7 @@ message BlockMeta {
   string deltaStateDigest = 9;
   string logsBloom = 10;
   string previousBlockHash = 11;
+  uint64 epochNumber = 12;
 }
 
 // BlockIdentifier Metadata
