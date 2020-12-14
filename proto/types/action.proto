@@ -262,6 +262,7 @@ message Receipt {
   uint64 gasConsumed = 4;
   string contractAddress = 5;
   repeated Log logs = 6;
+  string executionRevertMsg = 7;
 }
 
 message Log {
