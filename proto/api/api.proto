@@ -226,6 +226,8 @@ message GetChainMetaRequest {}
 
 message GetChainMetaResponse {
   iotextypes.ChainMeta chainMeta = 1;
+  //sync stage
+  string stage = 2;
 }
 
 message GetServerMetaRequest  {}

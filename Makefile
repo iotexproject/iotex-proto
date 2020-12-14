@@ -14,6 +14,7 @@ GOINSTALL=$(GOCMD) install
 GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
+GOPATH=$(GOCMD) env GOPATH #GOPATH from go env
 
 .PHONY: gogen
 gogen:
