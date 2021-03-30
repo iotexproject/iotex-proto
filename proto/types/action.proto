@@ -207,6 +207,7 @@ message ActionCore {
   uint64 nonce = 2;
   uint64 gasLimit = 3;
   string gasPrice = 4;
+  uint32 chainID = 5;
   oneof action {
     Transfer transfer = 10;
     Execution execution = 12;
