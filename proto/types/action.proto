@@ -273,6 +273,7 @@ message Log {
   uint64 blkHeight = 4;
   bytes actHash = 5;
   uint32 index = 6;
+  bytes blkHash = 7;
 }
 
 message Logs {
