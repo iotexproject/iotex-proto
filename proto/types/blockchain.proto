@@ -71,6 +71,7 @@ message ChainMeta {
   int64 tps = 3;
   EpochData epoch = 4;
   float tpsFloat = 5;
+  uint32 chainID = 6;
 }
 
 // Block Metadata
