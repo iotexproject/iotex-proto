@@ -17,10 +17,10 @@ GOGET=$(GOCMD) get
 
 .PHONY: gogen
 gogen:
-	@protoc --go_out=plugins=grpc:${GOPATH}/src ./proto/types/*
-	@protoc --go_out=plugins=grpc:${GOPATH}/src ./proto/rpc/*
-	@protoc --go_out=plugins=grpc:${GOPATH}/src ./proto/testing/*
-	@protoc -I. -I./proto/types --go_out=plugins=grpc:${GOPATH}/src ./proto/api/*
+	@protoc --go-grpc_out=:${GOPATH}/src ./proto/types/*
+	@protoc --go-grpc_out=:${GOPATH}/src ./proto/rpc/*
+	@protoc --go-grpc_out=:${GOPATH}/src ./proto/testing/*
+	@protoc -I. -I./proto/types --go-grpc_out=:${GOPATH}/src ./proto/api/*
 	@protoc -I. --grpc-gateway_out=logtostderr=true:${GOPATH}/src ./proto/api/*
 
 .PHONY: mockgen
