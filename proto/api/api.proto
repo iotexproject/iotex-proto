@@ -77,6 +77,8 @@ service APIService {
 
   rpc GetTransactionLogByBlockHeight(GetTransactionLogByBlockHeightRequest) returns (GetTransactionLogByBlockHeightResponse) {}
 
+  // get chainID
+  rpc ChainID(ChainIDRequest)returns (ChainIDResponse) {}
   /*
    * below are streaming APIs
    */
@@ -384,6 +386,11 @@ message GetTransactionLogByBlockHeightRequest {
 message GetTransactionLogByBlockHeightResponse {
   iotextypes.TransactionLogs transactionLogs = 1;
   iotextypes.BlockIdentifier blockIdentifier = 2;
+}
+
+message ChainIDRequest  {}
+message ChainIDResponse {
+  uint32 chainID = 1;
 }
 
 /*
