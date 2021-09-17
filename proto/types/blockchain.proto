@@ -106,6 +106,7 @@ message AccountMeta {
   uint64 numActions = 5;
   bool isContract = 6;
   bytes contractByteCode = 7;
+  uint32 chainID = 8;
 }
 
 message BlockStore {
