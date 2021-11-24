@@ -6,36 +6,35 @@ package mock_iotexapi
 
 import (
 	context "context"
-	reflect "reflect"
-
 	gomock "github.com/golang/mock/gomock"
 	iotexapi "github.com/iotexproject/iotex-proto/golang/iotexapi"
+	reflect "reflect"
 )
 
-// MockAPIServiceServer is a mock of APIServiceServer interface.
+// MockAPIServiceServer is a mock of APIServiceServer interface
 type MockAPIServiceServer struct {
 	ctrl     *gomock.Controller
 	recorder *MockAPIServiceServerMockRecorder
 }
 
-// MockAPIServiceServerMockRecorder is the mock recorder for MockAPIServiceServer.
+// MockAPIServiceServerMockRecorder is the mock recorder for MockAPIServiceServer
 type MockAPIServiceServerMockRecorder struct {
 	mock *MockAPIServiceServer
 }
 
-// NewMockAPIServiceServer creates a new mock instance.
+// NewMockAPIServiceServer creates a new mock instance
 func NewMockAPIServiceServer(ctrl *gomock.Controller) *MockAPIServiceServer {
 	mock := &MockAPIServiceServer{ctrl: ctrl}
 	mock.recorder = &MockAPIServiceServerMockRecorder{mock}
 	return mock
 }
 
-// EXPECT returns an object that allows the caller to indicate expected use.
+// EXPECT returns an object that allows the caller to indicate expected use
 func (m *MockAPIServiceServer) EXPECT() *MockAPIServiceServerMockRecorder {
 	return m.recorder
 }
 
-// EstimateActionGasConsumption mocks base method.
+// EstimateActionGasConsumption mocks base method
 func (m *MockAPIServiceServer) EstimateActionGasConsumption(arg0 context.Context, arg1 *iotexapi.EstimateActionGasConsumptionRequest) (*iotexapi.EstimateActionGasConsumptionResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "EstimateActionGasConsumption", arg0, arg1)
@@ -44,13 +43,13 @@ func (m *MockAPIServiceServer) EstimateActionGasConsumption(arg0 context.Context
 	return ret0, ret1
 }
 
-// EstimateActionGasConsumption indicates an expected call of EstimateActionGasConsumption.
+// EstimateActionGasConsumption indicates an expected call of EstimateActionGasConsumption
 func (mr *MockAPIServiceServerMockRecorder) EstimateActionGasConsumption(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "EstimateActionGasConsumption", reflect.TypeOf((*MockAPIServiceServer)(nil).EstimateActionGasConsumption), arg0, arg1)
 }
 
-// EstimateGasForAction mocks base method.
+// EstimateGasForAction mocks base method
 func (m *MockAPIServiceServer) EstimateGasForAction(arg0 context.Context, arg1 *iotexapi.EstimateGasForActionRequest) (*iotexapi.EstimateGasForActionResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "EstimateGasForAction", arg0, arg1)
@@ -59,13 +58,13 @@ func (m *MockAPIServiceServer) EstimateGasForAction(arg0 context.Context, arg1 *
 	return ret0, ret1
 }
 
-// EstimateGasForAction indicates an expected call of EstimateGasForAction.
+// EstimateGasForAction indicates an expected call of EstimateGasForAction
 func (mr *MockAPIServiceServerMockRecorder) EstimateGasForAction(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "EstimateGasForAction", reflect.TypeOf((*MockAPIServiceServer)(nil).EstimateGasForAction), arg0, arg1)
 }
 
-// GetAccount mocks base method.
+// GetAccount mocks base method
 func (m *MockAPIServiceServer) GetAccount(arg0 context.Context, arg1 *iotexapi.GetAccountRequest) (*iotexapi.GetAccountResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetAccount", arg0, arg1)
@@ -74,13 +73,13 @@ func (m *MockAPIServiceServer) GetAccount(arg0 context.Context, arg1 *iotexapi.G
 	return ret0, ret1
 }
 
-// GetAccount indicates an expected call of GetAccount.
+// GetAccount indicates an expected call of GetAccount
 func (mr *MockAPIServiceServerMockRecorder) GetAccount(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAccount", reflect.TypeOf((*MockAPIServiceServer)(nil).GetAccount), arg0, arg1)
 }
 
-// GetActPoolActions mocks base method.
+// GetActPoolActions mocks base method
 func (m *MockAPIServiceServer) GetActPoolActions(arg0 context.Context, arg1 *iotexapi.GetActPoolActionsRequest) (*iotexapi.GetActPoolActionsResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetActPoolActions", arg0, arg1)
@@ -89,13 +88,13 @@ func (m *MockAPIServiceServer) GetActPoolActions(arg0 context.Context, arg1 *iot
 	return ret0, ret1
 }
 
-// GetActPoolActions indicates an expected call of GetActPoolActions.
+// GetActPoolActions indicates an expected call of GetActPoolActions
 func (mr *MockAPIServiceServerMockRecorder) GetActPoolActions(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetActPoolActions", reflect.TypeOf((*MockAPIServiceServer)(nil).GetActPoolActions), arg0, arg1)
 }
 
-// GetActions mocks base method.
+// GetActions mocks base method
 func (m *MockAPIServiceServer) GetActions(arg0 context.Context, arg1 *iotexapi.GetActionsRequest) (*iotexapi.GetActionsResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetActions", arg0, arg1)
@@ -104,13 +103,13 @@ func (m *MockAPIServiceServer) GetActions(arg0 context.Context, arg1 *iotexapi.G
 	return ret0, ret1
 }
 
-// GetActions indicates an expected call of GetActions.
+// GetActions indicates an expected call of GetActions
 func (mr *MockAPIServiceServerMockRecorder) GetActions(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetActions", reflect.TypeOf((*MockAPIServiceServer)(nil).GetActions), arg0, arg1)
 }
 
-// GetBlockMetas mocks base method.
+// GetBlockMetas mocks base method
 func (m *MockAPIServiceServer) GetBlockMetas(arg0 context.Context, arg1 *iotexapi.GetBlockMetasRequest) (*iotexapi.GetBlockMetasResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetBlockMetas", arg0, arg1)
@@ -119,13 +118,13 @@ func (m *MockAPIServiceServer) GetBlockMetas(arg0 context.Context, arg1 *iotexap
 	return ret0, ret1
 }
 
-// GetBlockMetas indicates an expected call of GetBlockMetas.
+// GetBlockMetas indicates an expected call of GetBlockMetas
 func (mr *MockAPIServiceServerMockRecorder) GetBlockMetas(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetBlockMetas", reflect.TypeOf((*MockAPIServiceServer)(nil).GetBlockMetas), arg0, arg1)
 }
 
-// GetChainMeta mocks base method.
+// GetChainMeta mocks base method
 func (m *MockAPIServiceServer) GetChainMeta(arg0 context.Context, arg1 *iotexapi.GetChainMetaRequest) (*iotexapi.GetChainMetaResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetChainMeta", arg0, arg1)
@@ -134,13 +133,13 @@ func (m *MockAPIServiceServer) GetChainMeta(arg0 context.Context, arg1 *iotexapi
 	return ret0, ret1
 }
 
-// GetChainMeta indicates an expected call of GetChainMeta.
+// GetChainMeta indicates an expected call of GetChainMeta
 func (mr *MockAPIServiceServerMockRecorder) GetChainMeta(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetChainMeta", reflect.TypeOf((*MockAPIServiceServer)(nil).GetChainMeta), arg0, arg1)
 }
 
-// GetElectionBuckets mocks base method.
+// GetElectionBuckets mocks base method
 func (m *MockAPIServiceServer) GetElectionBuckets(arg0 context.Context, arg1 *iotexapi.GetElectionBucketsRequest) (*iotexapi.GetElectionBucketsResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetElectionBuckets", arg0, arg1)
@@ -149,13 +148,13 @@ func (m *MockAPIServiceServer) GetElectionBuckets(arg0 context.Context, arg1 *io
 	return ret0, ret1
 }
 
-// GetElectionBuckets indicates an expected call of GetElectionBuckets.
+// GetElectionBuckets indicates an expected call of GetElectionBuckets
 func (mr *MockAPIServiceServerMockRecorder) GetElectionBuckets(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetElectionBuckets", reflect.TypeOf((*MockAPIServiceServer)(nil).GetElectionBuckets), arg0, arg1)
 }
 
-// GetEpochMeta mocks base method.
+// GetEpochMeta mocks base method
 func (m *MockAPIServiceServer) GetEpochMeta(arg0 context.Context, arg1 *iotexapi.GetEpochMetaRequest) (*iotexapi.GetEpochMetaResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetEpochMeta", arg0, arg1)
@@ -164,13 +163,13 @@ func (m *MockAPIServiceServer) GetEpochMeta(arg0 context.Context, arg1 *iotexapi
 	return ret0, ret1
 }
 
-// GetEpochMeta indicates an expected call of GetEpochMeta.
+// GetEpochMeta indicates an expected call of GetEpochMeta
 func (mr *MockAPIServiceServerMockRecorder) GetEpochMeta(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEpochMeta", reflect.TypeOf((*MockAPIServiceServer)(nil).GetEpochMeta), arg0, arg1)
 }
 
-// GetEvmTransfersByActionHash mocks base method.
+// GetEvmTransfersByActionHash mocks base method
 func (m *MockAPIServiceServer) GetEvmTransfersByActionHash(arg0 context.Context, arg1 *iotexapi.GetEvmTransfersByActionHashRequest) (*iotexapi.GetEvmTransfersByActionHashResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetEvmTransfersByActionHash", arg0, arg1)
@@ -179,13 +178,13 @@ func (m *MockAPIServiceServer) GetEvmTransfersByActionHash(arg0 context.Context,
 	return ret0, ret1
 }
 
-// GetEvmTransfersByActionHash indicates an expected call of GetEvmTransfersByActionHash.
+// GetEvmTransfersByActionHash indicates an expected call of GetEvmTransfersByActionHash
 func (mr *MockAPIServiceServerMockRecorder) GetEvmTransfersByActionHash(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEvmTransfersByActionHash", reflect.TypeOf((*MockAPIServiceServer)(nil).GetEvmTransfersByActionHash), arg0, arg1)
 }
 
-// GetEvmTransfersByBlockHeight mocks base method.
+// GetEvmTransfersByBlockHeight mocks base method
 func (m *MockAPIServiceServer) GetEvmTransfersByBlockHeight(arg0 context.Context, arg1 *iotexapi.GetEvmTransfersByBlockHeightRequest) (*iotexapi.GetEvmTransfersByBlockHeightResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetEvmTransfersByBlockHeight", arg0, arg1)
@@ -194,13 +193,13 @@ func (m *MockAPIServiceServer) GetEvmTransfersByBlockHeight(arg0 context.Context
 	return ret0, ret1
 }
 
-// GetEvmTransfersByBlockHeight indicates an expected call of GetEvmTransfersByBlockHeight.
+// GetEvmTransfersByBlockHeight indicates an expected call of GetEvmTransfersByBlockHeight
 func (mr *MockAPIServiceServerMockRecorder) GetEvmTransfersByBlockHeight(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetEvmTransfersByBlockHeight", reflect.TypeOf((*MockAPIServiceServer)(nil).GetEvmTransfersByBlockHeight), arg0, arg1)
 }
 
-// GetLogs mocks base method.
+// GetLogs mocks base method
 func (m *MockAPIServiceServer) GetLogs(arg0 context.Context, arg1 *iotexapi.GetLogsRequest) (*iotexapi.GetLogsResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetLogs", arg0, arg1)
@@ -209,13 +208,13 @@ func (m *MockAPIServiceServer) GetLogs(arg0 context.Context, arg1 *iotexapi.GetL
 	return ret0, ret1
 }
 
-// GetLogs indicates an expected call of GetLogs.
+// GetLogs indicates an expected call of GetLogs
 func (mr *MockAPIServiceServerMockRecorder) GetLogs(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetLogs", reflect.TypeOf((*MockAPIServiceServer)(nil).GetLogs), arg0, arg1)
 }
 
-// GetRawBlocks mocks base method.
+// GetRawBlocks mocks base method
 func (m *MockAPIServiceServer) GetRawBlocks(arg0 context.Context, arg1 *iotexapi.GetRawBlocksRequest) (*iotexapi.GetRawBlocksResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetRawBlocks", arg0, arg1)
@@ -224,13 +223,13 @@ func (m *MockAPIServiceServer) GetRawBlocks(arg0 context.Context, arg1 *iotexapi
 	return ret0, ret1
 }
 
-// GetRawBlocks indicates an expected call of GetRawBlocks.
+// GetRawBlocks indicates an expected call of GetRawBlocks
 func (mr *MockAPIServiceServerMockRecorder) GetRawBlocks(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetRawBlocks", reflect.TypeOf((*MockAPIServiceServer)(nil).GetRawBlocks), arg0, arg1)
 }
 
-// GetReceiptByAction mocks base method.
+// GetReceiptByAction mocks base method
 func (m *MockAPIServiceServer) GetReceiptByAction(arg0 context.Context, arg1 *iotexapi.GetReceiptByActionRequest) (*iotexapi.GetReceiptByActionResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetReceiptByAction", arg0, arg1)
@@ -239,13 +238,13 @@ func (m *MockAPIServiceServer) GetReceiptByAction(arg0 context.Context, arg1 *io
 	return ret0, ret1
 }
 
-// GetReceiptByAction indicates an expected call of GetReceiptByAction.
+// GetReceiptByAction indicates an expected call of GetReceiptByAction
 func (mr *MockAPIServiceServerMockRecorder) GetReceiptByAction(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetReceiptByAction", reflect.TypeOf((*MockAPIServiceServer)(nil).GetReceiptByAction), arg0, arg1)
 }
 
-// GetServerMeta mocks base method.
+// GetServerMeta mocks base method
 func (m *MockAPIServiceServer) GetServerMeta(arg0 context.Context, arg1 *iotexapi.GetServerMetaRequest) (*iotexapi.GetServerMetaResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetServerMeta", arg0, arg1)
@@ -254,13 +253,13 @@ func (m *MockAPIServiceServer) GetServerMeta(arg0 context.Context, arg1 *iotexap
 	return ret0, ret1
 }
 
-// GetServerMeta indicates an expected call of GetServerMeta.
+// GetServerMeta indicates an expected call of GetServerMeta
 func (mr *MockAPIServiceServerMockRecorder) GetServerMeta(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetServerMeta", reflect.TypeOf((*MockAPIServiceServer)(nil).GetServerMeta), arg0, arg1)
 }
 
-// GetTransactionLogByActionHash mocks base method.
+// GetTransactionLogByActionHash mocks base method
 func (m *MockAPIServiceServer) GetTransactionLogByActionHash(arg0 context.Context, arg1 *iotexapi.GetTransactionLogByActionHashRequest) (*iotexapi.GetTransactionLogByActionHashResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetTransactionLogByActionHash", arg0, arg1)
@@ -269,13 +268,13 @@ func (m *MockAPIServiceServer) GetTransactionLogByActionHash(arg0 context.Contex
 	return ret0, ret1
 }
 
-// GetTransactionLogByActionHash indicates an expected call of GetTransactionLogByActionHash.
+// GetTransactionLogByActionHash indicates an expected call of GetTransactionLogByActionHash
 func (mr *MockAPIServiceServerMockRecorder) GetTransactionLogByActionHash(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTransactionLogByActionHash", reflect.TypeOf((*MockAPIServiceServer)(nil).GetTransactionLogByActionHash), arg0, arg1)
 }
 
-// GetTransactionLogByBlockHeight mocks base method.
+// GetTransactionLogByBlockHeight mocks base method
 func (m *MockAPIServiceServer) GetTransactionLogByBlockHeight(arg0 context.Context, arg1 *iotexapi.GetTransactionLogByBlockHeightRequest) (*iotexapi.GetTransactionLogByBlockHeightResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GetTransactionLogByBlockHeight", arg0, arg1)
@@ -284,13 +283,13 @@ func (m *MockAPIServiceServer) GetTransactionLogByBlockHeight(arg0 context.Conte
 	return ret0, ret1
 }
 
-// GetTransactionLogByBlockHeight indicates an expected call of GetTransactionLogByBlockHeight.
+// GetTransactionLogByBlockHeight indicates an expected call of GetTransactionLogByBlockHeight
 func (mr *MockAPIServiceServerMockRecorder) GetTransactionLogByBlockHeight(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTransactionLogByBlockHeight", reflect.TypeOf((*MockAPIServiceServer)(nil).GetTransactionLogByBlockHeight), arg0, arg1)
 }
 
-// ReadContract mocks base method.
+// ReadContract mocks base method
 func (m *MockAPIServiceServer) ReadContract(arg0 context.Context, arg1 *iotexapi.ReadContractRequest) (*iotexapi.ReadContractResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "ReadContract", arg0, arg1)
@@ -299,13 +298,28 @@ func (m *MockAPIServiceServer) ReadContract(arg0 context.Context, arg1 *iotexapi
 	return ret0, ret1
 }
 
-// ReadContract indicates an expected call of ReadContract.
+// ReadContract indicates an expected call of ReadContract
 func (mr *MockAPIServiceServerMockRecorder) ReadContract(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadContract", reflect.TypeOf((*MockAPIServiceServer)(nil).ReadContract), arg0, arg1)
 }
 
-// ReadState mocks base method.
+// ReadContractStorage mocks base method
+func (m *MockAPIServiceServer) ReadContractStorage(arg0 context.Context, arg1 *iotexapi.ReadContractStorageRequest) (*iotexapi.ReadContractStorageResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ReadContractStorage", arg0, arg1)
+	ret0, _ := ret[0].(*iotexapi.ReadContractStorageResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ReadContractStorage indicates an expected call of ReadContractStorage
+func (mr *MockAPIServiceServerMockRecorder) ReadContractStorage(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadContractStorage", reflect.TypeOf((*MockAPIServiceServer)(nil).ReadContractStorage), arg0, arg1)
+}
+
+// ReadState mocks base method
 func (m *MockAPIServiceServer) ReadState(arg0 context.Context, arg1 *iotexapi.ReadStateRequest) (*iotexapi.ReadStateResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "ReadState", arg0, arg1)
@@ -314,13 +328,13 @@ func (m *MockAPIServiceServer) ReadState(arg0 context.Context, arg1 *iotexapi.Re
 	return ret0, ret1
 }
 
-// ReadState indicates an expected call of ReadState.
+// ReadState indicates an expected call of ReadState
 func (mr *MockAPIServiceServerMockRecorder) ReadState(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ReadState", reflect.TypeOf((*MockAPIServiceServer)(nil).ReadState), arg0, arg1)
 }
 
-// SendAction mocks base method.
+// SendAction mocks base method
 func (m *MockAPIServiceServer) SendAction(arg0 context.Context, arg1 *iotexapi.SendActionRequest) (*iotexapi.SendActionResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "SendAction", arg0, arg1)
@@ -329,13 +343,13 @@ func (m *MockAPIServiceServer) SendAction(arg0 context.Context, arg1 *iotexapi.S
 	return ret0, ret1
 }
 
-// SendAction indicates an expected call of SendAction.
+// SendAction indicates an expected call of SendAction
 func (mr *MockAPIServiceServerMockRecorder) SendAction(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SendAction", reflect.TypeOf((*MockAPIServiceServer)(nil).SendAction), arg0, arg1)
 }
 
-// StreamBlocks mocks base method.
+// StreamBlocks mocks base method
 func (m *MockAPIServiceServer) StreamBlocks(arg0 *iotexapi.StreamBlocksRequest, arg1 iotexapi.APIService_StreamBlocksServer) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "StreamBlocks", arg0, arg1)
@@ -343,13 +357,13 @@ func (m *MockAPIServiceServer) StreamBlocks(arg0 *iotexapi.StreamBlocksRequest, 
 	return ret0
 }
 
-// StreamBlocks indicates an expected call of StreamBlocks.
+// StreamBlocks indicates an expected call of StreamBlocks
 func (mr *MockAPIServiceServerMockRecorder) StreamBlocks(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StreamBlocks", reflect.TypeOf((*MockAPIServiceServer)(nil).StreamBlocks), arg0, arg1)
 }
 
-// StreamLogs mocks base method.
+// StreamLogs mocks base method
 func (m *MockAPIServiceServer) StreamLogs(arg0 *iotexapi.StreamLogsRequest, arg1 iotexapi.APIService_StreamLogsServer) error {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "StreamLogs", arg0, arg1)
@@ -357,13 +371,13 @@ func (m *MockAPIServiceServer) StreamLogs(arg0 *iotexapi.StreamLogsRequest, arg1
 	return ret0
 }
 
-// StreamLogs indicates an expected call of StreamLogs.
+// StreamLogs indicates an expected call of StreamLogs
 func (mr *MockAPIServiceServerMockRecorder) StreamLogs(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "StreamLogs", reflect.TypeOf((*MockAPIServiceServer)(nil).StreamLogs), arg0, arg1)
 }
 
-// SuggestGasPrice mocks base method.
+// SuggestGasPrice mocks base method
 func (m *MockAPIServiceServer) SuggestGasPrice(arg0 context.Context, arg1 *iotexapi.SuggestGasPriceRequest) (*iotexapi.SuggestGasPriceResponse, error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "SuggestGasPrice", arg0, arg1)
@@ -372,7 +386,7 @@ func (m *MockAPIServiceServer) SuggestGasPrice(arg0 context.Context, arg1 *iotex
 	return ret0, ret1
 }
 
-// SuggestGasPrice indicates an expected call of SuggestGasPrice.
+// SuggestGasPrice indicates an expected call of SuggestGasPrice
 func (mr *MockAPIServiceServerMockRecorder) SuggestGasPrice(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SuggestGasPrice", reflect.TypeOf((*MockAPIServiceServer)(nil).SuggestGasPrice), arg0, arg1)
