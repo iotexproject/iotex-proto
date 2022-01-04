@@ -99,6 +99,8 @@ service APIService {
   rpc GetElectionBuckets(GetElectionBucketsRequest) returns (GetElectionBucketsResponse) {}
 
   rpc ReadContractStorage(ReadContractStorageRequest) returns (ReadContractStorageResponse) {}
+
+  rpc TraceTransactionStructLogs(TraceTransactionStructLogsRequest) returns (TraceTransactionStructLogsResponse) {}
 }
 
 // experiment
@@ -446,4 +448,12 @@ message ReadContractStorageRequest {
 
 message ReadContractStorageResponse {
   bytes data = 1;
+}
+
+message TraceTransactionStructLogsRequest {
+  string actionHash = 1;
+}
+
+message TraceTransactionStructLogsResponse {
+  repeated iotextypes.TransactionStructLog  structLogs = 1;
 }
