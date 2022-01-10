@@ -45,8 +45,8 @@ enum TransactionLogType {
 message TransactionStructLog {
   uint64 pc = 1;
   uint64 op = 2;
-  string gas = 3;
-  string gasCost = 4;
+  uint64 gas = 3;
+  uint64 gasCost = 4;
   string memory = 5;
   int32 memSize = 6;
   repeated string stack = 7;
