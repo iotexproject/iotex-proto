@@ -270,6 +270,7 @@ message Receipt {
   string contractAddress = 5;
   repeated Log logs = 6;
   string executionRevertMsg = 7;
+  uint32 txIndex = 8;
 }
 
 message Log {
