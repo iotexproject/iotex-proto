@@ -40,6 +40,12 @@ message Execution {
   string amount = 1;
   string contract = 2;
   bytes data = 3;
+  repeated AccessTuple accessList = 4;
+}
+
+message AccessTuple {
+  string address = 1;
+  repeated string storageKeys = 2;
 }
 
 // create stake
