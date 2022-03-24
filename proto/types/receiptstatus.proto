@@ -35,6 +35,7 @@ enum ReceiptStatus {
   ErrGasUintOverflow                = 113;
   ErrInvalidRetsub                  = 114;
   ErrReturnStackExceeded            = 115;
+  ErrInvalidCode                    = 116;
 
   //2xx for Staking ErrorCode
   ErrLoadAccount                    = 200;
