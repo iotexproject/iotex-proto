@@ -15,14 +15,19 @@ GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
 
+PKG_PATH=/github.com/iotexproject/iotex-proto/golang
+
 .PHONY: gogen
 gogen:
-	@protoc --go_out=plugins=grpc:${GOPATH}/src ./proto/types/*
-	@protoc --go_out=plugins=grpc:${GOPATH}/src ./proto/rpc/*
-	@protoc --go_out=plugins=grpc:${GOPATH}/src ./proto/testing/*
-	@protoc -I. -I./proto/types --go_out=plugins=grpc:${GOPATH}/src ./proto/api/*
-	@protoc -I. --grpc-gateway_out=logtostderr=true:${GOPATH}/src ./proto/api/*
-
+	@mkdir -p ./temp
+	@protoc --go_out=./temp  --go-grpc_out=require_unimplemented_servers=false:./temp ./proto/types/*
+	@protoc --go_out=./temp --go-grpc_out=require_unimplemented_servers=false:./temp ./proto/rpc/*
+	@protoc --go_out=./temp --go-grpc_out=require_unimplemented_servers=false:./temp ./proto/testing/*
+	@protoc -I. -I./proto/types --go_out=./temp --go-grpc_out=require_unimplemented_servers=false:./temp ./proto/api/*
+	@protoc -I. --grpc-gateway_out=logtostderr=true:./temp ./proto/api/*
+	@rm -rf ./golang/iotexapi ./golang/iotexrpc ./golang/iotextypes ./golang/testingpb
+	@cp -r ./temp/${PKG_PATH}/* ./golang
+	@rm -rf ./temp
 .PHONY: mockgen
 mockgen:
 	@./misc/scripts/mockgen.sh
