@@ -1351,12 +1351,3 @@ func file_proto_types_blockchain_proto_init() {
 	file_proto_types_blockchain_proto_goTypes = nil
 	file_proto_types_blockchain_proto_depIdxs = nil
 }
-
-type Monitor struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Version    string     `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
-	Height uint64 `protobuf:"bytes,2,rep,name=height,proto3" json:"height,omitempty"`
-}

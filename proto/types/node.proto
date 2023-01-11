@@ -12,6 +12,8 @@ option go_package = "github.com/iotexproject/iotex-proto/golang/iotextypes";
 option java_multiple_files = true;
 option java_package = "com.github.iotexproject.grpc.types";
 
+import "google/protobuf/timestamp.proto";
+
  // Server Metadata
 message ServerMeta {
     string packageVersion = 1;
@@ -19,4 +21,19 @@ message ServerMeta {
     string gitStatus = 3;
     string goVersion = 4;
     string buildTime = 5;
+}
+
+message NodeInfo {
+    string version = 1;
+    uint64 height = 2;
+    google.protobuf.Timestamp timestamp = 3;
+}
+
+message ResponseNodeInfoMessage {
+    NodeInfo info = 1;
+    bytes signature = 2;
+    bytes pubkey = 3;
+}
+
+message RequestNodeInfoMessage {
 }
