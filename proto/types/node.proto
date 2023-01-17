@@ -35,5 +35,4 @@ message ResponseNodeInfoMessage {
     bytes signature = 2;
 }
 
-message RequestNodeInfoMessage {
-}
+message RequestNodeInfoMessage {}

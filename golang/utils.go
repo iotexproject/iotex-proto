@@ -27,12 +27,12 @@ func GetTypeFromRPCMsg(msg proto.Message) (iotexrpc.MessageType, error) {
 		return iotexrpc.MessageType_ACTION, nil
 	case *iotextypes.ConsensusMessage:
 		return iotexrpc.MessageType_CONSENSUS, nil
-	case *testingpb.TestPayload:
-		return iotexrpc.MessageType_TEST, nil
 	case *iotextypes.RequestNodeInfoMessage:
 		return iotexrpc.MessageType_NODE_INFO_REQUEST, nil
 	case *iotextypes.ResponseNodeInfoMessage:
 		return iotexrpc.MessageType_NODE_INFO, nil
+	case *testingpb.TestPayload:
+		return iotexrpc.MessageType_TEST, nil
 	default:
 		return iotexrpc.MessageType_UNKNOWN, errors.New("unknown RPC message type")
 	}
@@ -50,12 +50,12 @@ func TypifyRPCMsg(t iotexrpc.MessageType, msg []byte) (proto.Message, error) {
 		m = &iotexrpc.BlockSync{}
 	case iotexrpc.MessageType_ACTION:
 		m = &iotextypes.Action{}
-	case iotexrpc.MessageType_TEST:
-		m = &testingpb.TestPayload{}
 	case iotexrpc.MessageType_NODE_INFO_REQUEST:
 		m = &iotextypes.RequestNodeInfoMessage{}
 	case iotexrpc.MessageType_NODE_INFO:
 		m = &iotextypes.ResponseNodeInfoMessage{}
+	case iotexrpc.MessageType_TEST:
+		m = &testingpb.TestPayload{}
 	default:
 		return nil, errors.New("unknown RPC message type")
 	}
