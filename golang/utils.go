@@ -27,9 +27,9 @@ func GetTypeFromRPCMsg(msg proto.Message) (iotexrpc.MessageType, error) {
 		return iotexrpc.MessageType_ACTION, nil
 	case *iotextypes.ConsensusMessage:
 		return iotexrpc.MessageType_CONSENSUS, nil
-	case *iotextypes.RequestNodeInfoMessage:
+	case *iotextypes.NodeInfoRequest:
 		return iotexrpc.MessageType_NODE_INFO_REQUEST, nil
-	case *iotextypes.ResponseNodeInfoMessage:
+	case *iotextypes.NodeInfo:
 		return iotexrpc.MessageType_NODE_INFO, nil
 	case *testingpb.TestPayload:
 		return iotexrpc.MessageType_TEST, nil
@@ -51,9 +51,9 @@ func TypifyRPCMsg(t iotexrpc.MessageType, msg []byte) (proto.Message, error) {
 	case iotexrpc.MessageType_ACTION:
 		m = &iotextypes.Action{}
 	case iotexrpc.MessageType_NODE_INFO_REQUEST:
-		m = &iotextypes.RequestNodeInfoMessage{}
+		m = &iotextypes.NodeInfoRequest{}
 	case iotexrpc.MessageType_NODE_INFO:
-		m = &iotextypes.ResponseNodeInfoMessage{}
+		m = &iotextypes.NodeInfo{}
 	case iotexrpc.MessageType_TEST:
 		m = &testingpb.TestPayload{}
 	default:

@@ -1,18 +1,21 @@
 module github.com/iotexproject/iotex-proto
 
 require (
-	github.com/golang/mock v1.4.4
-	github.com/golang/protobuf v1.5.2
-	github.com/grpc-ecosystem/grpc-gateway v1.16.0
-	google.golang.org/grpc v1.33.1
-	google.golang.org/protobuf v1.26.0
+	github.com/golang/mock v1.6.0
+	google.golang.org/grpc v1.51.0
+	google.golang.org/protobuf v1.28.1
 )
 
 require (
-	golang.org/x/net v0.0.0-20211015210444-4f30a5c0130f // indirect
-	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e // indirect
-	golang.org/x/text v0.3.7 // indirect
-	google.golang.org/genproto v0.0.0-20201211151036-40ec1c210f7a // indirect
+	github.com/google/go-cmp v0.5.9 // indirect
+	golang.org/x/net v0.3.0 // indirect
+	golang.org/x/sys v0.3.0 // indirect
+	golang.org/x/text v0.5.0 // indirect
+)
+
+require (
+	github.com/golang/protobuf v1.5.2 // indirect
+	google.golang.org/genproto v0.0.0-20230127162408-596548ed4efa // indirect
 )
 
 go 1.17

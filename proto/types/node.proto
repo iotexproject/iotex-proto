@@ -23,16 +23,16 @@ message ServerMeta {
     string buildTime = 5;
 }
 
-message NodeInfo {
+message NodeInfoCore {
     string version = 1;
     uint64 height = 2;
     google.protobuf.Timestamp timestamp = 3;
     string address = 4;
 }
 
-message ResponseNodeInfoMessage {
-    NodeInfo info = 1;
+message NodeInfo {
+    NodeInfoCore info = 1;
     bytes signature = 2;
 }
 
-message RequestNodeInfoMessage {}
+message NodeInfoRequest {}
