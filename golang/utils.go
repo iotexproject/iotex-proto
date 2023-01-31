@@ -25,6 +25,8 @@ func GetTypeFromRPCMsg(msg proto.Message) (iotexrpc.MessageType, error) {
 		return iotexrpc.MessageType_BLOCK_REQUEST, nil
 	case *iotextypes.Action:
 		return iotexrpc.MessageType_ACTION, nil
+	case *iotextypes.Actions:
+		return iotexrpc.MessageType_ACTIONS, nil
 	case *iotextypes.ConsensusMessage:
 		return iotexrpc.MessageType_CONSENSUS, nil
 	case *iotextypes.NodeInfoRequest:
@@ -50,6 +52,8 @@ func TypifyRPCMsg(t iotexrpc.MessageType, msg []byte) (proto.Message, error) {
 		m = &iotexrpc.BlockSync{}
 	case iotexrpc.MessageType_ACTION:
 		m = &iotextypes.Action{}
+	case iotexrpc.MessageType_ACTIONS:
+		m = &iotextypes.Actions{}
 	case iotexrpc.MessageType_NODE_INFO_REQUEST:
 		m = &iotextypes.NodeInfoRequest{}
 	case iotexrpc.MessageType_NODE_INFO:

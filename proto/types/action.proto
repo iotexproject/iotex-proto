@@ -261,6 +261,11 @@ enum Encoding {
   ETHEREUM_RLP = 1;
 }
 
+// a pack of actions
+message Actions {
+  repeated Action actions = 1;
+}
+
 message Action {
   ActionCore core = 1;
   bytes senderPubKey = 2;
