@@ -34,6 +34,7 @@ message VoteBucket {
   google.protobuf.Timestamp unstakeStartTime = 7;
   bool autoStake = 8;
   string owner = 9;
+  string contractAddress = 10;
 }
 
 message VoteBucketList {
