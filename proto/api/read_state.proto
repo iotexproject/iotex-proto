@@ -35,6 +35,7 @@ message ReadStakingDataMethod {
 		COMPOSITE_BUCKETS_BY_INDEXES = 13;
 		COMPOSITE_BUCKETS_COUNT = 14;
 		COMPOSITE_TOTAL_STAKING_AMOUNT = 15;
+		LIQUID_STAKING_BUCKET_TYPES = 16;
 	}
 	Name method = 1;
 }
@@ -74,6 +75,8 @@ message ReadStakingDataRequest {
 
 	message BucketsCount {}
 
+	message LiquidStakingBucketTypes {}
+
 	oneof request {
 		VoteBuckets buckets = 1;
 		VoteBucketsByVoter bucketsByVoter = 2;
@@ -84,5 +87,6 @@ message ReadStakingDataRequest {
 		CandidateByAddress candidateByAddress = 7;
 		TotalStakingAmount totalStakingAmount = 8;
 		BucketsCount bucketsCount = 9;
+		LiquidStakingBucketTypes liquidStakingBucketTypes = 10;
 	}
 }

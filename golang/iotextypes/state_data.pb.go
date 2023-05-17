@@ -449,6 +449,108 @@ func (x *BucketsCount) GetActive() uint64 {
 	return 0
 }
 
+type LiquidStakingBucketType struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	StakedAmount   string `protobuf:"bytes,1,opt,name=stakedAmount,proto3" json:"stakedAmount,omitempty"`
+	StakedDuration uint32 `protobuf:"varint,2,opt,name=stakedDuration,proto3" json:"stakedDuration,omitempty"`
+}
+
+func (x *LiquidStakingBucketType) Reset() {
+	*x = LiquidStakingBucketType{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_types_state_data_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LiquidStakingBucketType) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LiquidStakingBucketType) ProtoMessage() {}
+
+func (x *LiquidStakingBucketType) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_types_state_data_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LiquidStakingBucketType.ProtoReflect.Descriptor instead.
+func (*LiquidStakingBucketType) Descriptor() ([]byte, []int) {
+	return file_proto_types_state_data_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *LiquidStakingBucketType) GetStakedAmount() string {
+	if x != nil {
+		return x.StakedAmount
+	}
+	return ""
+}
+
+func (x *LiquidStakingBucketType) GetStakedDuration() uint32 {
+	if x != nil {
+		return x.StakedDuration
+	}
+	return 0
+}
+
+type LiquidStakingBucketTypeList struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	BucketTypes []*LiquidStakingBucketType `protobuf:"bytes,1,rep,name=bucketTypes,proto3" json:"bucketTypes,omitempty"`
+}
+
+func (x *LiquidStakingBucketTypeList) Reset() {
+	*x = LiquidStakingBucketTypeList{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_types_state_data_proto_msgTypes[7]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LiquidStakingBucketTypeList) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LiquidStakingBucketTypeList) ProtoMessage() {}
+
+func (x *LiquidStakingBucketTypeList) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_types_state_data_proto_msgTypes[7]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LiquidStakingBucketTypeList.ProtoReflect.Descriptor instead.
+func (*LiquidStakingBucketTypeList) Descriptor() ([]byte, []int) {
+	return file_proto_types_state_data_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *LiquidStakingBucketTypeList) GetBucketTypes() []*LiquidStakingBucketType {
+	if x != nil {
+		return x.BucketTypes
+	}
+	return nil
+}
+
 type ProbationCandidateList_Info struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -461,7 +563,7 @@ type ProbationCandidateList_Info struct {
 func (x *ProbationCandidateList_Info) Reset() {
 	*x = ProbationCandidateList_Info{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_types_state_data_proto_msgTypes[6]
+		mi := &file_proto_types_state_data_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -474,7 +576,7 @@ func (x *ProbationCandidateList_Info) String() string {
 func (*ProbationCandidateList_Info) ProtoMessage() {}
 
 func (x *ProbationCandidateList_Info) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_state_data_proto_msgTypes[6]
+	mi := &file_proto_types_state_data_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -583,14 +685,26 @@ var file_proto_types_state_data_proto_rawDesc = []byte{
 	0x42, 0x75, 0x63, 0x6b, 0x65, 0x74, 0x73, 0x43, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x14, 0x0a, 0x05,
 	0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x05, 0x74, 0x6f, 0x74,
 	0x61, 0x6c, 0x12, 0x16, 0x0a, 0x06, 0x61, 0x63, 0x74, 0x69, 0x76, 0x65, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x04, 0x52, 0x06, 0x61, 0x63, 0x74, 0x69, 0x76, 0x65, 0x42, 0x5d, 0x0a, 0x22, 0x63, 0x6f,
-	0x6d, 0x2e, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x69, 0x6f, 0x74, 0x65, 0x78, 0x70, 0x72,
-	0x6f, 0x6a, 0x65, 0x63, 0x74, 0x2e, 0x67, 0x72, 0x70, 0x63, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73,
-	0x50, 0x01, 0x5a, 0x35, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x69,
-	0x6f, 0x74, 0x65, 0x78, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x2f, 0x69, 0x6f, 0x74, 0x65,
-	0x78, 0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x69,
-	0x6f, 0x74, 0x65, 0x78, 0x74, 0x79, 0x70, 0x65, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x28, 0x04, 0x52, 0x06, 0x61, 0x63, 0x74, 0x69, 0x76, 0x65, 0x22, 0x65, 0x0a, 0x17, 0x4c, 0x69,
+	0x71, 0x75, 0x69, 0x64, 0x53, 0x74, 0x61, 0x6b, 0x69, 0x6e, 0x67, 0x42, 0x75, 0x63, 0x6b, 0x65,
+	0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x22, 0x0a, 0x0c, 0x73, 0x74, 0x61, 0x6b, 0x65, 0x64, 0x41,
+	0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x73, 0x74, 0x61,
+	0x6b, 0x65, 0x64, 0x41, 0x6d, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x26, 0x0a, 0x0e, 0x73, 0x74, 0x61,
+	0x6b, 0x65, 0x64, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x0d, 0x52, 0x0e, 0x73, 0x74, 0x61, 0x6b, 0x65, 0x64, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x22, 0x64, 0x0a, 0x1b, 0x4c, 0x69, 0x71, 0x75, 0x69, 0x64, 0x53, 0x74, 0x61, 0x6b, 0x69,
+	0x6e, 0x67, 0x42, 0x75, 0x63, 0x6b, 0x65, 0x74, 0x54, 0x79, 0x70, 0x65, 0x4c, 0x69, 0x73, 0x74,
+	0x12, 0x45, 0x0a, 0x0b, 0x62, 0x75, 0x63, 0x6b, 0x65, 0x74, 0x54, 0x79, 0x70, 0x65, 0x73, 0x18,
+	0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x23, 0x2e, 0x69, 0x6f, 0x74, 0x65, 0x78, 0x74, 0x79, 0x70,
+	0x65, 0x73, 0x2e, 0x4c, 0x69, 0x71, 0x75, 0x69, 0x64, 0x53, 0x74, 0x61, 0x6b, 0x69, 0x6e, 0x67,
+	0x42, 0x75, 0x63, 0x6b, 0x65, 0x74, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0b, 0x62, 0x75, 0x63, 0x6b,
+	0x65, 0x74, 0x54, 0x79, 0x70, 0x65, 0x73, 0x42, 0x5d, 0x0a, 0x22, 0x63, 0x6f, 0x6d, 0x2e, 0x67,
+	0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x69, 0x6f, 0x74, 0x65, 0x78, 0x70, 0x72, 0x6f, 0x6a, 0x65,
+	0x63, 0x74, 0x2e, 0x67, 0x72, 0x70, 0x63, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x73, 0x50, 0x01, 0x5a,
+	0x35, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x69, 0x6f, 0x74, 0x65,
+	0x78, 0x70, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x2f, 0x69, 0x6f, 0x74, 0x65, 0x78, 0x2d, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x6f, 0x6c, 0x61, 0x6e, 0x67, 0x2f, 0x69, 0x6f, 0x74, 0x65,
+	0x78, 0x74, 0x79, 0x70, 0x65, 0x73, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -605,7 +719,7 @@ func file_proto_types_state_data_proto_rawDescGZIP() []byte {
 	return file_proto_types_state_data_proto_rawDescData
 }
 
-var file_proto_types_state_data_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_proto_types_state_data_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_proto_types_state_data_proto_goTypes = []interface{}{
 	(*ProbationCandidateList)(nil),      // 0: iotextypes.ProbationCandidateList
 	(*VoteBucket)(nil),                  // 1: iotextypes.VoteBucket
@@ -613,21 +727,24 @@ var file_proto_types_state_data_proto_goTypes = []interface{}{
 	(*CandidateV2)(nil),                 // 3: iotextypes.CandidateV2
 	(*CandidateListV2)(nil),             // 4: iotextypes.CandidateListV2
 	(*BucketsCount)(nil),                // 5: iotextypes.BucketsCount
-	(*ProbationCandidateList_Info)(nil), // 6: iotextypes.ProbationCandidateList.Info
-	(*timestamppb.Timestamp)(nil),       // 7: google.protobuf.Timestamp
+	(*LiquidStakingBucketType)(nil),     // 6: iotextypes.LiquidStakingBucketType
+	(*LiquidStakingBucketTypeList)(nil), // 7: iotextypes.LiquidStakingBucketTypeList
+	(*ProbationCandidateList_Info)(nil), // 8: iotextypes.ProbationCandidateList.Info
+	(*timestamppb.Timestamp)(nil),       // 9: google.protobuf.Timestamp
 }
 var file_proto_types_state_data_proto_depIdxs = []int32{
-	6, // 0: iotextypes.ProbationCandidateList.probationList:type_name -> iotextypes.ProbationCandidateList.Info
-	7, // 1: iotextypes.VoteBucket.createTime:type_name -> google.protobuf.Timestamp
-	7, // 2: iotextypes.VoteBucket.stakeStartTime:type_name -> google.protobuf.Timestamp
-	7, // 3: iotextypes.VoteBucket.unstakeStartTime:type_name -> google.protobuf.Timestamp
+	8, // 0: iotextypes.ProbationCandidateList.probationList:type_name -> iotextypes.ProbationCandidateList.Info
+	9, // 1: iotextypes.VoteBucket.createTime:type_name -> google.protobuf.Timestamp
+	9, // 2: iotextypes.VoteBucket.stakeStartTime:type_name -> google.protobuf.Timestamp
+	9, // 3: iotextypes.VoteBucket.unstakeStartTime:type_name -> google.protobuf.Timestamp
 	1, // 4: iotextypes.VoteBucketList.buckets:type_name -> iotextypes.VoteBucket
 	3, // 5: iotextypes.CandidateListV2.candidates:type_name -> iotextypes.CandidateV2
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	6, // 6: iotextypes.LiquidStakingBucketTypeList.bucketTypes:type_name -> iotextypes.LiquidStakingBucketType
+	7, // [7:7] is the sub-list for method output_type
+	7, // [7:7] is the sub-list for method input_type
+	7, // [7:7] is the sub-list for extension type_name
+	7, // [7:7] is the sub-list for extension extendee
+	0, // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_proto_types_state_data_proto_init() }
@@ -709,6 +826,30 @@ func file_proto_types_state_data_proto_init() {
 			}
 		}
 		file_proto_types_state_data_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LiquidStakingBucketType); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_types_state_data_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LiquidStakingBucketTypeList); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_types_state_data_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ProbationCandidateList_Info); i {
 			case 0:
 				return &v.state
@@ -727,7 +868,7 @@ func file_proto_types_state_data_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_types_state_data_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   9,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
