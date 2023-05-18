@@ -64,11 +64,11 @@ message BucketsCount {
   uint64 active = 2;
 }
 
-message LiquidStakingBucketType {
+message ContractStakingBucketType {
   string stakedAmount = 1;
   uint32 stakedDuration = 2;
 }
 
-message LiquidStakingBucketTypeList {
-  repeated LiquidStakingBucketType bucketTypes = 1;
+message ContractStakingBucketTypeList {
+  repeated ContractStakingBucketType bucketTypes = 1;
 }
