@@ -257,8 +257,12 @@ message ActionCore {
 }
 
 enum Encoding {
+  option allow_alias = true;
   IOTEX_PROTOBUF = 0;
+  ETHEREUM_EIP155 = 1;
   ETHEREUM_RLP = 1;
+  ETHEREUM_UNPROTECTED = 2;
+  ETHEREUM_ACCESSLIST = 3;
 }
 
 message Action {
