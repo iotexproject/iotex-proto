@@ -106,6 +106,10 @@ message CandidateRegister {
   bytes payload = 6;
 }
 
+message CandidateSelfStake {
+  uint64 bucketIndex = 1;
+}
+
 message StartSubChain {
   // TODO: chainID chould be assigned by system and returned via a receipt
   uint32 chainID = 1;
@@ -250,9 +254,10 @@ message ActionCore {
     StakeChangeCandidate stakeChangeCandidate = 45;
     StakeTransferOwnership stakeTransferOwnership = 46;
     CandidateRegister candidateRegister = 47;
-    CandidateBasicInfo candidateUpdate = 48;
+    CandidateBasicInfo candidateUpdate = 48; 
 
     PutPollResult putPollResult = 50;
+    CandidateSelfStake candidateSelfStake = 51;
   }
 }
 
