@@ -255,9 +255,10 @@ message ActionCore {
     StakeTransferOwnership stakeTransferOwnership = 46;
     CandidateRegister candidateRegister = 47;
     CandidateBasicInfo candidateUpdate = 48; 
+    CandidateSelfStake candidateSelfStake = 49;
 
     PutPollResult putPollResult = 50;
-    CandidateSelfStake candidateSelfStake = 51;
+    
   }
 }
 

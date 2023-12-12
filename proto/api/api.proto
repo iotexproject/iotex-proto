@@ -291,6 +291,7 @@ message EstimateActionGasConsumptionRequest {
     iotextypes.StakeTransferOwnership stakeTransferOwnership = 46;
     iotextypes.CandidateRegister candidateRegister = 47;
     iotextypes.CandidateBasicInfo candidateUpdate = 48;
+    iotextypes.CandidateSelfStake candidateSelfStake = 49;
   }
   string callerAddress = 100;
   string gasPrice = 101;
