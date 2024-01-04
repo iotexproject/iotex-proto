@@ -110,6 +110,11 @@ message CandidateSelfStake {
   uint64 bucketIndex = 1;
 }
 
+message CandidateEndorsement {
+  uint64 bucketIndex = 1;
+  bool endorse = 2;
+}
+
 message StartSubChain {
   // TODO: chainID chould be assigned by system and returned via a receipt
   uint32 chainID = 1;
@@ -256,6 +261,7 @@ message ActionCore {
     CandidateRegister candidateRegister = 47;
     CandidateBasicInfo candidateUpdate = 48; 
     CandidateSelfStake candidateSelfStake = 49;
+    CandidateEndorsement candidateEndorsement = 51;
 
     PutPollResult putPollResult = 50;
     
