@@ -259,12 +259,11 @@ message ActionCore {
     StakeChangeCandidate stakeChangeCandidate = 45;
     StakeTransferOwnership stakeTransferOwnership = 46;
     CandidateRegister candidateRegister = 47;
-    CandidateBasicInfo candidateUpdate = 48; 
+    CandidateBasicInfo candidateUpdate = 48;
     CandidateActivate candidateActivate = 49;
     CandidateEndorsement candidateEndorsement = 51;
 
     PutPollResult putPollResult = 50;
-    
   }
 }
 
