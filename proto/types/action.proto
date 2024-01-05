@@ -106,6 +106,15 @@ message CandidateRegister {
   bytes payload = 6;
 }
 
+message CandidateActivate {
+  uint64 bucketIndex = 1;
+}
+
+message CandidateEndorsement {
+  uint64 bucketIndex = 1;
+  bool endorse = 2;
+}
+
 message StartSubChain {
   // TODO: chainID chould be assigned by system and returned via a receipt
   uint32 chainID = 1;
@@ -251,6 +260,8 @@ message ActionCore {
     StakeTransferOwnership stakeTransferOwnership = 46;
     CandidateRegister candidateRegister = 47;
     CandidateBasicInfo candidateUpdate = 48;
+    CandidateActivate candidateActivate = 49;
+    CandidateEndorsement candidateEndorsement = 51;
 
     PutPollResult putPollResult = 50;
   }
