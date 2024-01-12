@@ -468,7 +468,11 @@ message TraceBlockByNumberRequest {
 }
 
 message TraceBlockByNumberResponse {
-  repeated iotextypes.TransactionStructLog  structLogs = 1;
+  bool failed = 1;
+  string revert = 2;
+  string returnValue = 3;
+  uint64 gas = 4;
+  repeated iotextypes.TransactionStructLog  structLogs = 5;
 }
 
 message TraceBlockByHashRequest {
