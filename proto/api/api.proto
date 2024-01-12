@@ -102,6 +102,7 @@ service APIService {
 
   rpc TraceTransactionStructLogs(TraceTransactionStructLogsRequest) returns (TraceTransactionStructLogsResponse) {}
   rpc TraceBlockByNumber(TraceBlockByNumberRequest) returns (TraceBlockByNumberResponse) {}
+  rpc TraceBlockByHash(TraceBlockByHashRequest) returns (TraceBlockByHashResponse) {}
 }
 
 // experiment
@@ -468,7 +469,16 @@ message TraceBlockByNumberRequest {
 }
 
 message TraceBlockByNumberResponse {
-  repeated TraceTxResult  traces = 1;
+  repeated TraceTxResult traces = 1;
+}
+
+message TraceBlockByHashRequest {
+  string blockHash = 1;
+  iotextypes.TraceConfig traceConfig = 2;
+}
+
+message TraceBlockByHashResponse {
+  repeated TraceTxResult traces = 1;
 }
 
 message TraceTxResult {
@@ -477,9 +487,4 @@ message TraceTxResult {
   string returnValue = 3;
   uint64 gas = 4;
   repeated iotextypes.TransactionStructLog  structLogs = 5;
-}
-
-message TraceBlockByHashRequest {
-  string blockHash = 1;
-  iotextypes.TraceConfig traceConfig = 2;
 }
