@@ -468,6 +468,10 @@ message TraceBlockByNumberRequest {
 }
 
 message TraceBlockByNumberResponse {
+  repeated TraceTxResult  traces = 1;
+}
+
+message TraceTxResult {
   bool failed = 1;
   string revert = 2;
   string returnValue = 3;
