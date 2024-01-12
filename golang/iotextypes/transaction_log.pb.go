@@ -344,6 +344,93 @@ func (x *TransactionStructLog) GetError() string {
 	return ""
 }
 
+type TraceConfig struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	EnableMemory      bool   `protobuf:"varint,1,opt,name=enableMemory,proto3" json:"enableMemory,omitempty"`
+	DisableStack      bool   `protobuf:"varint,2,opt,name=disableStack,proto3" json:"disableStack,omitempty"`
+	DisableReturnData bool   `protobuf:"varint,3,opt,name=disableReturnData,proto3" json:"disableReturnData,omitempty"`
+	DisableStorage    bool   `protobuf:"varint,4,opt,name=disableStorage,proto3" json:"disableStorage,omitempty"`
+	Tracer            string `protobuf:"bytes,5,opt,name=tracer,proto3" json:"tracer,omitempty"`
+	Timeout           string `protobuf:"bytes,6,opt,name=timeout,proto3" json:"timeout,omitempty"`
+}
+
+func (x *TraceConfig) Reset() {
+	*x = TraceConfig{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_proto_types_transaction_log_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TraceConfig) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TraceConfig) ProtoMessage() {}
+
+func (x *TraceConfig) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_types_transaction_log_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TraceConfig.ProtoReflect.Descriptor instead.
+func (*TraceConfig) Descriptor() ([]byte, []int) {
+	return file_proto_types_transaction_log_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *TraceConfig) GetEnableMemory() bool {
+	if x != nil {
+		return x.EnableMemory
+	}
+	return false
+}
+
+func (x *TraceConfig) GetDisableStack() bool {
+	if x != nil {
+		return x.DisableStack
+	}
+	return false
+}
+
+func (x *TraceConfig) GetDisableReturnData() bool {
+	if x != nil {
+		return x.DisableReturnData
+	}
+	return false
+}
+
+func (x *TraceConfig) GetDisableStorage() bool {
+	if x != nil {
+		return x.DisableStorage
+	}
+	return false
+}
+
+func (x *TraceConfig) GetTracer() string {
+	if x != nil {
+		return x.Tracer
+	}
+	return ""
+}
+
+func (x *TraceConfig) GetTimeout() string {
+	if x != nil {
+		return x.Timeout
+	}
+	return ""
+}
+
 type TransactionLog_Transaction struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -359,7 +446,7 @@ type TransactionLog_Transaction struct {
 func (x *TransactionLog_Transaction) Reset() {
 	*x = TransactionLog_Transaction{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_proto_types_transaction_log_proto_msgTypes[3]
+		mi := &file_proto_types_transaction_log_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -372,7 +459,7 @@ func (x *TransactionLog_Transaction) String() string {
 func (*TransactionLog_Transaction) ProtoMessage() {}
 
 func (x *TransactionLog_Transaction) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_transaction_log_proto_msgTypes[3]
+	mi := &file_proto_types_transaction_log_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -472,7 +559,21 @@ var file_proto_types_transaction_log_proto_rawDesc = []byte{
 	0x18, 0x0a, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x72, 0x65, 0x66, 0x75, 0x6e, 0x64, 0x12, 0x16,
 	0x0a, 0x06, 0x6f, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
 	0x6f, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x18,
-	0x0c, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x2a, 0x87, 0x02, 0x0a,
+	0x0c, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x22, 0xdd, 0x01, 0x0a,
+	0x0b, 0x54, 0x72, 0x61, 0x63, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x69, 0x67, 0x12, 0x22, 0x0a, 0x0c,
+	0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x4d, 0x65, 0x6d, 0x6f, 0x72, 0x79, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x08, 0x52, 0x0c, 0x65, 0x6e, 0x61, 0x62, 0x6c, 0x65, 0x4d, 0x65, 0x6d, 0x6f, 0x72, 0x79,
+	0x12, 0x22, 0x0a, 0x0c, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x53, 0x74, 0x61, 0x63, 0x6b,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0c, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x53,
+	0x74, 0x61, 0x63, 0x6b, 0x12, 0x2c, 0x0a, 0x11, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x52,
+	0x65, 0x74, 0x75, 0x72, 0x6e, 0x44, 0x61, 0x74, 0x61, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52,
+	0x11, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x52, 0x65, 0x74, 0x75, 0x72, 0x6e, 0x44, 0x61,
+	0x74, 0x61, 0x12, 0x26, 0x0a, 0x0e, 0x64, 0x69, 0x73, 0x61, 0x62, 0x6c, 0x65, 0x53, 0x74, 0x6f,
+	0x72, 0x61, 0x67, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x08, 0x52, 0x0e, 0x64, 0x69, 0x73, 0x61,
+	0x62, 0x6c, 0x65, 0x53, 0x74, 0x6f, 0x72, 0x61, 0x67, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x74, 0x72,
+	0x61, 0x63, 0x65, 0x72, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x74, 0x72, 0x61, 0x63,
+	0x65, 0x72, 0x12, 0x18, 0x0a, 0x07, 0x74, 0x69, 0x6d, 0x65, 0x6f, 0x75, 0x74, 0x18, 0x06, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x07, 0x74, 0x69, 0x6d, 0x65, 0x6f, 0x75, 0x74, 0x2a, 0x87, 0x02, 0x0a,
 	0x12, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x61, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4c, 0x6f, 0x67, 0x54,
 	0x79, 0x70, 0x65, 0x12, 0x18, 0x0a, 0x14, 0x49, 0x4e, 0x5f, 0x43, 0x4f, 0x4e, 0x54, 0x52, 0x41,
 	0x43, 0x54, 0x5f, 0x54, 0x52, 0x41, 0x4e, 0x53, 0x46, 0x45, 0x52, 0x10, 0x00, 0x12, 0x13, 0x0a,
@@ -511,16 +612,17 @@ func file_proto_types_transaction_log_proto_rawDescGZIP() []byte {
 }
 
 var file_proto_types_transaction_log_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_proto_types_transaction_log_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_proto_types_transaction_log_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_proto_types_transaction_log_proto_goTypes = []interface{}{
 	(TransactionLogType)(0),            // 0: iotextypes.TransactionLogType
 	(*TransactionLog)(nil),             // 1: iotextypes.TransactionLog
 	(*TransactionLogs)(nil),            // 2: iotextypes.TransactionLogs
 	(*TransactionStructLog)(nil),       // 3: iotextypes.TransactionStructLog
-	(*TransactionLog_Transaction)(nil), // 4: iotextypes.TransactionLog.Transaction
+	(*TraceConfig)(nil),                // 4: iotextypes.TraceConfig
+	(*TransactionLog_Transaction)(nil), // 5: iotextypes.TransactionLog.Transaction
 }
 var file_proto_types_transaction_log_proto_depIdxs = []int32{
-	4, // 0: iotextypes.TransactionLog.transactions:type_name -> iotextypes.TransactionLog.Transaction
+	5, // 0: iotextypes.TransactionLog.transactions:type_name -> iotextypes.TransactionLog.Transaction
 	1, // 1: iotextypes.TransactionLogs.logs:type_name -> iotextypes.TransactionLog
 	0, // 2: iotextypes.TransactionLog.Transaction.type:type_name -> iotextypes.TransactionLogType
 	3, // [3:3] is the sub-list for method output_type
@@ -573,6 +675,18 @@ func file_proto_types_transaction_log_proto_init() {
 			}
 		}
 		file_proto_types_transaction_log_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TraceConfig); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_proto_types_transaction_log_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TransactionLog_Transaction); i {
 			case 0:
 				return &v.state
@@ -591,7 +705,7 @@ func file_proto_types_transaction_log_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_proto_types_transaction_log_proto_rawDesc,
 			NumEnums:      1,
-			NumMessages:   4,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -53,6 +53,7 @@ const (
 	APIService_GetElectionBuckets_FullMethodName             = "/iotexapi.APIService/GetElectionBuckets"
 	APIService_ReadContractStorage_FullMethodName            = "/iotexapi.APIService/ReadContractStorage"
 	APIService_TraceTransactionStructLogs_FullMethodName     = "/iotexapi.APIService/TraceTransactionStructLogs"
+	APIService_TraceBlockByNumber_FullMethodName             = "/iotexapi.APIService/TraceBlockByNumber"
 )
 
 // APIServiceClient is the client API for APIService service.
@@ -112,6 +113,7 @@ type APIServiceClient interface {
 	GetElectionBuckets(ctx context.Context, in *GetElectionBucketsRequest, opts ...grpc.CallOption) (*GetElectionBucketsResponse, error)
 	ReadContractStorage(ctx context.Context, in *ReadContractStorageRequest, opts ...grpc.CallOption) (*ReadContractStorageResponse, error)
 	TraceTransactionStructLogs(ctx context.Context, in *TraceTransactionStructLogsRequest, opts ...grpc.CallOption) (*TraceTransactionStructLogsResponse, error)
+	TraceBlockByNumber(ctx context.Context, in *TraceBlockByNumberRequest, opts ...grpc.CallOption) (*TraceBlockByNumberResponse, error)
 }
 
 type aPIServiceClient struct {
@@ -393,6 +395,15 @@ func (c *aPIServiceClient) TraceTransactionStructLogs(ctx context.Context, in *T
 	return out, nil
 }
 
+func (c *aPIServiceClient) TraceBlockByNumber(ctx context.Context, in *TraceBlockByNumberRequest, opts ...grpc.CallOption) (*TraceBlockByNumberResponse, error) {
+	out := new(TraceBlockByNumberResponse)
+	err := c.cc.Invoke(ctx, APIService_TraceBlockByNumber_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // APIServiceServer is the server API for APIService service.
 // All implementations should embed UnimplementedAPIServiceServer
 // for forward compatibility
@@ -450,6 +461,7 @@ type APIServiceServer interface {
 	GetElectionBuckets(context.Context, *GetElectionBucketsRequest) (*GetElectionBucketsResponse, error)
 	ReadContractStorage(context.Context, *ReadContractStorageRequest) (*ReadContractStorageResponse, error)
 	TraceTransactionStructLogs(context.Context, *TraceTransactionStructLogsRequest) (*TraceTransactionStructLogsResponse, error)
+	TraceBlockByNumber(context.Context, *TraceBlockByNumberRequest) (*TraceBlockByNumberResponse, error)
 }
 
 // UnimplementedAPIServiceServer should be embedded to have forward compatible implementations.
@@ -530,6 +542,9 @@ func (UnimplementedAPIServiceServer) ReadContractStorage(context.Context, *ReadC
 }
 func (UnimplementedAPIServiceServer) TraceTransactionStructLogs(context.Context, *TraceTransactionStructLogsRequest) (*TraceTransactionStructLogsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TraceTransactionStructLogs not implemented")
+}
+func (UnimplementedAPIServiceServer) TraceBlockByNumber(context.Context, *TraceBlockByNumberRequest) (*TraceBlockByNumberResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TraceBlockByNumber not implemented")
 }
 
 // UnsafeAPIServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -999,6 +1014,24 @@ func _APIService_TraceTransactionStructLogs_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _APIService_TraceBlockByNumber_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TraceBlockByNumberRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(APIServiceServer).TraceBlockByNumber(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: APIService_TraceBlockByNumber_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(APIServiceServer).TraceBlockByNumber(ctx, req.(*TraceBlockByNumberRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // APIService_ServiceDesc is the grpc.ServiceDesc for APIService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -1097,6 +1130,10 @@ var APIService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TraceTransactionStructLogs",
 			Handler:    _APIService_TraceTransactionStructLogs_Handler,
+		},
+		{
+			MethodName: "TraceBlockByNumber",
+			Handler:    _APIService_TraceBlockByNumber_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
