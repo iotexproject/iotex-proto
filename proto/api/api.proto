@@ -101,6 +101,8 @@ service APIService {
   rpc ReadContractStorage(ReadContractStorageRequest) returns (ReadContractStorageResponse) {}
 
   rpc TraceTransactionStructLogs(TraceTransactionStructLogsRequest) returns (TraceTransactionStructLogsResponse) {}
+  rpc TraceBlockByNumber(TraceBlockByNumberRequest) returns (TraceBlockByNumberResponse) {}
+  rpc TraceBlockByHash(TraceBlockByHashRequest) returns (TraceBlockByHashResponse) {}
 }
 
 // experiment
@@ -459,4 +461,30 @@ message TraceTransactionStructLogsRequest {
 
 message TraceTransactionStructLogsResponse {
   repeated iotextypes.TransactionStructLog  structLogs = 1;
+}
+
+message TraceBlockByNumberRequest {
+  uint64 blockNumber = 1;
+  iotextypes.TraceConfig traceConfig = 2;
+}
+
+message TraceBlockByNumberResponse {
+  repeated TraceTxResult traces = 1;
+}
+
+message TraceBlockByHashRequest {
+  string blockHash = 1;
+  iotextypes.TraceConfig traceConfig = 2;
+}
+
+message TraceBlockByHashResponse {
+  repeated TraceTxResult traces = 1;
+}
+
+message TraceTxResult {
+  bool failed = 1;
+  string revert = 2;
+  string returnValue = 3;
+  uint64 gas = 4;
+  repeated iotextypes.TransactionStructLog  structLogs = 5;
 }

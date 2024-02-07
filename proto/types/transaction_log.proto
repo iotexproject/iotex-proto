@@ -56,3 +56,12 @@ message TransactionStructLog {
   string opName = 11;
   string error = 12;
 }
+
+message TraceConfig {
+  bool enableMemory = 1;
+  bool disableStack = 2;
+  bool enableReturnData = 3;
+  bool disableStorage = 4;
+  string tracer = 5;
+  string timeout = 6;
+}
