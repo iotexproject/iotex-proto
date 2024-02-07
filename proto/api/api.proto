@@ -23,6 +23,9 @@ service APIService {
   // get the address detail of an address
   rpc GetAccount(GetAccountRequest) returns (GetAccountResponse) {}
 
+  // get the address detail of multiple addresses
+  rpc GetAccounts(GetAccountsRequest) returns (GetAccountsResponse) {}
+
   // get action(s) by:
   // 1. start index and action count
   // 2. action hash
@@ -126,6 +129,14 @@ message GetAccountRequest {
 message GetAccountResponse {
   iotextypes.AccountMeta accountMeta = 1;
   iotextypes.BlockIdentifier blockIdentifier = 2;
+}
+
+message GetAccountsRequest {
+  repeated string address = 1;
+}
+
+message GetAccountsResponse {
+  repeated iotextypes.AccountMeta accountMeta = 1;
 }
 
 message GetActionsRequest {

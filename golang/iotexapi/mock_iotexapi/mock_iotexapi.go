@@ -81,6 +81,21 @@ func (mr *MockAPIServiceServerMockRecorder) GetAccount(arg0, arg1 interface{}) *
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAccount", reflect.TypeOf((*MockAPIServiceServer)(nil).GetAccount), arg0, arg1)
 }
 
+// GetAccounts mocks base method.
+func (m *MockAPIServiceServer) GetAccounts(arg0 context.Context, arg1 *iotexapi.GetAccountsRequest) (*iotexapi.GetAccountsResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetAccounts", arg0, arg1)
+	ret0, _ := ret[0].(*iotexapi.GetAccountsResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetAccounts indicates an expected call of GetAccounts.
+func (mr *MockAPIServiceServerMockRecorder) GetAccounts(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAccounts", reflect.TypeOf((*MockAPIServiceServer)(nil).GetAccounts), arg0, arg1)
+}
+
 // GetActPoolActions mocks base method.
 func (m *MockAPIServiceServer) GetActPoolActions(arg0 context.Context, arg1 *iotexapi.GetActPoolActionsRequest) (*iotexapi.GetActPoolActionsResponse, error) {
 	m.ctrl.T.Helper()
@@ -490,6 +505,26 @@ func (mr *MockAPIServiceClientMockRecorder) GetAccount(arg0, arg1 interface{}, a
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAccount", reflect.TypeOf((*MockAPIServiceClient)(nil).GetAccount), varargs...)
+}
+
+// GetAccounts mocks base method.
+func (m *MockAPIServiceClient) GetAccounts(arg0 context.Context, arg1 *iotexapi.GetAccountsRequest, arg2 ...grpc.CallOption) (*iotexapi.GetAccountsResponse, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "GetAccounts", varargs...)
+	ret0, _ := ret[0].(*iotexapi.GetAccountsResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetAccounts indicates an expected call of GetAccounts.
+func (mr *MockAPIServiceClientMockRecorder) GetAccounts(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetAccounts", reflect.TypeOf((*MockAPIServiceClient)(nil).GetAccounts), varargs...)
 }
 
 // GetActPoolActions mocks base method.
