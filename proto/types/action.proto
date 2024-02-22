@@ -41,7 +41,6 @@ message Execution {
   string contract = 2;
   bytes data = 3;
   repeated AccessTuple accessList = 4;
-  bool hasAccessList = 5;
 }
 
 message AccessTuple {
