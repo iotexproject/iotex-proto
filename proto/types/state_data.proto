@@ -39,6 +39,7 @@ message VoteBucket {
   uint64 createBlockHeight = 12;
   uint64 stakeStartBlockHeight = 13;
   uint64 unstakeStartBlockHeight = 14;
+  uint64 endorsementExpireBlockHeight = 15;
 }
 
 message VoteBucketList {
