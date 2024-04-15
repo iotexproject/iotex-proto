@@ -106,6 +106,12 @@ message CandidateRegister {
   bytes payload = 6;
 }
 
+message CandidateTransferOwnership {
+  string candidateName = 1;
+  string newOwnerAddress = 2;
+  bytes payload = 3;
+}
+
 message CandidateActivate {
   uint64 bucketIndex = 1;
 }
