@@ -107,9 +107,8 @@ message CandidateRegister {
 }
 
 message CandidateTransferOwnership {
-  string candidateName = 1;
-  string newOwnerAddress = 2;
-  bytes payload = 3;
+  string newOwnerAddress = 1;
+  bytes payload = 2;
 }
 
 message CandidateActivate {
