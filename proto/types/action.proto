@@ -107,8 +107,9 @@ message CandidateRegister {
 }
 
 message CandidateTransferOwnership {
-  string newOwnerAddress = 1;
-  bytes payload = 2;
+  string candidateName = 1;
+  string newOwnerAddress = 2;
+  bytes payload = 3;
 }
 
 message CandidateActivate {
@@ -267,6 +268,7 @@ message ActionCore {
     CandidateBasicInfo candidateUpdate = 48;
     CandidateActivate candidateActivate = 49;
     CandidateEndorsement candidateEndorsement = 51;
+    CandidateTransferOwnership candidateTransferOwnership = 52;
 
     PutPollResult putPollResult = 50;
   }
