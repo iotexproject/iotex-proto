@@ -228,6 +228,8 @@ message ActionCore {
   uint64 gasLimit = 3;
   string gasPrice = 4;
   uint32 chainID = 5;
+  string gasTipCap = 6;
+  string gasFeeCap = 7;
   oneof action {
     Transfer transfer = 10;
     Execution execution = 12;
@@ -280,6 +282,7 @@ enum Encoding {
   ETHEREUM_RLP = 1;
   ETHEREUM_UNPROTECTED = 2;
   ETHEREUM_ACCESSLIST = 3;
+  ETHEREUM_DYNAMICFEE = 4;
 }
 
 message Action {
