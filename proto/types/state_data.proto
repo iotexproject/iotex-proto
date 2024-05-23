@@ -54,6 +54,7 @@ message CandidateV2 {
   string totalWeightedVotes = 5;
   uint64 selfStakeBucketIdx = 6;
   string selfStakingTokens = 7;
+  string id = 8;
 }
 
 message CandidateListV2 {
