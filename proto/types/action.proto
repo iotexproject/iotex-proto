@@ -361,6 +361,9 @@ message DepositToRewardingFund {
 message ClaimFromRewardingFund {
   string amount = 1;
   bytes data = 2;
+  // address the claim of rewards for, if empty denoting the sender's address
+  // more information see iip27: https://iotex.larksuite.com/wiki/EtDewVEz6i5BeCkyj6vudtdHsCh
+  string address = 3;
 }
 
 enum RewardType {
