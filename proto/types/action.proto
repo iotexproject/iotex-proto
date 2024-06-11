@@ -61,6 +61,11 @@ message StakeCreate {
   bytes payload = 5;
 }
 
+// migrate stake
+message StakeMigrate {
+  uint64 bucketIndex = 1;
+}
+
 // unstake or withdraw
 message StakeReclaim {
   uint64 bucketIndex = 1;
