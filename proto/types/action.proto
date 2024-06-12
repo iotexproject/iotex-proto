@@ -280,6 +280,7 @@ message ActionCore {
     CandidateActivate candidateActivate = 49;
     CandidateEndorsement candidateEndorsement = 51;
     CandidateTransferOwnership candidateTransferOwnership = 52;
+    StakeMigrate stakeMigrate = 53;
 
     PutPollResult putPollResult = 50;
   }

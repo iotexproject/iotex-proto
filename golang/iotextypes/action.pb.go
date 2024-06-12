@@ -2382,6 +2382,7 @@ type ActionCore struct {
 	//	*ActionCore_CandidateActivate
 	//	*ActionCore_CandidateEndorsement
 	//	*ActionCore_CandidateTransferOwnership
+	//	*ActionCore_StakeMigrate
 	//	*ActionCore_PutPollResult
 	Action isActionCore_Action `protobuf_oneof:"action"`
 }
@@ -2705,6 +2706,13 @@ func (x *ActionCore) GetCandidateTransferOwnership() *CandidateTransferOwnership
 	return nil
 }
 
+func (x *ActionCore) GetStakeMigrate() *StakeMigrate {
+	if x, ok := x.GetAction().(*ActionCore_StakeMigrate); ok {
+		return x.StakeMigrate
+	}
+	return nil
+}
+
 func (x *ActionCore) GetPutPollResult() *PutPollResult {
 	if x, ok := x.GetAction().(*ActionCore_PutPollResult); ok {
 		return x.PutPollResult
@@ -2852,6 +2860,10 @@ type ActionCore_CandidateTransferOwnership struct {
 	CandidateTransferOwnership *CandidateTransferOwnership `protobuf:"bytes,52,opt,name=candidateTransferOwnership,proto3,oneof"`
 }
 
+type ActionCore_StakeMigrate struct {
+	StakeMigrate *StakeMigrate `protobuf:"bytes,53,opt,name=stakeMigrate,proto3,oneof"`
+}
+
 type ActionCore_PutPollResult struct {
 	PutPollResult *PutPollResult `protobuf:"bytes,50,opt,name=putPollResult,proto3,oneof"`
 }
@@ -2921,6 +2933,8 @@ func (*ActionCore_CandidateActivate) isActionCore_Action() {}
 func (*ActionCore_CandidateEndorsement) isActionCore_Action() {}
 
 func (*ActionCore_CandidateTransferOwnership) isActionCore_Action() {}
+
+func (*ActionCore_StakeMigrate) isActionCore_Action() {}
 
 func (*ActionCore_PutPollResult) isActionCore_Action() {}
 
@@ -3990,7 +4004,7 @@ var file_proto_types_action_proto_rawDesc = []byte{
 	0x0a, 0x05, 0x6f, 0x77, 0x6e, 0x65, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x6f,
 	0x77, 0x6e, 0x65, 0x72, 0x12, 0x1c, 0x0a, 0x09, 0x72, 0x65, 0x63, 0x69, 0x70, 0x69, 0x65, 0x6e,
 	0x74, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x72, 0x65, 0x63, 0x69, 0x70, 0x69, 0x65,
-	0x6e, 0x74, 0x22, 0x9d, 0x15, 0x0a, 0x0a, 0x41, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x72,
+	0x6e, 0x74, 0x22, 0xdd, 0x15, 0x0a, 0x0a, 0x41, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x6f, 0x72,
 	0x65, 0x12, 0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x0d, 0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x14, 0x0a, 0x05, 0x6e,
 	0x6f, 0x6e, 0x63, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x05, 0x6e, 0x6f, 0x6e, 0x63,
@@ -4155,7 +4169,11 @@ var file_proto_types_action_proto_rawDesc = []byte{
 	0x64, 0x69, 0x64, 0x61, 0x74, 0x65, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x4f, 0x77,
 	0x6e, 0x65, 0x72, 0x73, 0x68, 0x69, 0x70, 0x48, 0x00, 0x52, 0x1a, 0x63, 0x61, 0x6e, 0x64, 0x69,
 	0x64, 0x61, 0x74, 0x65, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x4f, 0x77, 0x6e, 0x65,
-	0x72, 0x73, 0x68, 0x69, 0x70, 0x12, 0x41, 0x0a, 0x0d, 0x70, 0x75, 0x74, 0x50, 0x6f, 0x6c, 0x6c,
+	0x72, 0x73, 0x68, 0x69, 0x70, 0x12, 0x3e, 0x0a, 0x0c, 0x73, 0x74, 0x61, 0x6b, 0x65, 0x4d, 0x69,
+	0x67, 0x72, 0x61, 0x74, 0x65, 0x18, 0x35, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x69, 0x6f,
+	0x74, 0x65, 0x78, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x53, 0x74, 0x61, 0x6b, 0x65, 0x4d, 0x69,
+	0x67, 0x72, 0x61, 0x74, 0x65, 0x48, 0x00, 0x52, 0x0c, 0x73, 0x74, 0x61, 0x6b, 0x65, 0x4d, 0x69,
+	0x67, 0x72, 0x61, 0x74, 0x65, 0x12, 0x41, 0x0a, 0x0d, 0x70, 0x75, 0x74, 0x50, 0x6f, 0x6c, 0x6c,
 	0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x32, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x19, 0x2e, 0x69,
 	0x6f, 0x74, 0x65, 0x78, 0x74, 0x79, 0x70, 0x65, 0x73, 0x2e, 0x50, 0x75, 0x74, 0x50, 0x6f, 0x6c,
 	0x6c, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x48, 0x00, 0x52, 0x0d, 0x70, 0x75, 0x74, 0x50, 0x6f,
@@ -4384,21 +4402,22 @@ var file_proto_types_action_proto_depIdxs = []int32{
 	19, // 36: iotextypes.ActionCore.candidateActivate:type_name -> iotextypes.CandidateActivate
 	20, // 37: iotextypes.ActionCore.candidateEndorsement:type_name -> iotextypes.CandidateEndorsement
 	18, // 38: iotextypes.ActionCore.candidateTransferOwnership:type_name -> iotextypes.CandidateTransferOwnership
-	5,  // 39: iotextypes.ActionCore.putPollResult:type_name -> iotextypes.PutPollResult
-	37, // 40: iotextypes.Action.core:type_name -> iotextypes.ActionCore
-	0,  // 41: iotextypes.Action.encoding:type_name -> iotextypes.Encoding
-	38, // 42: iotextypes.Actions.actions:type_name -> iotextypes.Action
-	41, // 43: iotextypes.Receipt.logs:type_name -> iotextypes.Log
-	41, // 44: iotextypes.Logs.logs:type_name -> iotextypes.Log
-	43, // 45: iotextypes.EvmTransferList.evmTransfers:type_name -> iotextypes.EvmTransfer
-	43, // 46: iotextypes.ActionEvmTransfer.evmTransfers:type_name -> iotextypes.EvmTransfer
-	45, // 47: iotextypes.BlockEvmTransfer.actionEvmTransfers:type_name -> iotextypes.ActionEvmTransfer
-	1,  // 48: iotextypes.GrantReward.type:type_name -> iotextypes.RewardType
-	49, // [49:49] is the sub-list for method output_type
-	49, // [49:49] is the sub-list for method input_type
-	49, // [49:49] is the sub-list for extension type_name
-	49, // [49:49] is the sub-list for extension extendee
-	0,  // [0:49] is the sub-list for field type_name
+	10, // 39: iotextypes.ActionCore.stakeMigrate:type_name -> iotextypes.StakeMigrate
+	5,  // 40: iotextypes.ActionCore.putPollResult:type_name -> iotextypes.PutPollResult
+	37, // 41: iotextypes.Action.core:type_name -> iotextypes.ActionCore
+	0,  // 42: iotextypes.Action.encoding:type_name -> iotextypes.Encoding
+	38, // 43: iotextypes.Actions.actions:type_name -> iotextypes.Action
+	41, // 44: iotextypes.Receipt.logs:type_name -> iotextypes.Log
+	41, // 45: iotextypes.Logs.logs:type_name -> iotextypes.Log
+	43, // 46: iotextypes.EvmTransferList.evmTransfers:type_name -> iotextypes.EvmTransfer
+	43, // 47: iotextypes.ActionEvmTransfer.evmTransfers:type_name -> iotextypes.EvmTransfer
+	45, // 48: iotextypes.BlockEvmTransfer.actionEvmTransfers:type_name -> iotextypes.ActionEvmTransfer
+	1,  // 49: iotextypes.GrantReward.type:type_name -> iotextypes.RewardType
+	50, // [50:50] is the sub-list for method output_type
+	50, // [50:50] is the sub-list for method input_type
+	50, // [50:50] is the sub-list for extension type_name
+	50, // [50:50] is the sub-list for extension extendee
+	0,  // [0:50] is the sub-list for field type_name
 }
 
 func init() { file_proto_types_action_proto_init() }
@@ -5018,6 +5037,7 @@ func file_proto_types_action_proto_init() {
 		(*ActionCore_CandidateActivate)(nil),
 		(*ActionCore_CandidateEndorsement)(nil),
 		(*ActionCore_CandidateTransferOwnership)(nil),
+		(*ActionCore_StakeMigrate)(nil),
 		(*ActionCore_PutPollResult)(nil),
 	}
 	type x struct{}
