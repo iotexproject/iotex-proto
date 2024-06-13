@@ -36,6 +36,10 @@ message PutPollResult {
   CandidateList candidates = 2;
 }
 
+message TxContainer {
+  bytes raw = 1;
+}
+
 message Execution {
   string amount = 1;
   string contract = 2;
@@ -232,6 +236,7 @@ message ActionCore {
   string gasFeeCap = 7;
   oneof action {
     Transfer transfer = 10;
+    TxContainer txContainer = 11;
     Execution execution = 12;
     // FedChain
     StartSubChain startSubChain = 13;
@@ -283,6 +288,7 @@ enum Encoding {
   ETHEREUM_UNPROTECTED = 2;
   ETHEREUM_ACCESSLIST = 3;
   ETHEREUM_DYNAMICFEE = 4;
+  TX_CONTAINER = 128;
 }
 
 message Action {
