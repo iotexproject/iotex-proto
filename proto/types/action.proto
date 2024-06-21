@@ -126,8 +126,8 @@ message CandidateActivate {
 
 message CandidateEndorsement {
   uint64 bucketIndex = 1;
-  bool endorse = 2;
-  uint32 opt = 3;
+  bool endorse = 2; // deprecated
+  uint32 op = 3;
 }
 
 message StartSubChain {
