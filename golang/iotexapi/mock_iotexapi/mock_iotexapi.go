@@ -394,6 +394,36 @@ func (mr *MockAPIServiceServerMockRecorder) SuggestGasPrice(arg0, arg1 interface
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SuggestGasPrice", reflect.TypeOf((*MockAPIServiceServer)(nil).SuggestGasPrice), arg0, arg1)
 }
 
+// TraceBlockByHash mocks base method.
+func (m *MockAPIServiceServer) TraceBlockByHash(arg0 context.Context, arg1 *iotexapi.TraceBlockByHashRequest) (*iotexapi.TraceBlockByHashResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "TraceBlockByHash", arg0, arg1)
+	ret0, _ := ret[0].(*iotexapi.TraceBlockByHashResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// TraceBlockByHash indicates an expected call of TraceBlockByHash.
+func (mr *MockAPIServiceServerMockRecorder) TraceBlockByHash(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TraceBlockByHash", reflect.TypeOf((*MockAPIServiceServer)(nil).TraceBlockByHash), arg0, arg1)
+}
+
+// TraceBlockByNumber mocks base method.
+func (m *MockAPIServiceServer) TraceBlockByNumber(arg0 context.Context, arg1 *iotexapi.TraceBlockByNumberRequest) (*iotexapi.TraceBlockByNumberResponse, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "TraceBlockByNumber", arg0, arg1)
+	ret0, _ := ret[0].(*iotexapi.TraceBlockByNumberResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// TraceBlockByNumber indicates an expected call of TraceBlockByNumber.
+func (mr *MockAPIServiceServerMockRecorder) TraceBlockByNumber(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TraceBlockByNumber", reflect.TypeOf((*MockAPIServiceServer)(nil).TraceBlockByNumber), arg0, arg1)
+}
+
 // TraceTransactionStructLogs mocks base method.
 func (m *MockAPIServiceServer) TraceTransactionStructLogs(arg0 context.Context, arg1 *iotexapi.TraceTransactionStructLogsRequest) (*iotexapi.TraceTransactionStructLogsResponse, error) {
 	m.ctrl.T.Helper()
@@ -910,6 +940,46 @@ func (mr *MockAPIServiceClientMockRecorder) SuggestGasPrice(arg0, arg1 interface
 	mr.mock.ctrl.T.Helper()
 	varargs := append([]interface{}{arg0, arg1}, arg2...)
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "SuggestGasPrice", reflect.TypeOf((*MockAPIServiceClient)(nil).SuggestGasPrice), varargs...)
+}
+
+// TraceBlockByHash mocks base method.
+func (m *MockAPIServiceClient) TraceBlockByHash(arg0 context.Context, arg1 *iotexapi.TraceBlockByHashRequest, arg2 ...grpc.CallOption) (*iotexapi.TraceBlockByHashResponse, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "TraceBlockByHash", varargs...)
+	ret0, _ := ret[0].(*iotexapi.TraceBlockByHashResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// TraceBlockByHash indicates an expected call of TraceBlockByHash.
+func (mr *MockAPIServiceClientMockRecorder) TraceBlockByHash(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TraceBlockByHash", reflect.TypeOf((*MockAPIServiceClient)(nil).TraceBlockByHash), varargs...)
+}
+
+// TraceBlockByNumber mocks base method.
+func (m *MockAPIServiceClient) TraceBlockByNumber(arg0 context.Context, arg1 *iotexapi.TraceBlockByNumberRequest, arg2 ...grpc.CallOption) (*iotexapi.TraceBlockByNumberResponse, error) {
+	m.ctrl.T.Helper()
+	varargs := []interface{}{arg0, arg1}
+	for _, a := range arg2 {
+		varargs = append(varargs, a)
+	}
+	ret := m.ctrl.Call(m, "TraceBlockByNumber", varargs...)
+	ret0, _ := ret[0].(*iotexapi.TraceBlockByNumberResponse)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// TraceBlockByNumber indicates an expected call of TraceBlockByNumber.
+func (mr *MockAPIServiceClientMockRecorder) TraceBlockByNumber(arg0, arg1 interface{}, arg2 ...interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	varargs := append([]interface{}{arg0, arg1}, arg2...)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "TraceBlockByNumber", reflect.TypeOf((*MockAPIServiceClient)(nil).TraceBlockByNumber), varargs...)
 }
 
 // TraceTransactionStructLogs mocks base method.
