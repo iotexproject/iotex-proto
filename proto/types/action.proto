@@ -61,6 +61,11 @@ message StakeCreate {
   bytes payload = 5;
 }
 
+// migrate stake
+message StakeMigrate {
+  uint64 bucketIndex = 1;
+}
+
 // unstake or withdraw
 message StakeReclaim {
   uint64 bucketIndex = 1;
@@ -121,7 +126,8 @@ message CandidateActivate {
 
 message CandidateEndorsement {
   uint64 bucketIndex = 1;
-  bool endorse = 2;
+  bool endorse = 2; // deprecated
+  uint32 op = 3;
 }
 
 message StartSubChain {
@@ -275,6 +281,7 @@ message ActionCore {
     CandidateActivate candidateActivate = 49;
     CandidateEndorsement candidateEndorsement = 51;
     CandidateTransferOwnership candidateTransferOwnership = 52;
+    StakeMigrate stakeMigrate = 53;
 
     PutPollResult putPollResult = 50;
   }
