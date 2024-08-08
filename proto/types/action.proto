@@ -52,6 +52,18 @@ message AccessTuple {
   repeated string storageKeys = 2;
 }
 
+message BlobTxSidecar {
+  repeated bytes blobs = 1;       // Blobs needed by the blob pool
+  repeated bytes commitments = 2; // Commitments needed by the blob pool
+  repeated bytes proofs = 3;      // Proofs needed by the blob pool
+}
+
+message BlobTxData {
+  string blobFeeCap = 1;
+  repeated bytes blobHashes = 2;
+  BlobTxSidecar blobTxSidecar = 3;
+}
+
 // create stake
 message StakeCreate {
   string candidateName = 1;
@@ -240,6 +252,7 @@ message ActionCore {
   uint32 chainID = 5;
   string gasTipCap = 6;
   string gasFeeCap = 7;
+  BlobTxData blobTxData = 8;
   oneof action {
     Transfer transfer = 10;
     TxContainer txContainer = 11;
@@ -295,6 +308,7 @@ enum Encoding {
   ETHEREUM_UNPROTECTED = 2;
   ETHEREUM_ACCESSLIST = 3;
   ETHEREUM_DYNAMICFEE = 4;
+  ETHEREUM_BLOB = 5;
   TX_CONTAINER = 128;
 }
 
