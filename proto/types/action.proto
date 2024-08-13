@@ -324,6 +324,10 @@ message Actions {
   repeated Action actions = 1;
 }
 
+message ActionHash {
+  bytes hash = 1;
+}
+
 message Receipt {
   uint64 status = 1;
   uint64 blkHeight = 2;
