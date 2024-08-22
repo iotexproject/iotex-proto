@@ -64,6 +64,10 @@ message BlobTxData {
   BlobTxSidecar blobTxSidecar = 3;
 }
 
+message BlobTxSidecars {
+  repeated BlobTxSidecar blobTxSidecars = 1;
+}
+
 // create stake
 message StakeCreate {
   string candidateName = 1;
