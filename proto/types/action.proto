@@ -44,7 +44,6 @@ message Execution {
   string amount = 1;
   string contract = 2;
   bytes data = 3;
-  repeated AccessTuple accessList = 4;
 }
 
 message AccessTuple {
@@ -257,6 +256,7 @@ message ActionCore {
   string gasTipCap = 6;
   string gasFeeCap = 7;
   BlobTxData blobTxData = 8;
+  repeated AccessTuple accessList = 9;
   oneof action {
     Transfer transfer = 10;
     TxContainer txContainer = 11;
