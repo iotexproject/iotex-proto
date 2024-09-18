@@ -343,6 +343,7 @@ message Receipt {
   uint32 txIndex = 8;
   uint64 blobGasUsed = 9;
   string blobGasPrice = 10;
+  string effectiveGasPrice = 11;
 }
 
 message Log {
