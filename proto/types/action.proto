@@ -64,7 +64,8 @@ message BlobTxData {
 }
 
 message BlobTxSidecars {
-  repeated BlobTxSidecar blobTxSidecars = 1;
+  repeated bytes txHash = 1;
+  repeated BlobTxSidecar sidecars = 2;
 }
 
 // create stake
