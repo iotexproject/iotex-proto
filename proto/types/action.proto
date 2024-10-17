@@ -258,6 +258,7 @@ message ActionCore {
   string gasFeeCap = 7;
   BlobTxData blobTxData = 8;
   repeated AccessTuple accessList = 9;
+  uint32 txType = 28;
   oneof action {
     Transfer transfer = 10;
     TxContainer txContainer = 11;
