@@ -353,7 +353,7 @@ message GetLogsByRange {
 }
 
 message Topics {
-    repeated bytes topic = 1;
+  repeated bytes topic = 1;
 }
 
 message LogsFilter {
@@ -463,3 +463,23 @@ message TraceTransactionStructLogsRequest {
 message TraceTransactionStructLogsResponse {
   repeated iotextypes.TransactionStructLog  structLogs = 1;
 }
+
+import "proto/types/bundle.proto";
+
+service BundleAPIService {
+  // SendBundle sends a bundle of actions to the blockchain.
+  rpc SendBundle(SendBundleRequest) returns (SendBundleResponse) {}
+}
+
+message SendBundleRequest {
+  iotextypes.Bundle bundle = 1;
+  string uuid = 2;
+  google.protobuf.Timestamp minTimestamp = 3;
+  google.protobuf.Timestamp maxTimestamp = 4;
+}
+
+message SendBundleResponse {
+  string bundleHash = 1;
+  string uuid = 2;
+}
+
