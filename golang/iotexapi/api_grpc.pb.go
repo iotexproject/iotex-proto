@@ -1243,3 +1243,105 @@ var TransactionLogService_ServiceDesc = grpc.ServiceDesc{
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "proto/api/api.proto",
 }
+
+const (
+	BundleAPIService_SendBundle_FullMethodName = "/iotexapi.BundleAPIService/SendBundle"
+)
+
+// BundleAPIServiceClient is the client API for BundleAPIService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type BundleAPIServiceClient interface {
+	// SendBundle sends a bundle of actions to the blockchain.
+	SendBundle(ctx context.Context, in *SendBundleRequest, opts ...grpc.CallOption) (*SendBundleResponse, error)
+}
+
+type bundleAPIServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewBundleAPIServiceClient(cc grpc.ClientConnInterface) BundleAPIServiceClient {
+	return &bundleAPIServiceClient{cc}
+}
+
+func (c *bundleAPIServiceClient) SendBundle(ctx context.Context, in *SendBundleRequest, opts ...grpc.CallOption) (*SendBundleResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SendBundleResponse)
+	err := c.cc.Invoke(ctx, BundleAPIService_SendBundle_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// BundleAPIServiceServer is the server API for BundleAPIService service.
+// All implementations should embed UnimplementedBundleAPIServiceServer
+// for forward compatibility.
+type BundleAPIServiceServer interface {
+	// SendBundle sends a bundle of actions to the blockchain.
+	SendBundle(context.Context, *SendBundleRequest) (*SendBundleResponse, error)
+}
+
+// UnimplementedBundleAPIServiceServer should be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedBundleAPIServiceServer struct{}
+
+func (UnimplementedBundleAPIServiceServer) SendBundle(context.Context, *SendBundleRequest) (*SendBundleResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendBundle not implemented")
+}
+func (UnimplementedBundleAPIServiceServer) testEmbeddedByValue() {}
+
+// UnsafeBundleAPIServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to BundleAPIServiceServer will
+// result in compilation errors.
+type UnsafeBundleAPIServiceServer interface {
+	mustEmbedUnimplementedBundleAPIServiceServer()
+}
+
+func RegisterBundleAPIServiceServer(s grpc.ServiceRegistrar, srv BundleAPIServiceServer) {
+	// If the following call pancis, it indicates UnimplementedBundleAPIServiceServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&BundleAPIService_ServiceDesc, srv)
+}
+
+func _BundleAPIService_SendBundle_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendBundleRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BundleAPIServiceServer).SendBundle(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BundleAPIService_SendBundle_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BundleAPIServiceServer).SendBundle(ctx, req.(*SendBundleRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// BundleAPIService_ServiceDesc is the grpc.ServiceDesc for BundleAPIService service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var BundleAPIService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "iotexapi.BundleAPIService",
+	HandlerType: (*BundleAPIServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "SendBundle",
+			Handler:    _BundleAPIService_SendBundle_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/api/api.proto",
+}
