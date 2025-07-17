@@ -286,6 +286,7 @@ message ActionCore {
     DepositToRewardingFund depositToRewardingFund = 30;
     ClaimFromRewardingFund claimFromRewardingFund = 31;
     GrantReward grantReward = 32;
+    Slash slash = 33; 
 
     // Native staking
     StakeCreate stakeCreate = 40;
@@ -411,4 +412,8 @@ enum RewardType {
 message GrantReward {
   RewardType type = 1;
   uint64 height = 2;
+}
+
+message Slash {
+  uint64 height = 1;
 }
