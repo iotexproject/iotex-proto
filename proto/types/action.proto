@@ -121,7 +121,7 @@ message CandidateBasicInfo {
   string name = 1;
   string operatorAddress = 2;
   string rewardAddress = 3;
-  bytes pubKey = 4;
+  bytes blsPubKey = 4;
 }
 
 message CandidateRegister {
