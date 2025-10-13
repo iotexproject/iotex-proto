@@ -55,6 +55,7 @@ message CandidateV2 {
   uint64 selfStakeBucketIdx = 6;
   string selfStakingTokens = 7;
   string id = 8;
+  bytes blsPubKey = 9;
 }
 
 message CandidateListV2 {

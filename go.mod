@@ -1,6 +1,8 @@
 module github.com/iotexproject/iotex-proto
 
-go 1.21
+go 1.23
+
+toolchain go1.23.7
 
 require (
 	github.com/golang/mock v1.6.0
@@ -11,6 +13,7 @@ require (
 require golang.org/x/net v0.25.0 // indirect
 
 require (
+	go.uber.org/mock v0.5.2 // indirect
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
 	google.golang.org/genproto v0.0.0-20230127162408-596548ed4efa // indirect
