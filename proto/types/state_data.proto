@@ -19,6 +19,7 @@ message ProbationCandidateList {
   message Info {
     string address = 1;
     uint32 count = 2;
+    string identity = 3;
   }
   repeated Info probationList = 1;
   uint32 intensityRate = 2;

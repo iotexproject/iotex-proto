@@ -26,6 +26,7 @@ message Candidate {
   bytes pubKey = 3;
   string rewardAddress = 4;
   bytes blsPubKey = 5; // BLS public key for the candidate
+  string identity = 6;
 }
 
 message CandidateList {
