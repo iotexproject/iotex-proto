@@ -1459,6 +1459,50 @@ func (x *CandidateActivate) GetBucketIndex() uint64 {
 	return 0
 }
 
+type CandidateDeactivate struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Op            uint32                 `protobuf:"varint,1,opt,name=op,proto3" json:"op,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CandidateDeactivate) Reset() {
+	*x = CandidateDeactivate{}
+	mi := &file_proto_types_action_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CandidateDeactivate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CandidateDeactivate) ProtoMessage() {}
+
+func (x *CandidateDeactivate) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_types_action_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CandidateDeactivate.ProtoReflect.Descriptor instead.
+func (*CandidateDeactivate) Descriptor() ([]byte, []int) {
+	return file_proto_types_action_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *CandidateDeactivate) GetOp() uint32 {
+	if x != nil {
+		return x.Op
+	}
+	return 0
+}
+
 type CandidateEndorsement struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	BucketIndex   uint64                 `protobuf:"varint,1,opt,name=bucketIndex,proto3" json:"bucketIndex,omitempty"`
@@ -1470,7 +1514,7 @@ type CandidateEndorsement struct {
 
 func (x *CandidateEndorsement) Reset() {
 	*x = CandidateEndorsement{}
-	mi := &file_proto_types_action_proto_msgTypes[22]
+	mi := &file_proto_types_action_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1482,7 +1526,7 @@ func (x *CandidateEndorsement) String() string {
 func (*CandidateEndorsement) ProtoMessage() {}
 
 func (x *CandidateEndorsement) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[22]
+	mi := &file_proto_types_action_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1495,7 +1539,7 @@ func (x *CandidateEndorsement) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CandidateEndorsement.ProtoReflect.Descriptor instead.
 func (*CandidateEndorsement) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{22}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *CandidateEndorsement) GetBucketIndex() uint64 {
@@ -1519,6 +1563,50 @@ func (x *CandidateEndorsement) GetOp() uint32 {
 	return 0
 }
 
+type ScheduleCandidateDeactivation struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Delegate      string                 `protobuf:"bytes,1,opt,name=delegate,proto3" json:"delegate,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ScheduleCandidateDeactivation) Reset() {
+	*x = ScheduleCandidateDeactivation{}
+	mi := &file_proto_types_action_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ScheduleCandidateDeactivation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ScheduleCandidateDeactivation) ProtoMessage() {}
+
+func (x *ScheduleCandidateDeactivation) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_types_action_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ScheduleCandidateDeactivation.ProtoReflect.Descriptor instead.
+func (*ScheduleCandidateDeactivation) Descriptor() ([]byte, []int) {
+	return file_proto_types_action_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *ScheduleCandidateDeactivation) GetDelegate() string {
+	if x != nil {
+		return x.Delegate
+	}
+	return ""
+}
+
 type StartSubChain struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// TODO: chainID chould be assigned by system and returned via a receipt
@@ -1533,7 +1621,7 @@ type StartSubChain struct {
 
 func (x *StartSubChain) Reset() {
 	*x = StartSubChain{}
-	mi := &file_proto_types_action_proto_msgTypes[23]
+	mi := &file_proto_types_action_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1545,7 +1633,7 @@ func (x *StartSubChain) String() string {
 func (*StartSubChain) ProtoMessage() {}
 
 func (x *StartSubChain) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[23]
+	mi := &file_proto_types_action_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1558,7 +1646,7 @@ func (x *StartSubChain) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StartSubChain.ProtoReflect.Descriptor instead.
 func (*StartSubChain) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{23}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *StartSubChain) GetChainID() uint32 {
@@ -1607,7 +1695,7 @@ type StopSubChain struct {
 
 func (x *StopSubChain) Reset() {
 	*x = StopSubChain{}
-	mi := &file_proto_types_action_proto_msgTypes[24]
+	mi := &file_proto_types_action_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1619,7 +1707,7 @@ func (x *StopSubChain) String() string {
 func (*StopSubChain) ProtoMessage() {}
 
 func (x *StopSubChain) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[24]
+	mi := &file_proto_types_action_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1632,7 +1720,7 @@ func (x *StopSubChain) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StopSubChain.ProtoReflect.Descriptor instead.
 func (*StopSubChain) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{24}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *StopSubChain) GetChainID() uint32 {
@@ -1666,7 +1754,7 @@ type MerkleRoot struct {
 
 func (x *MerkleRoot) Reset() {
 	*x = MerkleRoot{}
-	mi := &file_proto_types_action_proto_msgTypes[25]
+	mi := &file_proto_types_action_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1678,7 +1766,7 @@ func (x *MerkleRoot) String() string {
 func (*MerkleRoot) ProtoMessage() {}
 
 func (x *MerkleRoot) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[25]
+	mi := &file_proto_types_action_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1691,7 +1779,7 @@ func (x *MerkleRoot) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MerkleRoot.ProtoReflect.Descriptor instead.
 func (*MerkleRoot) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{25}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *MerkleRoot) GetName() string {
@@ -1719,7 +1807,7 @@ type PutBlock struct {
 
 func (x *PutBlock) Reset() {
 	*x = PutBlock{}
-	mi := &file_proto_types_action_proto_msgTypes[26]
+	mi := &file_proto_types_action_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1731,7 +1819,7 @@ func (x *PutBlock) String() string {
 func (*PutBlock) ProtoMessage() {}
 
 func (x *PutBlock) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[26]
+	mi := &file_proto_types_action_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1744,7 +1832,7 @@ func (x *PutBlock) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PutBlock.ProtoReflect.Descriptor instead.
 func (*PutBlock) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{26}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *PutBlock) GetSubChainAddress() string {
@@ -1779,7 +1867,7 @@ type CreateDeposit struct {
 
 func (x *CreateDeposit) Reset() {
 	*x = CreateDeposit{}
-	mi := &file_proto_types_action_proto_msgTypes[27]
+	mi := &file_proto_types_action_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1791,7 +1879,7 @@ func (x *CreateDeposit) String() string {
 func (*CreateDeposit) ProtoMessage() {}
 
 func (x *CreateDeposit) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[27]
+	mi := &file_proto_types_action_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1804,7 +1892,7 @@ func (x *CreateDeposit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateDeposit.ProtoReflect.Descriptor instead.
 func (*CreateDeposit) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{27}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *CreateDeposit) GetChainID() uint32 {
@@ -1839,7 +1927,7 @@ type SettleDeposit struct {
 
 func (x *SettleDeposit) Reset() {
 	*x = SettleDeposit{}
-	mi := &file_proto_types_action_proto_msgTypes[28]
+	mi := &file_proto_types_action_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1851,7 +1939,7 @@ func (x *SettleDeposit) String() string {
 func (*SettleDeposit) ProtoMessage() {}
 
 func (x *SettleDeposit) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[28]
+	mi := &file_proto_types_action_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1864,7 +1952,7 @@ func (x *SettleDeposit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SettleDeposit.ProtoReflect.Descriptor instead.
 func (*SettleDeposit) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{28}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *SettleDeposit) GetAmount() string {
@@ -1897,7 +1985,7 @@ type CreatePlumChain struct {
 
 func (x *CreatePlumChain) Reset() {
 	*x = CreatePlumChain{}
-	mi := &file_proto_types_action_proto_msgTypes[29]
+	mi := &file_proto_types_action_proto_msgTypes[31]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1909,7 +1997,7 @@ func (x *CreatePlumChain) String() string {
 func (*CreatePlumChain) ProtoMessage() {}
 
 func (x *CreatePlumChain) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[29]
+	mi := &file_proto_types_action_proto_msgTypes[31]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1922,7 +2010,7 @@ func (x *CreatePlumChain) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreatePlumChain.ProtoReflect.Descriptor instead.
 func (*CreatePlumChain) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{29}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{31}
 }
 
 type TerminatePlumChain struct {
@@ -1934,7 +2022,7 @@ type TerminatePlumChain struct {
 
 func (x *TerminatePlumChain) Reset() {
 	*x = TerminatePlumChain{}
-	mi := &file_proto_types_action_proto_msgTypes[30]
+	mi := &file_proto_types_action_proto_msgTypes[32]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1946,7 +2034,7 @@ func (x *TerminatePlumChain) String() string {
 func (*TerminatePlumChain) ProtoMessage() {}
 
 func (x *TerminatePlumChain) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[30]
+	mi := &file_proto_types_action_proto_msgTypes[32]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1959,7 +2047,7 @@ func (x *TerminatePlumChain) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TerminatePlumChain.ProtoReflect.Descriptor instead.
 func (*TerminatePlumChain) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{30}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *TerminatePlumChain) GetSubChainAddress() string {
@@ -1980,7 +2068,7 @@ type PlumPutBlock struct {
 
 func (x *PlumPutBlock) Reset() {
 	*x = PlumPutBlock{}
-	mi := &file_proto_types_action_proto_msgTypes[31]
+	mi := &file_proto_types_action_proto_msgTypes[33]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1992,7 +2080,7 @@ func (x *PlumPutBlock) String() string {
 func (*PlumPutBlock) ProtoMessage() {}
 
 func (x *PlumPutBlock) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[31]
+	mi := &file_proto_types_action_proto_msgTypes[33]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2005,7 +2093,7 @@ func (x *PlumPutBlock) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlumPutBlock.ProtoReflect.Descriptor instead.
 func (*PlumPutBlock) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{31}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *PlumPutBlock) GetSubChainAddress() string {
@@ -2040,7 +2128,7 @@ type PlumCreateDeposit struct {
 
 func (x *PlumCreateDeposit) Reset() {
 	*x = PlumCreateDeposit{}
-	mi := &file_proto_types_action_proto_msgTypes[32]
+	mi := &file_proto_types_action_proto_msgTypes[34]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2052,7 +2140,7 @@ func (x *PlumCreateDeposit) String() string {
 func (*PlumCreateDeposit) ProtoMessage() {}
 
 func (x *PlumCreateDeposit) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[32]
+	mi := &file_proto_types_action_proto_msgTypes[34]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2065,7 +2153,7 @@ func (x *PlumCreateDeposit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlumCreateDeposit.ProtoReflect.Descriptor instead.
 func (*PlumCreateDeposit) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{32}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{34}
 }
 
 func (x *PlumCreateDeposit) GetSubChainAddress() string {
@@ -2104,7 +2192,7 @@ type PlumStartExit struct {
 
 func (x *PlumStartExit) Reset() {
 	*x = PlumStartExit{}
-	mi := &file_proto_types_action_proto_msgTypes[33]
+	mi := &file_proto_types_action_proto_msgTypes[35]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2116,7 +2204,7 @@ func (x *PlumStartExit) String() string {
 func (*PlumStartExit) ProtoMessage() {}
 
 func (x *PlumStartExit) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[33]
+	mi := &file_proto_types_action_proto_msgTypes[35]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2129,7 +2217,7 @@ func (x *PlumStartExit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlumStartExit.ProtoReflect.Descriptor instead.
 func (*PlumStartExit) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{33}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{35}
 }
 
 func (x *PlumStartExit) GetSubChainAddress() string {
@@ -2194,7 +2282,7 @@ type PlumChallengeExit struct {
 
 func (x *PlumChallengeExit) Reset() {
 	*x = PlumChallengeExit{}
-	mi := &file_proto_types_action_proto_msgTypes[34]
+	mi := &file_proto_types_action_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2206,7 +2294,7 @@ func (x *PlumChallengeExit) String() string {
 func (*PlumChallengeExit) ProtoMessage() {}
 
 func (x *PlumChallengeExit) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[34]
+	mi := &file_proto_types_action_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2219,7 +2307,7 @@ func (x *PlumChallengeExit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlumChallengeExit.ProtoReflect.Descriptor instead.
 func (*PlumChallengeExit) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{34}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{36}
 }
 
 func (x *PlumChallengeExit) GetSubChainAddress() string {
@@ -2271,7 +2359,7 @@ type PlumResponseChallengeExit struct {
 
 func (x *PlumResponseChallengeExit) Reset() {
 	*x = PlumResponseChallengeExit{}
-	mi := &file_proto_types_action_proto_msgTypes[35]
+	mi := &file_proto_types_action_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2283,7 +2371,7 @@ func (x *PlumResponseChallengeExit) String() string {
 func (*PlumResponseChallengeExit) ProtoMessage() {}
 
 func (x *PlumResponseChallengeExit) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[35]
+	mi := &file_proto_types_action_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2296,7 +2384,7 @@ func (x *PlumResponseChallengeExit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlumResponseChallengeExit.ProtoReflect.Descriptor instead.
 func (*PlumResponseChallengeExit) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{35}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{37}
 }
 
 func (x *PlumResponseChallengeExit) GetSubChainAddress() string {
@@ -2351,7 +2439,7 @@ type PlumFinalizeExit struct {
 
 func (x *PlumFinalizeExit) Reset() {
 	*x = PlumFinalizeExit{}
-	mi := &file_proto_types_action_proto_msgTypes[36]
+	mi := &file_proto_types_action_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2363,7 +2451,7 @@ func (x *PlumFinalizeExit) String() string {
 func (*PlumFinalizeExit) ProtoMessage() {}
 
 func (x *PlumFinalizeExit) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[36]
+	mi := &file_proto_types_action_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2376,7 +2464,7 @@ func (x *PlumFinalizeExit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlumFinalizeExit.ProtoReflect.Descriptor instead.
 func (*PlumFinalizeExit) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{36}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{38}
 }
 
 func (x *PlumFinalizeExit) GetSubChainAddress() string {
@@ -2403,7 +2491,7 @@ type PlumSettleDeposit struct {
 
 func (x *PlumSettleDeposit) Reset() {
 	*x = PlumSettleDeposit{}
-	mi := &file_proto_types_action_proto_msgTypes[37]
+	mi := &file_proto_types_action_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2415,7 +2503,7 @@ func (x *PlumSettleDeposit) String() string {
 func (*PlumSettleDeposit) ProtoMessage() {}
 
 func (x *PlumSettleDeposit) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[37]
+	mi := &file_proto_types_action_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2428,7 +2516,7 @@ func (x *PlumSettleDeposit) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlumSettleDeposit.ProtoReflect.Descriptor instead.
 func (*PlumSettleDeposit) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{37}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{39}
 }
 
 func (x *PlumSettleDeposit) GetCoinID() uint64 {
@@ -2450,7 +2538,7 @@ type PlumTransfer struct {
 
 func (x *PlumTransfer) Reset() {
 	*x = PlumTransfer{}
-	mi := &file_proto_types_action_proto_msgTypes[38]
+	mi := &file_proto_types_action_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2462,7 +2550,7 @@ func (x *PlumTransfer) String() string {
 func (*PlumTransfer) ProtoMessage() {}
 
 func (x *PlumTransfer) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[38]
+	mi := &file_proto_types_action_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2475,7 +2563,7 @@ func (x *PlumTransfer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlumTransfer.ProtoReflect.Descriptor instead.
 func (*PlumTransfer) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{38}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *PlumTransfer) GetCoinID() uint64 {
@@ -2555,6 +2643,8 @@ type ActionCore struct {
 	//	*ActionCore_CandidateEndorsement
 	//	*ActionCore_CandidateTransferOwnership
 	//	*ActionCore_StakeMigrate
+	//	*ActionCore_CandidateDeactivate
+	//	*ActionCore_ScheduleCandidateDeactivation
 	//	*ActionCore_PutPollResult
 	Action        isActionCore_Action `protobuf_oneof:"action"`
 	unknownFields protoimpl.UnknownFields
@@ -2563,7 +2653,7 @@ type ActionCore struct {
 
 func (x *ActionCore) Reset() {
 	*x = ActionCore{}
-	mi := &file_proto_types_action_proto_msgTypes[39]
+	mi := &file_proto_types_action_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2575,7 +2665,7 @@ func (x *ActionCore) String() string {
 func (*ActionCore) ProtoMessage() {}
 
 func (x *ActionCore) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[39]
+	mi := &file_proto_types_action_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2588,7 +2678,7 @@ func (x *ActionCore) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActionCore.ProtoReflect.Descriptor instead.
 func (*ActionCore) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{39}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *ActionCore) GetVersion() uint32 {
@@ -2981,6 +3071,24 @@ func (x *ActionCore) GetStakeMigrate() *StakeMigrate {
 	return nil
 }
 
+func (x *ActionCore) GetCandidateDeactivate() *CandidateDeactivate {
+	if x != nil {
+		if x, ok := x.Action.(*ActionCore_CandidateDeactivate); ok {
+			return x.CandidateDeactivate
+		}
+	}
+	return nil
+}
+
+func (x *ActionCore) GetScheduleCandidateDeactivation() *ScheduleCandidateDeactivation {
+	if x != nil {
+		if x, ok := x.Action.(*ActionCore_ScheduleCandidateDeactivation); ok {
+			return x.ScheduleCandidateDeactivation
+		}
+	}
+	return nil
+}
+
 func (x *ActionCore) GetPutPollResult() *PutPollResult {
 	if x != nil {
 		if x, ok := x.Action.(*ActionCore_PutPollResult); ok {
@@ -3134,6 +3242,14 @@ type ActionCore_StakeMigrate struct {
 	StakeMigrate *StakeMigrate `protobuf:"bytes,53,opt,name=stakeMigrate,proto3,oneof"`
 }
 
+type ActionCore_CandidateDeactivate struct {
+	CandidateDeactivate *CandidateDeactivate `protobuf:"bytes,54,opt,name=candidateDeactivate,proto3,oneof"`
+}
+
+type ActionCore_ScheduleCandidateDeactivation struct {
+	ScheduleCandidateDeactivation *ScheduleCandidateDeactivation `protobuf:"bytes,55,opt,name=scheduleCandidateDeactivation,proto3,oneof"`
+}
+
 type ActionCore_PutPollResult struct {
 	PutPollResult *PutPollResult `protobuf:"bytes,50,opt,name=putPollResult,proto3,oneof"`
 }
@@ -3206,6 +3322,10 @@ func (*ActionCore_CandidateTransferOwnership) isActionCore_Action() {}
 
 func (*ActionCore_StakeMigrate) isActionCore_Action() {}
 
+func (*ActionCore_CandidateDeactivate) isActionCore_Action() {}
+
+func (*ActionCore_ScheduleCandidateDeactivation) isActionCore_Action() {}
+
 func (*ActionCore_PutPollResult) isActionCore_Action() {}
 
 type Action struct {
@@ -3220,7 +3340,7 @@ type Action struct {
 
 func (x *Action) Reset() {
 	*x = Action{}
-	mi := &file_proto_types_action_proto_msgTypes[40]
+	mi := &file_proto_types_action_proto_msgTypes[42]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3232,7 +3352,7 @@ func (x *Action) String() string {
 func (*Action) ProtoMessage() {}
 
 func (x *Action) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[40]
+	mi := &file_proto_types_action_proto_msgTypes[42]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3245,7 +3365,7 @@ func (x *Action) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Action.ProtoReflect.Descriptor instead.
 func (*Action) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{40}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{42}
 }
 
 func (x *Action) GetCore() *ActionCore {
@@ -3286,7 +3406,7 @@ type Actions struct {
 
 func (x *Actions) Reset() {
 	*x = Actions{}
-	mi := &file_proto_types_action_proto_msgTypes[41]
+	mi := &file_proto_types_action_proto_msgTypes[43]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3298,7 +3418,7 @@ func (x *Actions) String() string {
 func (*Actions) ProtoMessage() {}
 
 func (x *Actions) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[41]
+	mi := &file_proto_types_action_proto_msgTypes[43]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3311,7 +3431,7 @@ func (x *Actions) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Actions.ProtoReflect.Descriptor instead.
 func (*Actions) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{41}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{43}
 }
 
 func (x *Actions) GetActions() []*Action {
@@ -3330,7 +3450,7 @@ type ActionHash struct {
 
 func (x *ActionHash) Reset() {
 	*x = ActionHash{}
-	mi := &file_proto_types_action_proto_msgTypes[42]
+	mi := &file_proto_types_action_proto_msgTypes[44]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3342,7 +3462,7 @@ func (x *ActionHash) String() string {
 func (*ActionHash) ProtoMessage() {}
 
 func (x *ActionHash) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[42]
+	mi := &file_proto_types_action_proto_msgTypes[44]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3355,7 +3475,7 @@ func (x *ActionHash) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActionHash.ProtoReflect.Descriptor instead.
 func (*ActionHash) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{42}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{44}
 }
 
 func (x *ActionHash) GetHash() []byte {
@@ -3384,7 +3504,7 @@ type Receipt struct {
 
 func (x *Receipt) Reset() {
 	*x = Receipt{}
-	mi := &file_proto_types_action_proto_msgTypes[43]
+	mi := &file_proto_types_action_proto_msgTypes[45]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3396,7 +3516,7 @@ func (x *Receipt) String() string {
 func (*Receipt) ProtoMessage() {}
 
 func (x *Receipt) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[43]
+	mi := &file_proto_types_action_proto_msgTypes[45]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3409,7 +3529,7 @@ func (x *Receipt) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Receipt.ProtoReflect.Descriptor instead.
 func (*Receipt) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{43}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{45}
 }
 
 func (x *Receipt) GetStatus() uint64 {
@@ -3505,7 +3625,7 @@ type Log struct {
 
 func (x *Log) Reset() {
 	*x = Log{}
-	mi := &file_proto_types_action_proto_msgTypes[44]
+	mi := &file_proto_types_action_proto_msgTypes[46]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3517,7 +3637,7 @@ func (x *Log) String() string {
 func (*Log) ProtoMessage() {}
 
 func (x *Log) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[44]
+	mi := &file_proto_types_action_proto_msgTypes[46]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3530,7 +3650,7 @@ func (x *Log) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Log.ProtoReflect.Descriptor instead.
 func (*Log) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{44}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{46}
 }
 
 func (x *Log) GetContractAddress() string {
@@ -3598,7 +3718,7 @@ type Logs struct {
 
 func (x *Logs) Reset() {
 	*x = Logs{}
-	mi := &file_proto_types_action_proto_msgTypes[45]
+	mi := &file_proto_types_action_proto_msgTypes[47]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3610,7 +3730,7 @@ func (x *Logs) String() string {
 func (*Logs) ProtoMessage() {}
 
 func (x *Logs) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[45]
+	mi := &file_proto_types_action_proto_msgTypes[47]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3623,7 +3743,7 @@ func (x *Logs) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Logs.ProtoReflect.Descriptor instead.
 func (*Logs) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{45}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{47}
 }
 
 func (x *Logs) GetLogs() []*Log {
@@ -3645,7 +3765,7 @@ type EvmTransfer struct {
 
 func (x *EvmTransfer) Reset() {
 	*x = EvmTransfer{}
-	mi := &file_proto_types_action_proto_msgTypes[46]
+	mi := &file_proto_types_action_proto_msgTypes[48]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3657,7 +3777,7 @@ func (x *EvmTransfer) String() string {
 func (*EvmTransfer) ProtoMessage() {}
 
 func (x *EvmTransfer) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[46]
+	mi := &file_proto_types_action_proto_msgTypes[48]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3670,7 +3790,7 @@ func (x *EvmTransfer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EvmTransfer.ProtoReflect.Descriptor instead.
 func (*EvmTransfer) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{46}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{48}
 }
 
 func (x *EvmTransfer) GetAmount() []byte {
@@ -3704,7 +3824,7 @@ type EvmTransferList struct {
 
 func (x *EvmTransferList) Reset() {
 	*x = EvmTransferList{}
-	mi := &file_proto_types_action_proto_msgTypes[47]
+	mi := &file_proto_types_action_proto_msgTypes[49]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3716,7 +3836,7 @@ func (x *EvmTransferList) String() string {
 func (*EvmTransferList) ProtoMessage() {}
 
 func (x *EvmTransferList) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[47]
+	mi := &file_proto_types_action_proto_msgTypes[49]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3729,7 +3849,7 @@ func (x *EvmTransferList) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use EvmTransferList.ProtoReflect.Descriptor instead.
 func (*EvmTransferList) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{47}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{49}
 }
 
 func (x *EvmTransferList) GetEvmTransfers() []*EvmTransfer {
@@ -3751,7 +3871,7 @@ type ActionEvmTransfer struct {
 
 func (x *ActionEvmTransfer) Reset() {
 	*x = ActionEvmTransfer{}
-	mi := &file_proto_types_action_proto_msgTypes[48]
+	mi := &file_proto_types_action_proto_msgTypes[50]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3763,7 +3883,7 @@ func (x *ActionEvmTransfer) String() string {
 func (*ActionEvmTransfer) ProtoMessage() {}
 
 func (x *ActionEvmTransfer) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[48]
+	mi := &file_proto_types_action_proto_msgTypes[50]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3776,7 +3896,7 @@ func (x *ActionEvmTransfer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ActionEvmTransfer.ProtoReflect.Descriptor instead.
 func (*ActionEvmTransfer) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{48}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{50}
 }
 
 func (x *ActionEvmTransfer) GetActionHash() []byte {
@@ -3812,7 +3932,7 @@ type BlockEvmTransfer struct {
 
 func (x *BlockEvmTransfer) Reset() {
 	*x = BlockEvmTransfer{}
-	mi := &file_proto_types_action_proto_msgTypes[49]
+	mi := &file_proto_types_action_proto_msgTypes[51]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3824,7 +3944,7 @@ func (x *BlockEvmTransfer) String() string {
 func (*BlockEvmTransfer) ProtoMessage() {}
 
 func (x *BlockEvmTransfer) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[49]
+	mi := &file_proto_types_action_proto_msgTypes[51]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3837,7 +3957,7 @@ func (x *BlockEvmTransfer) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BlockEvmTransfer.ProtoReflect.Descriptor instead.
 func (*BlockEvmTransfer) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{49}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{51}
 }
 
 func (x *BlockEvmTransfer) GetBlockHeight() uint64 {
@@ -3871,7 +3991,7 @@ type DepositToRewardingFund struct {
 
 func (x *DepositToRewardingFund) Reset() {
 	*x = DepositToRewardingFund{}
-	mi := &file_proto_types_action_proto_msgTypes[50]
+	mi := &file_proto_types_action_proto_msgTypes[52]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3883,7 +4003,7 @@ func (x *DepositToRewardingFund) String() string {
 func (*DepositToRewardingFund) ProtoMessage() {}
 
 func (x *DepositToRewardingFund) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[50]
+	mi := &file_proto_types_action_proto_msgTypes[52]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3896,7 +4016,7 @@ func (x *DepositToRewardingFund) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DepositToRewardingFund.ProtoReflect.Descriptor instead.
 func (*DepositToRewardingFund) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{50}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{52}
 }
 
 func (x *DepositToRewardingFund) GetAmount() string {
@@ -3926,7 +4046,7 @@ type ClaimFromRewardingFund struct {
 
 func (x *ClaimFromRewardingFund) Reset() {
 	*x = ClaimFromRewardingFund{}
-	mi := &file_proto_types_action_proto_msgTypes[51]
+	mi := &file_proto_types_action_proto_msgTypes[53]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3938,7 +4058,7 @@ func (x *ClaimFromRewardingFund) String() string {
 func (*ClaimFromRewardingFund) ProtoMessage() {}
 
 func (x *ClaimFromRewardingFund) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[51]
+	mi := &file_proto_types_action_proto_msgTypes[53]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -3951,7 +4071,7 @@ func (x *ClaimFromRewardingFund) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ClaimFromRewardingFund.ProtoReflect.Descriptor instead.
 func (*ClaimFromRewardingFund) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{51}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{53}
 }
 
 func (x *ClaimFromRewardingFund) GetAmount() string {
@@ -3985,7 +4105,7 @@ type GrantReward struct {
 
 func (x *GrantReward) Reset() {
 	*x = GrantReward{}
-	mi := &file_proto_types_action_proto_msgTypes[52]
+	mi := &file_proto_types_action_proto_msgTypes[54]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -3997,7 +4117,7 @@ func (x *GrantReward) String() string {
 func (*GrantReward) ProtoMessage() {}
 
 func (x *GrantReward) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_types_action_proto_msgTypes[52]
+	mi := &file_proto_types_action_proto_msgTypes[54]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -4010,7 +4130,7 @@ func (x *GrantReward) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantReward.ProtoReflect.Descriptor instead.
 func (*GrantReward) Descriptor() ([]byte, []int) {
-	return file_proto_types_action_proto_rawDescGZIP(), []int{52}
+	return file_proto_types_action_proto_rawDescGZIP(), []int{54}
 }
 
 func (x *GrantReward) GetType() RewardType {
@@ -4129,11 +4249,15 @@ const file_proto_types_action_proto_rawDesc = "" +
 	"\x0fnewOwnerAddress\x18\x01 \x01(\tR\x0fnewOwnerAddress\x12\x18\n" +
 	"\apayload\x18\x02 \x01(\fR\apayload\"5\n" +
 	"\x11CandidateActivate\x12 \n" +
-	"\vbucketIndex\x18\x01 \x01(\x04R\vbucketIndex\"b\n" +
+	"\vbucketIndex\x18\x01 \x01(\x04R\vbucketIndex\"%\n" +
+	"\x13CandidateDeactivate\x12\x0e\n" +
+	"\x02op\x18\x01 \x01(\rR\x02op\"b\n" +
 	"\x14CandidateEndorsement\x12 \n" +
 	"\vbucketIndex\x18\x01 \x01(\x04R\vbucketIndex\x12\x18\n" +
 	"\aendorse\x18\x02 \x01(\bR\aendorse\x12\x0e\n" +
-	"\x02op\x18\x03 \x01(\rR\x02op\"\xd1\x01\n" +
+	"\x02op\x18\x03 \x01(\rR\x02op\";\n" +
+	"\x1dScheduleCandidateDeactivation\x12\x1a\n" +
+	"\bdelegate\x18\x01 \x01(\tR\bdelegate\"\xd1\x01\n" +
 	"\rStartSubChain\x12\x18\n" +
 	"\achainID\x18\x01 \x01(\rR\achainID\x12(\n" +
 	"\x0fsecurityDeposit\x18\x02 \x01(\tR\x0fsecurityDeposit\x12*\n" +
@@ -4207,7 +4331,7 @@ const file_proto_types_action_proto_rawDesc = "" +
 	"\x06coinID\x18\x01 \x01(\x04R\x06coinID\x12\"\n" +
 	"\fdenomination\x18\x02 \x01(\fR\fdenomination\x12\x14\n" +
 	"\x05owner\x18\x03 \x01(\tR\x05owner\x12\x1c\n" +
-	"\trecipient\x18\x04 \x01(\tR\trecipient\"\xb2\x17\n" +
+	"\trecipient\x18\x04 \x01(\tR\trecipient\"\xfa\x18\n" +
 	"\n" +
 	"ActionCore\x12\x18\n" +
 	"\aversion\x18\x01 \x01(\rR\aversion\x12\x14\n" +
@@ -4259,7 +4383,9 @@ const file_proto_types_action_proto_rawDesc = "" +
 	"\x11candidateActivate\x181 \x01(\v2\x1d.iotextypes.CandidateActivateH\x00R\x11candidateActivate\x12V\n" +
 	"\x14candidateEndorsement\x183 \x01(\v2 .iotextypes.CandidateEndorsementH\x00R\x14candidateEndorsement\x12h\n" +
 	"\x1acandidateTransferOwnership\x184 \x01(\v2&.iotextypes.CandidateTransferOwnershipH\x00R\x1acandidateTransferOwnership\x12>\n" +
-	"\fstakeMigrate\x185 \x01(\v2\x18.iotextypes.StakeMigrateH\x00R\fstakeMigrate\x12A\n" +
+	"\fstakeMigrate\x185 \x01(\v2\x18.iotextypes.StakeMigrateH\x00R\fstakeMigrate\x12S\n" +
+	"\x13candidateDeactivate\x186 \x01(\v2\x1f.iotextypes.CandidateDeactivateH\x00R\x13candidateDeactivate\x12q\n" +
+	"\x1dscheduleCandidateDeactivation\x187 \x01(\v2).iotextypes.ScheduleCandidateDeactivationH\x00R\x1dscheduleCandidateDeactivation\x12A\n" +
 	"\rputPollResult\x182 \x01(\v2\x19.iotextypes.PutPollResultH\x00R\rputPollResultB\b\n" +
 	"\x06action\"\xa8\x01\n" +
 	"\x06Action\x12*\n" +
@@ -4347,64 +4473,66 @@ func file_proto_types_action_proto_rawDescGZIP() []byte {
 }
 
 var file_proto_types_action_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_proto_types_action_proto_msgTypes = make([]protoimpl.MessageInfo, 54)
+var file_proto_types_action_proto_msgTypes = make([]protoimpl.MessageInfo, 56)
 var file_proto_types_action_proto_goTypes = []any{
-	(Encoding)(0),                      // 0: iotextypes.Encoding
-	(RewardType)(0),                    // 1: iotextypes.RewardType
-	(*Transfer)(nil),                   // 2: iotextypes.Transfer
-	(*Candidate)(nil),                  // 3: iotextypes.Candidate
-	(*CandidateList)(nil),              // 4: iotextypes.CandidateList
-	(*PutPollResult)(nil),              // 5: iotextypes.PutPollResult
-	(*TxContainer)(nil),                // 6: iotextypes.TxContainer
-	(*Execution)(nil),                  // 7: iotextypes.Execution
-	(*AccessTuple)(nil),                // 8: iotextypes.AccessTuple
-	(*BlobTxSidecar)(nil),              // 9: iotextypes.BlobTxSidecar
-	(*BlobTxData)(nil),                 // 10: iotextypes.BlobTxData
-	(*BlobTxSidecars)(nil),             // 11: iotextypes.BlobTxSidecars
-	(*SetCodeAuthorization)(nil),       // 12: iotextypes.SetCodeAuthorization
-	(*StakeCreate)(nil),                // 13: iotextypes.StakeCreate
-	(*StakeMigrate)(nil),               // 14: iotextypes.StakeMigrate
-	(*StakeReclaim)(nil),               // 15: iotextypes.StakeReclaim
-	(*StakeAddDeposit)(nil),            // 16: iotextypes.StakeAddDeposit
-	(*StakeRestake)(nil),               // 17: iotextypes.StakeRestake
-	(*StakeChangeCandidate)(nil),       // 18: iotextypes.StakeChangeCandidate
-	(*StakeTransferOwnership)(nil),     // 19: iotextypes.StakeTransferOwnership
-	(*CandidateBasicInfo)(nil),         // 20: iotextypes.CandidateBasicInfo
-	(*CandidateRegister)(nil),          // 21: iotextypes.CandidateRegister
-	(*CandidateTransferOwnership)(nil), // 22: iotextypes.CandidateTransferOwnership
-	(*CandidateActivate)(nil),          // 23: iotextypes.CandidateActivate
-	(*CandidateEndorsement)(nil),       // 24: iotextypes.CandidateEndorsement
-	(*StartSubChain)(nil),              // 25: iotextypes.StartSubChain
-	(*StopSubChain)(nil),               // 26: iotextypes.StopSubChain
-	(*MerkleRoot)(nil),                 // 27: iotextypes.MerkleRoot
-	(*PutBlock)(nil),                   // 28: iotextypes.PutBlock
-	(*CreateDeposit)(nil),              // 29: iotextypes.CreateDeposit
-	(*SettleDeposit)(nil),              // 30: iotextypes.SettleDeposit
-	(*CreatePlumChain)(nil),            // 31: iotextypes.CreatePlumChain
-	(*TerminatePlumChain)(nil),         // 32: iotextypes.TerminatePlumChain
-	(*PlumPutBlock)(nil),               // 33: iotextypes.PlumPutBlock
-	(*PlumCreateDeposit)(nil),          // 34: iotextypes.PlumCreateDeposit
-	(*PlumStartExit)(nil),              // 35: iotextypes.PlumStartExit
-	(*PlumChallengeExit)(nil),          // 36: iotextypes.PlumChallengeExit
-	(*PlumResponseChallengeExit)(nil),  // 37: iotextypes.PlumResponseChallengeExit
-	(*PlumFinalizeExit)(nil),           // 38: iotextypes.PlumFinalizeExit
-	(*PlumSettleDeposit)(nil),          // 39: iotextypes.PlumSettleDeposit
-	(*PlumTransfer)(nil),               // 40: iotextypes.PlumTransfer
-	(*ActionCore)(nil),                 // 41: iotextypes.ActionCore
-	(*Action)(nil),                     // 42: iotextypes.Action
-	(*Actions)(nil),                    // 43: iotextypes.Actions
-	(*ActionHash)(nil),                 // 44: iotextypes.ActionHash
-	(*Receipt)(nil),                    // 45: iotextypes.Receipt
-	(*Log)(nil),                        // 46: iotextypes.Log
-	(*Logs)(nil),                       // 47: iotextypes.Logs
-	(*EvmTransfer)(nil),                // 48: iotextypes.EvmTransfer
-	(*EvmTransferList)(nil),            // 49: iotextypes.EvmTransferList
-	(*ActionEvmTransfer)(nil),          // 50: iotextypes.ActionEvmTransfer
-	(*BlockEvmTransfer)(nil),           // 51: iotextypes.BlockEvmTransfer
-	(*DepositToRewardingFund)(nil),     // 52: iotextypes.DepositToRewardingFund
-	(*ClaimFromRewardingFund)(nil),     // 53: iotextypes.ClaimFromRewardingFund
-	(*GrantReward)(nil),                // 54: iotextypes.GrantReward
-	nil,                                // 55: iotextypes.PlumPutBlock.RootsEntry
+	(Encoding)(0),                         // 0: iotextypes.Encoding
+	(RewardType)(0),                       // 1: iotextypes.RewardType
+	(*Transfer)(nil),                      // 2: iotextypes.Transfer
+	(*Candidate)(nil),                     // 3: iotextypes.Candidate
+	(*CandidateList)(nil),                 // 4: iotextypes.CandidateList
+	(*PutPollResult)(nil),                 // 5: iotextypes.PutPollResult
+	(*TxContainer)(nil),                   // 6: iotextypes.TxContainer
+	(*Execution)(nil),                     // 7: iotextypes.Execution
+	(*AccessTuple)(nil),                   // 8: iotextypes.AccessTuple
+	(*BlobTxSidecar)(nil),                 // 9: iotextypes.BlobTxSidecar
+	(*BlobTxData)(nil),                    // 10: iotextypes.BlobTxData
+	(*BlobTxSidecars)(nil),                // 11: iotextypes.BlobTxSidecars
+	(*SetCodeAuthorization)(nil),          // 12: iotextypes.SetCodeAuthorization
+	(*StakeCreate)(nil),                   // 13: iotextypes.StakeCreate
+	(*StakeMigrate)(nil),                  // 14: iotextypes.StakeMigrate
+	(*StakeReclaim)(nil),                  // 15: iotextypes.StakeReclaim
+	(*StakeAddDeposit)(nil),               // 16: iotextypes.StakeAddDeposit
+	(*StakeRestake)(nil),                  // 17: iotextypes.StakeRestake
+	(*StakeChangeCandidate)(nil),          // 18: iotextypes.StakeChangeCandidate
+	(*StakeTransferOwnership)(nil),        // 19: iotextypes.StakeTransferOwnership
+	(*CandidateBasicInfo)(nil),            // 20: iotextypes.CandidateBasicInfo
+	(*CandidateRegister)(nil),             // 21: iotextypes.CandidateRegister
+	(*CandidateTransferOwnership)(nil),    // 22: iotextypes.CandidateTransferOwnership
+	(*CandidateActivate)(nil),             // 23: iotextypes.CandidateActivate
+	(*CandidateDeactivate)(nil),           // 24: iotextypes.CandidateDeactivate
+	(*CandidateEndorsement)(nil),          // 25: iotextypes.CandidateEndorsement
+	(*ScheduleCandidateDeactivation)(nil), // 26: iotextypes.ScheduleCandidateDeactivation
+	(*StartSubChain)(nil),                 // 27: iotextypes.StartSubChain
+	(*StopSubChain)(nil),                  // 28: iotextypes.StopSubChain
+	(*MerkleRoot)(nil),                    // 29: iotextypes.MerkleRoot
+	(*PutBlock)(nil),                      // 30: iotextypes.PutBlock
+	(*CreateDeposit)(nil),                 // 31: iotextypes.CreateDeposit
+	(*SettleDeposit)(nil),                 // 32: iotextypes.SettleDeposit
+	(*CreatePlumChain)(nil),               // 33: iotextypes.CreatePlumChain
+	(*TerminatePlumChain)(nil),            // 34: iotextypes.TerminatePlumChain
+	(*PlumPutBlock)(nil),                  // 35: iotextypes.PlumPutBlock
+	(*PlumCreateDeposit)(nil),             // 36: iotextypes.PlumCreateDeposit
+	(*PlumStartExit)(nil),                 // 37: iotextypes.PlumStartExit
+	(*PlumChallengeExit)(nil),             // 38: iotextypes.PlumChallengeExit
+	(*PlumResponseChallengeExit)(nil),     // 39: iotextypes.PlumResponseChallengeExit
+	(*PlumFinalizeExit)(nil),              // 40: iotextypes.PlumFinalizeExit
+	(*PlumSettleDeposit)(nil),             // 41: iotextypes.PlumSettleDeposit
+	(*PlumTransfer)(nil),                  // 42: iotextypes.PlumTransfer
+	(*ActionCore)(nil),                    // 43: iotextypes.ActionCore
+	(*Action)(nil),                        // 44: iotextypes.Action
+	(*Actions)(nil),                       // 45: iotextypes.Actions
+	(*ActionHash)(nil),                    // 46: iotextypes.ActionHash
+	(*Receipt)(nil),                       // 47: iotextypes.Receipt
+	(*Log)(nil),                           // 48: iotextypes.Log
+	(*Logs)(nil),                          // 49: iotextypes.Logs
+	(*EvmTransfer)(nil),                   // 50: iotextypes.EvmTransfer
+	(*EvmTransferList)(nil),               // 51: iotextypes.EvmTransferList
+	(*ActionEvmTransfer)(nil),             // 52: iotextypes.ActionEvmTransfer
+	(*BlockEvmTransfer)(nil),              // 53: iotextypes.BlockEvmTransfer
+	(*DepositToRewardingFund)(nil),        // 54: iotextypes.DepositToRewardingFund
+	(*ClaimFromRewardingFund)(nil),        // 55: iotextypes.ClaimFromRewardingFund
+	(*GrantReward)(nil),                   // 56: iotextypes.GrantReward
+	nil,                                   // 57: iotextypes.PlumPutBlock.RootsEntry
 }
 var file_proto_types_action_proto_depIdxs = []int32{
 	3,  // 0: iotextypes.CandidateList.candidates:type_name -> iotextypes.Candidate
@@ -4412,32 +4540,32 @@ var file_proto_types_action_proto_depIdxs = []int32{
 	9,  // 2: iotextypes.BlobTxData.blobTxSidecar:type_name -> iotextypes.BlobTxSidecar
 	9,  // 3: iotextypes.BlobTxSidecars.sidecars:type_name -> iotextypes.BlobTxSidecar
 	20, // 4: iotextypes.CandidateRegister.candidate:type_name -> iotextypes.CandidateBasicInfo
-	27, // 5: iotextypes.PutBlock.roots:type_name -> iotextypes.MerkleRoot
-	55, // 6: iotextypes.PlumPutBlock.roots:type_name -> iotextypes.PlumPutBlock.RootsEntry
+	29, // 5: iotextypes.PutBlock.roots:type_name -> iotextypes.MerkleRoot
+	57, // 6: iotextypes.PlumPutBlock.roots:type_name -> iotextypes.PlumPutBlock.RootsEntry
 	10, // 7: iotextypes.ActionCore.blobTxData:type_name -> iotextypes.BlobTxData
 	8,  // 8: iotextypes.ActionCore.accessList:type_name -> iotextypes.AccessTuple
 	12, // 9: iotextypes.ActionCore.setCodeAuthList:type_name -> iotextypes.SetCodeAuthorization
 	2,  // 10: iotextypes.ActionCore.transfer:type_name -> iotextypes.Transfer
 	6,  // 11: iotextypes.ActionCore.txContainer:type_name -> iotextypes.TxContainer
 	7,  // 12: iotextypes.ActionCore.execution:type_name -> iotextypes.Execution
-	25, // 13: iotextypes.ActionCore.startSubChain:type_name -> iotextypes.StartSubChain
-	26, // 14: iotextypes.ActionCore.stopSubChain:type_name -> iotextypes.StopSubChain
-	28, // 15: iotextypes.ActionCore.putBlock:type_name -> iotextypes.PutBlock
-	29, // 16: iotextypes.ActionCore.createDeposit:type_name -> iotextypes.CreateDeposit
-	30, // 17: iotextypes.ActionCore.settleDeposit:type_name -> iotextypes.SettleDeposit
-	31, // 18: iotextypes.ActionCore.createPlumChain:type_name -> iotextypes.CreatePlumChain
-	32, // 19: iotextypes.ActionCore.terminatePlumChain:type_name -> iotextypes.TerminatePlumChain
-	33, // 20: iotextypes.ActionCore.plumPutBlock:type_name -> iotextypes.PlumPutBlock
-	34, // 21: iotextypes.ActionCore.plumCreateDeposit:type_name -> iotextypes.PlumCreateDeposit
-	35, // 22: iotextypes.ActionCore.plumStartExit:type_name -> iotextypes.PlumStartExit
-	36, // 23: iotextypes.ActionCore.plumChallengeExit:type_name -> iotextypes.PlumChallengeExit
-	37, // 24: iotextypes.ActionCore.plumResponseChallengeExit:type_name -> iotextypes.PlumResponseChallengeExit
-	38, // 25: iotextypes.ActionCore.plumFinalizeExit:type_name -> iotextypes.PlumFinalizeExit
-	39, // 26: iotextypes.ActionCore.plumSettleDeposit:type_name -> iotextypes.PlumSettleDeposit
-	40, // 27: iotextypes.ActionCore.plumTransfer:type_name -> iotextypes.PlumTransfer
-	52, // 28: iotextypes.ActionCore.depositToRewardingFund:type_name -> iotextypes.DepositToRewardingFund
-	53, // 29: iotextypes.ActionCore.claimFromRewardingFund:type_name -> iotextypes.ClaimFromRewardingFund
-	54, // 30: iotextypes.ActionCore.grantReward:type_name -> iotextypes.GrantReward
+	27, // 13: iotextypes.ActionCore.startSubChain:type_name -> iotextypes.StartSubChain
+	28, // 14: iotextypes.ActionCore.stopSubChain:type_name -> iotextypes.StopSubChain
+	30, // 15: iotextypes.ActionCore.putBlock:type_name -> iotextypes.PutBlock
+	31, // 16: iotextypes.ActionCore.createDeposit:type_name -> iotextypes.CreateDeposit
+	32, // 17: iotextypes.ActionCore.settleDeposit:type_name -> iotextypes.SettleDeposit
+	33, // 18: iotextypes.ActionCore.createPlumChain:type_name -> iotextypes.CreatePlumChain
+	34, // 19: iotextypes.ActionCore.terminatePlumChain:type_name -> iotextypes.TerminatePlumChain
+	35, // 20: iotextypes.ActionCore.plumPutBlock:type_name -> iotextypes.PlumPutBlock
+	36, // 21: iotextypes.ActionCore.plumCreateDeposit:type_name -> iotextypes.PlumCreateDeposit
+	37, // 22: iotextypes.ActionCore.plumStartExit:type_name -> iotextypes.PlumStartExit
+	38, // 23: iotextypes.ActionCore.plumChallengeExit:type_name -> iotextypes.PlumChallengeExit
+	39, // 24: iotextypes.ActionCore.plumResponseChallengeExit:type_name -> iotextypes.PlumResponseChallengeExit
+	40, // 25: iotextypes.ActionCore.plumFinalizeExit:type_name -> iotextypes.PlumFinalizeExit
+	41, // 26: iotextypes.ActionCore.plumSettleDeposit:type_name -> iotextypes.PlumSettleDeposit
+	42, // 27: iotextypes.ActionCore.plumTransfer:type_name -> iotextypes.PlumTransfer
+	54, // 28: iotextypes.ActionCore.depositToRewardingFund:type_name -> iotextypes.DepositToRewardingFund
+	55, // 29: iotextypes.ActionCore.claimFromRewardingFund:type_name -> iotextypes.ClaimFromRewardingFund
+	56, // 30: iotextypes.ActionCore.grantReward:type_name -> iotextypes.GrantReward
 	13, // 31: iotextypes.ActionCore.stakeCreate:type_name -> iotextypes.StakeCreate
 	15, // 32: iotextypes.ActionCore.stakeUnstake:type_name -> iotextypes.StakeReclaim
 	15, // 33: iotextypes.ActionCore.stakeWithdraw:type_name -> iotextypes.StakeReclaim
@@ -4448,24 +4576,26 @@ var file_proto_types_action_proto_depIdxs = []int32{
 	21, // 38: iotextypes.ActionCore.candidateRegister:type_name -> iotextypes.CandidateRegister
 	20, // 39: iotextypes.ActionCore.candidateUpdate:type_name -> iotextypes.CandidateBasicInfo
 	23, // 40: iotextypes.ActionCore.candidateActivate:type_name -> iotextypes.CandidateActivate
-	24, // 41: iotextypes.ActionCore.candidateEndorsement:type_name -> iotextypes.CandidateEndorsement
+	25, // 41: iotextypes.ActionCore.candidateEndorsement:type_name -> iotextypes.CandidateEndorsement
 	22, // 42: iotextypes.ActionCore.candidateTransferOwnership:type_name -> iotextypes.CandidateTransferOwnership
 	14, // 43: iotextypes.ActionCore.stakeMigrate:type_name -> iotextypes.StakeMigrate
-	5,  // 44: iotextypes.ActionCore.putPollResult:type_name -> iotextypes.PutPollResult
-	41, // 45: iotextypes.Action.core:type_name -> iotextypes.ActionCore
-	0,  // 46: iotextypes.Action.encoding:type_name -> iotextypes.Encoding
-	42, // 47: iotextypes.Actions.actions:type_name -> iotextypes.Action
-	46, // 48: iotextypes.Receipt.logs:type_name -> iotextypes.Log
-	46, // 49: iotextypes.Logs.logs:type_name -> iotextypes.Log
-	48, // 50: iotextypes.EvmTransferList.evmTransfers:type_name -> iotextypes.EvmTransfer
-	48, // 51: iotextypes.ActionEvmTransfer.evmTransfers:type_name -> iotextypes.EvmTransfer
-	50, // 52: iotextypes.BlockEvmTransfer.actionEvmTransfers:type_name -> iotextypes.ActionEvmTransfer
-	1,  // 53: iotextypes.GrantReward.type:type_name -> iotextypes.RewardType
-	54, // [54:54] is the sub-list for method output_type
-	54, // [54:54] is the sub-list for method input_type
-	54, // [54:54] is the sub-list for extension type_name
-	54, // [54:54] is the sub-list for extension extendee
-	0,  // [0:54] is the sub-list for field type_name
+	24, // 44: iotextypes.ActionCore.candidateDeactivate:type_name -> iotextypes.CandidateDeactivate
+	26, // 45: iotextypes.ActionCore.scheduleCandidateDeactivation:type_name -> iotextypes.ScheduleCandidateDeactivation
+	5,  // 46: iotextypes.ActionCore.putPollResult:type_name -> iotextypes.PutPollResult
+	43, // 47: iotextypes.Action.core:type_name -> iotextypes.ActionCore
+	0,  // 48: iotextypes.Action.encoding:type_name -> iotextypes.Encoding
+	44, // 49: iotextypes.Actions.actions:type_name -> iotextypes.Action
+	48, // 50: iotextypes.Receipt.logs:type_name -> iotextypes.Log
+	48, // 51: iotextypes.Logs.logs:type_name -> iotextypes.Log
+	50, // 52: iotextypes.EvmTransferList.evmTransfers:type_name -> iotextypes.EvmTransfer
+	50, // 53: iotextypes.ActionEvmTransfer.evmTransfers:type_name -> iotextypes.EvmTransfer
+	52, // 54: iotextypes.BlockEvmTransfer.actionEvmTransfers:type_name -> iotextypes.ActionEvmTransfer
+	1,  // 55: iotextypes.GrantReward.type:type_name -> iotextypes.RewardType
+	56, // [56:56] is the sub-list for method output_type
+	56, // [56:56] is the sub-list for method input_type
+	56, // [56:56] is the sub-list for extension type_name
+	56, // [56:56] is the sub-list for extension extendee
+	0,  // [0:56] is the sub-list for field type_name
 }
 
 func init() { file_proto_types_action_proto_init() }
@@ -4473,7 +4603,7 @@ func file_proto_types_action_proto_init() {
 	if File_proto_types_action_proto != nil {
 		return
 	}
-	file_proto_types_action_proto_msgTypes[39].OneofWrappers = []any{
+	file_proto_types_action_proto_msgTypes[41].OneofWrappers = []any{
 		(*ActionCore_Transfer)(nil),
 		(*ActionCore_TxContainer)(nil),
 		(*ActionCore_Execution)(nil),
@@ -4508,6 +4638,8 @@ func file_proto_types_action_proto_init() {
 		(*ActionCore_CandidateEndorsement)(nil),
 		(*ActionCore_CandidateTransferOwnership)(nil),
 		(*ActionCore_StakeMigrate)(nil),
+		(*ActionCore_CandidateDeactivate)(nil),
+		(*ActionCore_ScheduleCandidateDeactivation)(nil),
 		(*ActionCore_PutPollResult)(nil),
 	}
 	type x struct{}
@@ -4516,7 +4648,7 @@ func file_proto_types_action_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_types_action_proto_rawDesc), len(file_proto_types_action_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   54,
+			NumMessages:   56,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

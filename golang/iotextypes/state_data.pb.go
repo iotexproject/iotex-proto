@@ -295,6 +295,7 @@ type CandidateV2 struct {
 	SelfStakingTokens  string                 `protobuf:"bytes,7,opt,name=selfStakingTokens,proto3" json:"selfStakingTokens,omitempty"`
 	Id                 string                 `protobuf:"bytes,8,opt,name=id,proto3" json:"id,omitempty"`
 	BlsPubKey          []byte                 `protobuf:"bytes,9,opt,name=blsPubKey,proto3" json:"blsPubKey,omitempty"`
+	DeactivatedAt      uint64                 `protobuf:"varint,10,opt,name=deactivatedAt,proto3" json:"deactivatedAt,omitempty"`
 	unknownFields      protoimpl.UnknownFields
 	sizeCache          protoimpl.SizeCache
 }
@@ -390,6 +391,13 @@ func (x *CandidateV2) GetBlsPubKey() []byte {
 		return x.BlsPubKey
 	}
 	return nil
+}
+
+func (x *CandidateV2) GetDeactivatedAt() uint64 {
+	if x != nil {
+		return x.DeactivatedAt
+	}
+	return 0
 }
 
 type CandidateListV2 struct {
@@ -678,7 +686,7 @@ const file_proto_types_state_data_proto_rawDesc = "" +
 	"\x17unstakeStartBlockHeight\x18\x0e \x01(\x04R\x17unstakeStartBlockHeight\x12B\n" +
 	"\x1cendorsementExpireBlockHeight\x18\x0f \x01(\x04R\x1cendorsementExpireBlockHeight\"B\n" +
 	"\x0eVoteBucketList\x120\n" +
-	"\abuckets\x18\x01 \x03(\v2\x16.iotextypes.VoteBucketR\abuckets\"\xd1\x02\n" +
+	"\abuckets\x18\x01 \x03(\v2\x16.iotextypes.VoteBucketR\abuckets\"\xf7\x02\n" +
 	"\vCandidateV2\x12\"\n" +
 	"\fownerAddress\x18\x01 \x01(\tR\fownerAddress\x12(\n" +
 	"\x0foperatorAddress\x18\x02 \x01(\tR\x0foperatorAddress\x12$\n" +
@@ -688,7 +696,9 @@ const file_proto_types_state_data_proto_rawDesc = "" +
 	"\x12selfStakeBucketIdx\x18\x06 \x01(\x04R\x12selfStakeBucketIdx\x12,\n" +
 	"\x11selfStakingTokens\x18\a \x01(\tR\x11selfStakingTokens\x12\x0e\n" +
 	"\x02id\x18\b \x01(\tR\x02id\x12\x1c\n" +
-	"\tblsPubKey\x18\t \x01(\fR\tblsPubKey\"J\n" +
+	"\tblsPubKey\x18\t \x01(\fR\tblsPubKey\x12$\n" +
+	"\rdeactivatedAt\x18\n" +
+	" \x01(\x04R\rdeactivatedAt\"J\n" +
 	"\x0fCandidateListV2\x127\n" +
 	"\n" +
 	"candidates\x18\x01 \x03(\v2\x17.iotextypes.CandidateV2R\n" +

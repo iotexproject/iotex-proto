@@ -1826,6 +1826,7 @@ type EstimateActionGasConsumptionRequest struct {
 	//	*EstimateActionGasConsumptionRequest_CandidateEndorsement
 	//	*EstimateActionGasConsumptionRequest_CandidateTransferOwnership
 	//	*EstimateActionGasConsumptionRequest_StakeMigrate
+	//	*EstimateActionGasConsumptionRequest_CandidateDeactivate
 	Action        isEstimateActionGasConsumptionRequest_Action `protobuf_oneof:"action"`
 	CallerAddress string                                       `protobuf:"bytes,100,opt,name=callerAddress,proto3" json:"callerAddress,omitempty"`
 	GasPrice      string                                       `protobuf:"bytes,101,opt,name=gasPrice,proto3" json:"gasPrice,omitempty"`
@@ -2005,6 +2006,15 @@ func (x *EstimateActionGasConsumptionRequest) GetStakeMigrate() *iotextypes.Stak
 	return nil
 }
 
+func (x *EstimateActionGasConsumptionRequest) GetCandidateDeactivate() *iotextypes.CandidateDeactivate {
+	if x != nil {
+		if x, ok := x.Action.(*EstimateActionGasConsumptionRequest_CandidateDeactivate); ok {
+			return x.CandidateDeactivate
+		}
+	}
+	return nil
+}
+
 func (x *EstimateActionGasConsumptionRequest) GetCallerAddress() string {
 	if x != nil {
 		return x.CallerAddress
@@ -2084,6 +2094,10 @@ type EstimateActionGasConsumptionRequest_StakeMigrate struct {
 	StakeMigrate *iotextypes.StakeMigrate `protobuf:"bytes,53,opt,name=stakeMigrate,proto3,oneof"`
 }
 
+type EstimateActionGasConsumptionRequest_CandidateDeactivate struct {
+	CandidateDeactivate *iotextypes.CandidateDeactivate `protobuf:"bytes,54,opt,name=candidateDeactivate,proto3,oneof"`
+}
+
 func (*EstimateActionGasConsumptionRequest_Transfer) isEstimateActionGasConsumptionRequest_Action() {}
 
 func (*EstimateActionGasConsumptionRequest_Execution) isEstimateActionGasConsumptionRequest_Action() {
@@ -2126,6 +2140,9 @@ func (*EstimateActionGasConsumptionRequest_CandidateTransferOwnership) isEstimat
 }
 
 func (*EstimateActionGasConsumptionRequest_StakeMigrate) isEstimateActionGasConsumptionRequest_Action() {
+}
+
+func (*EstimateActionGasConsumptionRequest_CandidateDeactivate) isEstimateActionGasConsumptionRequest_Action() {
 }
 
 type EstimateActionGasConsumptionResponse struct {
@@ -4026,7 +4043,8 @@ const file_proto_api_api_proto_rawDesc = "" +
 	"\x17SuggestGasPriceResponse\x12\x1a\n" +
 	"\bgasPrice\x18\x01 \x01(\x04R\bgasPrice\"I\n" +
 	"\x1bEstimateGasForActionRequest\x12*\n" +
-	"\x06action\x18\x01 \x01(\v2\x12.iotextypes.ActionR\x06action\"\xc6\t\n" +
+	"\x06action\x18\x01 \x01(\v2\x12.iotextypes.ActionR\x06action\"\x9b\n" +
+	"\n" +
 	"#EstimateActionGasConsumptionRequest\x122\n" +
 	"\btransfer\x18\x01 \x01(\v2\x14.iotextypes.TransferH\x00R\btransfer\x125\n" +
 	"\texecution\x18\x02 \x01(\v2\x15.iotextypes.ExecutionH\x00R\texecution\x12;\n" +
@@ -4042,7 +4060,8 @@ const file_proto_api_api_proto_rawDesc = "" +
 	"\x11candidateActivate\x181 \x01(\v2\x1d.iotextypes.CandidateActivateH\x00R\x11candidateActivate\x12V\n" +
 	"\x14candidateEndorsement\x183 \x01(\v2 .iotextypes.CandidateEndorsementH\x00R\x14candidateEndorsement\x12h\n" +
 	"\x1acandidateTransferOwnership\x184 \x01(\v2&.iotextypes.CandidateTransferOwnershipH\x00R\x1acandidateTransferOwnership\x12>\n" +
-	"\fstakeMigrate\x185 \x01(\v2\x18.iotextypes.StakeMigrateH\x00R\fstakeMigrate\x12$\n" +
+	"\fstakeMigrate\x185 \x01(\v2\x18.iotextypes.StakeMigrateH\x00R\fstakeMigrate\x12S\n" +
+	"\x13candidateDeactivate\x186 \x01(\v2\x1f.iotextypes.CandidateDeactivateH\x00R\x13candidateDeactivate\x12$\n" +
 	"\rcallerAddress\x18d \x01(\tR\rcallerAddress\x12\x1a\n" +
 	"\bgasPrice\x18e \x01(\tR\bgasPriceB\b\n" +
 	"\x06action\"8\n" +
@@ -4300,14 +4319,15 @@ var file_proto_api_api_proto_goTypes = []any{
 	(*iotextypes.CandidateEndorsement)(nil),        // 90: iotextypes.CandidateEndorsement
 	(*iotextypes.CandidateTransferOwnership)(nil),  // 91: iotextypes.CandidateTransferOwnership
 	(*iotextypes.StakeMigrate)(nil),                // 92: iotextypes.StakeMigrate
-	(*iotextypes.EpochData)(nil),                   // 93: iotextypes.EpochData
-	(*iotextypes.Log)(nil),                         // 94: iotextypes.Log
-	(*iotextypes.TransactionLog)(nil),              // 95: iotextypes.TransactionLog
-	(*iotextypes.ElectionBucket)(nil),              // 96: iotextypes.ElectionBucket
-	(*iotextypes.ActionEvmTransfer)(nil),           // 97: iotextypes.ActionEvmTransfer
-	(*iotextypes.BlockEvmTransfer)(nil),            // 98: iotextypes.BlockEvmTransfer
-	(*iotextypes.TransactionStructLog)(nil),        // 99: iotextypes.TransactionStructLog
-	(*iotextypes.Bundle)(nil),                      // 100: iotextypes.Bundle
+	(*iotextypes.CandidateDeactivate)(nil),         // 93: iotextypes.CandidateDeactivate
+	(*iotextypes.EpochData)(nil),                   // 94: iotextypes.EpochData
+	(*iotextypes.Log)(nil),                         // 95: iotextypes.Log
+	(*iotextypes.TransactionLog)(nil),              // 96: iotextypes.TransactionLog
+	(*iotextypes.ElectionBucket)(nil),              // 97: iotextypes.ElectionBucket
+	(*iotextypes.ActionEvmTransfer)(nil),           // 98: iotextypes.ActionEvmTransfer
+	(*iotextypes.BlockEvmTransfer)(nil),            // 99: iotextypes.BlockEvmTransfer
+	(*iotextypes.TransactionStructLog)(nil),        // 100: iotextypes.TransactionStructLog
+	(*iotextypes.Bundle)(nil),                      // 101: iotextypes.Bundle
 }
 var file_proto_api_api_proto_depIdxs = []int32{
 	69,  // 0: iotexapi.GetAccountResponse.accountMeta:type_name -> iotextypes.AccountMeta
@@ -4349,91 +4369,92 @@ var file_proto_api_api_proto_depIdxs = []int32{
 	90,  // 36: iotexapi.EstimateActionGasConsumptionRequest.candidateEndorsement:type_name -> iotextypes.CandidateEndorsement
 	91,  // 37: iotexapi.EstimateActionGasConsumptionRequest.candidateTransferOwnership:type_name -> iotextypes.CandidateTransferOwnership
 	92,  // 38: iotexapi.EstimateActionGasConsumptionRequest.stakeMigrate:type_name -> iotextypes.StakeMigrate
-	70,  // 39: iotexapi.ReadStateResponse.blockIdentifier:type_name -> iotextypes.BlockIdentifier
-	93,  // 40: iotexapi.GetEpochMetaResponse.epochData:type_name -> iotextypes.EpochData
-	11,  // 41: iotexapi.GetEpochMetaResponse.blockProducersInfo:type_name -> iotexapi.BlockProducerInfo
-	12,  // 42: iotexapi.GetRawBlocksResponse.blocks:type_name -> iotexapi.BlockInfo
-	43,  // 43: iotexapi.LogsFilter.topics:type_name -> iotexapi.Topics
-	44,  // 44: iotexapi.GetLogsRequest.filter:type_name -> iotexapi.LogsFilter
-	41,  // 45: iotexapi.GetLogsRequest.byBlock:type_name -> iotexapi.GetLogsByBlock
-	42,  // 46: iotexapi.GetLogsRequest.byRange:type_name -> iotexapi.GetLogsByRange
-	94,  // 47: iotexapi.GetLogsResponse.logs:type_name -> iotextypes.Log
-	95,  // 48: iotexapi.GetTransactionLogByActionHashResponse.transactionLog:type_name -> iotextypes.TransactionLog
-	75,  // 49: iotexapi.GetTransactionLogByBlockHeightResponse.transactionLogs:type_name -> iotextypes.TransactionLogs
-	70,  // 50: iotexapi.GetTransactionLogByBlockHeightResponse.blockIdentifier:type_name -> iotextypes.BlockIdentifier
-	12,  // 51: iotexapi.StreamBlocksResponse.block:type_name -> iotexapi.BlockInfo
-	70,  // 52: iotexapi.StreamBlocksResponse.blockIdentifier:type_name -> iotextypes.BlockIdentifier
-	44,  // 53: iotexapi.StreamLogsRequest.filter:type_name -> iotexapi.LogsFilter
-	94,  // 54: iotexapi.StreamLogsResponse.log:type_name -> iotextypes.Log
-	71,  // 55: iotexapi.GetActPoolActionsResponse.actions:type_name -> iotextypes.Action
-	96,  // 56: iotexapi.GetElectionBucketsResponse.buckets:type_name -> iotextypes.ElectionBucket
-	97,  // 57: iotexapi.GetEvmTransfersByActionHashResponse.actionEvmTransfers:type_name -> iotextypes.ActionEvmTransfer
-	98,  // 58: iotexapi.GetEvmTransfersByBlockHeightResponse.blockEvmTransfers:type_name -> iotextypes.BlockEvmTransfer
-	99,  // 59: iotexapi.TraceTransactionStructLogsResponse.structLogs:type_name -> iotextypes.TransactionStructLog
-	100, // 60: iotexapi.SendBundleRequest.bundle:type_name -> iotextypes.Bundle
-	72,  // 61: iotexapi.SendBundleRequest.minTimestamp:type_name -> google.protobuf.Timestamp
-	72,  // 62: iotexapi.SendBundleRequest.maxTimestamp:type_name -> google.protobuf.Timestamp
-	1,   // 63: iotexapi.APIService.GetAccount:input_type -> iotexapi.GetAccountRequest
-	3,   // 64: iotexapi.APIService.GetActions:input_type -> iotexapi.GetActionsRequest
-	14,  // 65: iotexapi.APIService.GetBlockMetas:input_type -> iotexapi.GetBlockMetasRequest
-	18,  // 66: iotexapi.APIService.GetChainMeta:input_type -> iotexapi.GetChainMetaRequest
-	20,  // 67: iotexapi.APIService.GetServerMeta:input_type -> iotexapi.GetServerMetaRequest
-	22,  // 68: iotexapi.APIService.SendAction:input_type -> iotexapi.SendActionRequest
-	25,  // 69: iotexapi.APIService.GetReceiptByAction:input_type -> iotexapi.GetReceiptByActionRequest
-	27,  // 70: iotexapi.APIService.ReadContract:input_type -> iotexapi.ReadContractRequest
-	29,  // 71: iotexapi.APIService.SuggestGasPrice:input_type -> iotexapi.SuggestGasPriceRequest
-	31,  // 72: iotexapi.APIService.EstimateGasForAction:input_type -> iotexapi.EstimateGasForActionRequest
-	32,  // 73: iotexapi.APIService.EstimateActionGasConsumption:input_type -> iotexapi.EstimateActionGasConsumptionRequest
-	35,  // 74: iotexapi.APIService.ReadState:input_type -> iotexapi.ReadStateRequest
-	37,  // 75: iotexapi.APIService.GetEpochMeta:input_type -> iotexapi.GetEpochMetaRequest
-	39,  // 76: iotexapi.APIService.GetRawBlocks:input_type -> iotexapi.GetRawBlocksRequest
-	45,  // 77: iotexapi.APIService.GetLogs:input_type -> iotexapi.GetLogsRequest
-	47,  // 78: iotexapi.APIService.GetTransactionLogByActionHash:input_type -> iotexapi.GetTransactionLogByActionHashRequest
-	49,  // 79: iotexapi.APIService.GetTransactionLogByBlockHeight:input_type -> iotexapi.GetTransactionLogByBlockHeightRequest
-	51,  // 80: iotexapi.APIService.StreamBlocks:input_type -> iotexapi.StreamBlocksRequest
-	53,  // 81: iotexapi.APIService.StreamLogs:input_type -> iotexapi.StreamLogsRequest
-	55,  // 82: iotexapi.APIService.GetActPoolActions:input_type -> iotexapi.GetActPoolActionsRequest
-	59,  // 83: iotexapi.APIService.GetEvmTransfersByActionHash:input_type -> iotexapi.GetEvmTransfersByActionHashRequest
-	61,  // 84: iotexapi.APIService.GetEvmTransfersByBlockHeight:input_type -> iotexapi.GetEvmTransfersByBlockHeightRequest
-	57,  // 85: iotexapi.APIService.GetElectionBuckets:input_type -> iotexapi.GetElectionBucketsRequest
-	63,  // 86: iotexapi.APIService.ReadContractStorage:input_type -> iotexapi.ReadContractStorageRequest
-	65,  // 87: iotexapi.APIService.TraceTransactionStructLogs:input_type -> iotexapi.TraceTransactionStructLogsRequest
-	47,  // 88: iotexapi.TransactionLogService.GetTransactionLogByActionHash:input_type -> iotexapi.GetTransactionLogByActionHashRequest
-	49,  // 89: iotexapi.TransactionLogService.GetTransactionLogByBlockHeight:input_type -> iotexapi.GetTransactionLogByBlockHeightRequest
-	67,  // 90: iotexapi.BundleAPIService.SendBundle:input_type -> iotexapi.SendBundleRequest
-	2,   // 91: iotexapi.APIService.GetAccount:output_type -> iotexapi.GetAccountResponse
-	13,  // 92: iotexapi.APIService.GetActions:output_type -> iotexapi.GetActionsResponse
-	17,  // 93: iotexapi.APIService.GetBlockMetas:output_type -> iotexapi.GetBlockMetasResponse
-	19,  // 94: iotexapi.APIService.GetChainMeta:output_type -> iotexapi.GetChainMetaResponse
-	21,  // 95: iotexapi.APIService.GetServerMeta:output_type -> iotexapi.GetServerMetaResponse
-	24,  // 96: iotexapi.APIService.SendAction:output_type -> iotexapi.SendActionResponse
-	26,  // 97: iotexapi.APIService.GetReceiptByAction:output_type -> iotexapi.GetReceiptByActionResponse
-	28,  // 98: iotexapi.APIService.ReadContract:output_type -> iotexapi.ReadContractResponse
-	30,  // 99: iotexapi.APIService.SuggestGasPrice:output_type -> iotexapi.SuggestGasPriceResponse
-	34,  // 100: iotexapi.APIService.EstimateGasForAction:output_type -> iotexapi.EstimateGasForActionResponse
-	33,  // 101: iotexapi.APIService.EstimateActionGasConsumption:output_type -> iotexapi.EstimateActionGasConsumptionResponse
-	36,  // 102: iotexapi.APIService.ReadState:output_type -> iotexapi.ReadStateResponse
-	38,  // 103: iotexapi.APIService.GetEpochMeta:output_type -> iotexapi.GetEpochMetaResponse
-	40,  // 104: iotexapi.APIService.GetRawBlocks:output_type -> iotexapi.GetRawBlocksResponse
-	46,  // 105: iotexapi.APIService.GetLogs:output_type -> iotexapi.GetLogsResponse
-	48,  // 106: iotexapi.APIService.GetTransactionLogByActionHash:output_type -> iotexapi.GetTransactionLogByActionHashResponse
-	50,  // 107: iotexapi.APIService.GetTransactionLogByBlockHeight:output_type -> iotexapi.GetTransactionLogByBlockHeightResponse
-	52,  // 108: iotexapi.APIService.StreamBlocks:output_type -> iotexapi.StreamBlocksResponse
-	54,  // 109: iotexapi.APIService.StreamLogs:output_type -> iotexapi.StreamLogsResponse
-	56,  // 110: iotexapi.APIService.GetActPoolActions:output_type -> iotexapi.GetActPoolActionsResponse
-	60,  // 111: iotexapi.APIService.GetEvmTransfersByActionHash:output_type -> iotexapi.GetEvmTransfersByActionHashResponse
-	62,  // 112: iotexapi.APIService.GetEvmTransfersByBlockHeight:output_type -> iotexapi.GetEvmTransfersByBlockHeightResponse
-	58,  // 113: iotexapi.APIService.GetElectionBuckets:output_type -> iotexapi.GetElectionBucketsResponse
-	64,  // 114: iotexapi.APIService.ReadContractStorage:output_type -> iotexapi.ReadContractStorageResponse
-	66,  // 115: iotexapi.APIService.TraceTransactionStructLogs:output_type -> iotexapi.TraceTransactionStructLogsResponse
-	48,  // 116: iotexapi.TransactionLogService.GetTransactionLogByActionHash:output_type -> iotexapi.GetTransactionLogByActionHashResponse
-	50,  // 117: iotexapi.TransactionLogService.GetTransactionLogByBlockHeight:output_type -> iotexapi.GetTransactionLogByBlockHeightResponse
-	68,  // 118: iotexapi.BundleAPIService.SendBundle:output_type -> iotexapi.SendBundleResponse
-	91,  // [91:119] is the sub-list for method output_type
-	63,  // [63:91] is the sub-list for method input_type
-	63,  // [63:63] is the sub-list for extension type_name
-	63,  // [63:63] is the sub-list for extension extendee
-	0,   // [0:63] is the sub-list for field type_name
+	93,  // 39: iotexapi.EstimateActionGasConsumptionRequest.candidateDeactivate:type_name -> iotextypes.CandidateDeactivate
+	70,  // 40: iotexapi.ReadStateResponse.blockIdentifier:type_name -> iotextypes.BlockIdentifier
+	94,  // 41: iotexapi.GetEpochMetaResponse.epochData:type_name -> iotextypes.EpochData
+	11,  // 42: iotexapi.GetEpochMetaResponse.blockProducersInfo:type_name -> iotexapi.BlockProducerInfo
+	12,  // 43: iotexapi.GetRawBlocksResponse.blocks:type_name -> iotexapi.BlockInfo
+	43,  // 44: iotexapi.LogsFilter.topics:type_name -> iotexapi.Topics
+	44,  // 45: iotexapi.GetLogsRequest.filter:type_name -> iotexapi.LogsFilter
+	41,  // 46: iotexapi.GetLogsRequest.byBlock:type_name -> iotexapi.GetLogsByBlock
+	42,  // 47: iotexapi.GetLogsRequest.byRange:type_name -> iotexapi.GetLogsByRange
+	95,  // 48: iotexapi.GetLogsResponse.logs:type_name -> iotextypes.Log
+	96,  // 49: iotexapi.GetTransactionLogByActionHashResponse.transactionLog:type_name -> iotextypes.TransactionLog
+	75,  // 50: iotexapi.GetTransactionLogByBlockHeightResponse.transactionLogs:type_name -> iotextypes.TransactionLogs
+	70,  // 51: iotexapi.GetTransactionLogByBlockHeightResponse.blockIdentifier:type_name -> iotextypes.BlockIdentifier
+	12,  // 52: iotexapi.StreamBlocksResponse.block:type_name -> iotexapi.BlockInfo
+	70,  // 53: iotexapi.StreamBlocksResponse.blockIdentifier:type_name -> iotextypes.BlockIdentifier
+	44,  // 54: iotexapi.StreamLogsRequest.filter:type_name -> iotexapi.LogsFilter
+	95,  // 55: iotexapi.StreamLogsResponse.log:type_name -> iotextypes.Log
+	71,  // 56: iotexapi.GetActPoolActionsResponse.actions:type_name -> iotextypes.Action
+	97,  // 57: iotexapi.GetElectionBucketsResponse.buckets:type_name -> iotextypes.ElectionBucket
+	98,  // 58: iotexapi.GetEvmTransfersByActionHashResponse.actionEvmTransfers:type_name -> iotextypes.ActionEvmTransfer
+	99,  // 59: iotexapi.GetEvmTransfersByBlockHeightResponse.blockEvmTransfers:type_name -> iotextypes.BlockEvmTransfer
+	100, // 60: iotexapi.TraceTransactionStructLogsResponse.structLogs:type_name -> iotextypes.TransactionStructLog
+	101, // 61: iotexapi.SendBundleRequest.bundle:type_name -> iotextypes.Bundle
+	72,  // 62: iotexapi.SendBundleRequest.minTimestamp:type_name -> google.protobuf.Timestamp
+	72,  // 63: iotexapi.SendBundleRequest.maxTimestamp:type_name -> google.protobuf.Timestamp
+	1,   // 64: iotexapi.APIService.GetAccount:input_type -> iotexapi.GetAccountRequest
+	3,   // 65: iotexapi.APIService.GetActions:input_type -> iotexapi.GetActionsRequest
+	14,  // 66: iotexapi.APIService.GetBlockMetas:input_type -> iotexapi.GetBlockMetasRequest
+	18,  // 67: iotexapi.APIService.GetChainMeta:input_type -> iotexapi.GetChainMetaRequest
+	20,  // 68: iotexapi.APIService.GetServerMeta:input_type -> iotexapi.GetServerMetaRequest
+	22,  // 69: iotexapi.APIService.SendAction:input_type -> iotexapi.SendActionRequest
+	25,  // 70: iotexapi.APIService.GetReceiptByAction:input_type -> iotexapi.GetReceiptByActionRequest
+	27,  // 71: iotexapi.APIService.ReadContract:input_type -> iotexapi.ReadContractRequest
+	29,  // 72: iotexapi.APIService.SuggestGasPrice:input_type -> iotexapi.SuggestGasPriceRequest
+	31,  // 73: iotexapi.APIService.EstimateGasForAction:input_type -> iotexapi.EstimateGasForActionRequest
+	32,  // 74: iotexapi.APIService.EstimateActionGasConsumption:input_type -> iotexapi.EstimateActionGasConsumptionRequest
+	35,  // 75: iotexapi.APIService.ReadState:input_type -> iotexapi.ReadStateRequest
+	37,  // 76: iotexapi.APIService.GetEpochMeta:input_type -> iotexapi.GetEpochMetaRequest
+	39,  // 77: iotexapi.APIService.GetRawBlocks:input_type -> iotexapi.GetRawBlocksRequest
+	45,  // 78: iotexapi.APIService.GetLogs:input_type -> iotexapi.GetLogsRequest
+	47,  // 79: iotexapi.APIService.GetTransactionLogByActionHash:input_type -> iotexapi.GetTransactionLogByActionHashRequest
+	49,  // 80: iotexapi.APIService.GetTransactionLogByBlockHeight:input_type -> iotexapi.GetTransactionLogByBlockHeightRequest
+	51,  // 81: iotexapi.APIService.StreamBlocks:input_type -> iotexapi.StreamBlocksRequest
+	53,  // 82: iotexapi.APIService.StreamLogs:input_type -> iotexapi.StreamLogsRequest
+	55,  // 83: iotexapi.APIService.GetActPoolActions:input_type -> iotexapi.GetActPoolActionsRequest
+	59,  // 84: iotexapi.APIService.GetEvmTransfersByActionHash:input_type -> iotexapi.GetEvmTransfersByActionHashRequest
+	61,  // 85: iotexapi.APIService.GetEvmTransfersByBlockHeight:input_type -> iotexapi.GetEvmTransfersByBlockHeightRequest
+	57,  // 86: iotexapi.APIService.GetElectionBuckets:input_type -> iotexapi.GetElectionBucketsRequest
+	63,  // 87: iotexapi.APIService.ReadContractStorage:input_type -> iotexapi.ReadContractStorageRequest
+	65,  // 88: iotexapi.APIService.TraceTransactionStructLogs:input_type -> iotexapi.TraceTransactionStructLogsRequest
+	47,  // 89: iotexapi.TransactionLogService.GetTransactionLogByActionHash:input_type -> iotexapi.GetTransactionLogByActionHashRequest
+	49,  // 90: iotexapi.TransactionLogService.GetTransactionLogByBlockHeight:input_type -> iotexapi.GetTransactionLogByBlockHeightRequest
+	67,  // 91: iotexapi.BundleAPIService.SendBundle:input_type -> iotexapi.SendBundleRequest
+	2,   // 92: iotexapi.APIService.GetAccount:output_type -> iotexapi.GetAccountResponse
+	13,  // 93: iotexapi.APIService.GetActions:output_type -> iotexapi.GetActionsResponse
+	17,  // 94: iotexapi.APIService.GetBlockMetas:output_type -> iotexapi.GetBlockMetasResponse
+	19,  // 95: iotexapi.APIService.GetChainMeta:output_type -> iotexapi.GetChainMetaResponse
+	21,  // 96: iotexapi.APIService.GetServerMeta:output_type -> iotexapi.GetServerMetaResponse
+	24,  // 97: iotexapi.APIService.SendAction:output_type -> iotexapi.SendActionResponse
+	26,  // 98: iotexapi.APIService.GetReceiptByAction:output_type -> iotexapi.GetReceiptByActionResponse
+	28,  // 99: iotexapi.APIService.ReadContract:output_type -> iotexapi.ReadContractResponse
+	30,  // 100: iotexapi.APIService.SuggestGasPrice:output_type -> iotexapi.SuggestGasPriceResponse
+	34,  // 101: iotexapi.APIService.EstimateGasForAction:output_type -> iotexapi.EstimateGasForActionResponse
+	33,  // 102: iotexapi.APIService.EstimateActionGasConsumption:output_type -> iotexapi.EstimateActionGasConsumptionResponse
+	36,  // 103: iotexapi.APIService.ReadState:output_type -> iotexapi.ReadStateResponse
+	38,  // 104: iotexapi.APIService.GetEpochMeta:output_type -> iotexapi.GetEpochMetaResponse
+	40,  // 105: iotexapi.APIService.GetRawBlocks:output_type -> iotexapi.GetRawBlocksResponse
+	46,  // 106: iotexapi.APIService.GetLogs:output_type -> iotexapi.GetLogsResponse
+	48,  // 107: iotexapi.APIService.GetTransactionLogByActionHash:output_type -> iotexapi.GetTransactionLogByActionHashResponse
+	50,  // 108: iotexapi.APIService.GetTransactionLogByBlockHeight:output_type -> iotexapi.GetTransactionLogByBlockHeightResponse
+	52,  // 109: iotexapi.APIService.StreamBlocks:output_type -> iotexapi.StreamBlocksResponse
+	54,  // 110: iotexapi.APIService.StreamLogs:output_type -> iotexapi.StreamLogsResponse
+	56,  // 111: iotexapi.APIService.GetActPoolActions:output_type -> iotexapi.GetActPoolActionsResponse
+	60,  // 112: iotexapi.APIService.GetEvmTransfersByActionHash:output_type -> iotexapi.GetEvmTransfersByActionHashResponse
+	62,  // 113: iotexapi.APIService.GetEvmTransfersByBlockHeight:output_type -> iotexapi.GetEvmTransfersByBlockHeightResponse
+	58,  // 114: iotexapi.APIService.GetElectionBuckets:output_type -> iotexapi.GetElectionBucketsResponse
+	64,  // 115: iotexapi.APIService.ReadContractStorage:output_type -> iotexapi.ReadContractStorageResponse
+	66,  // 116: iotexapi.APIService.TraceTransactionStructLogs:output_type -> iotexapi.TraceTransactionStructLogsResponse
+	48,  // 117: iotexapi.TransactionLogService.GetTransactionLogByActionHash:output_type -> iotexapi.GetTransactionLogByActionHashResponse
+	50,  // 118: iotexapi.TransactionLogService.GetTransactionLogByBlockHeight:output_type -> iotexapi.GetTransactionLogByBlockHeightResponse
+	68,  // 119: iotexapi.BundleAPIService.SendBundle:output_type -> iotexapi.SendBundleResponse
+	92,  // [92:120] is the sub-list for method output_type
+	64,  // [64:92] is the sub-list for method input_type
+	64,  // [64:64] is the sub-list for extension type_name
+	64,  // [64:64] is the sub-list for extension extendee
+	0,   // [0:64] is the sub-list for field type_name
 }
 
 func init() { file_proto_api_api_proto_init() }
@@ -4468,6 +4489,7 @@ func file_proto_api_api_proto_init() {
 		(*EstimateActionGasConsumptionRequest_CandidateEndorsement)(nil),
 		(*EstimateActionGasConsumptionRequest_CandidateTransferOwnership)(nil),
 		(*EstimateActionGasConsumptionRequest_StakeMigrate)(nil),
+		(*EstimateActionGasConsumptionRequest_CandidateDeactivate)(nil),
 	}
 	file_proto_api_api_proto_msgTypes[45].OneofWrappers = []any{
 		(*GetLogsRequest_ByBlock)(nil),
