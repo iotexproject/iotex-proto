@@ -69,6 +69,15 @@ message BlobTxSidecars {
   repeated BlobTxSidecar sidecars = 2;
 }
 
+message SetCodeAuthorization {
+  uint32 chainID = 1;
+  bytes address = 2;
+  uint64 nonce = 3;
+  uint64 v = 4;
+  bytes r = 5;
+  bytes s = 6;
+}
+
 // create stake
 message StakeCreate {
   string candidateName = 1;
@@ -261,6 +270,7 @@ message ActionCore {
   BlobTxData blobTxData = 8;
   repeated AccessTuple accessList = 9;
   uint32 txType = 28;
+  repeated SetCodeAuthorization setCodeAuthList = 29;
   oneof action {
     Transfer transfer = 10;
     TxContainer txContainer = 11;
