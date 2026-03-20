@@ -56,6 +56,8 @@ message CandidateV2 {
   string selfStakingTokens = 7;
   string id = 8;
   bytes blsPubKey = 9;
+  uint64 commissionRate = 10;           // IIP-59: basis points (0-10000)
+  uint64 commissionRateLastEpoch = 11;  // IIP-59: epoch of last commission change
 }
 
 message CandidateListV2 {
