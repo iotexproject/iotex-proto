@@ -83,6 +83,11 @@ message StakeMigrate {
   uint64 bucketIndex = 1;
 }
 
+// IIP-59: set delegate commission rate for voter reward distribution
+message SetCommissionRate {
+  uint64 rate = 1;  // basis points, 0-10000 (e.g., 1000 = 10%)
+}
+
 // unstake or withdraw
 message StakeReclaim {
   uint64 bucketIndex = 1;
@@ -303,6 +308,7 @@ message ActionCore {
     CandidateEndorsement candidateEndorsement = 51;
     CandidateTransferOwnership candidateTransferOwnership = 52;
     StakeMigrate stakeMigrate = 53;
+    SetCommissionRate setCommissionRate = 54;  // IIP-59
 
     PutPollResult putPollResult = 50;
   }
