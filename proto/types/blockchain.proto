@@ -42,6 +42,14 @@ message BlockHeaderCore {
 message BlockFooter {
   repeated Endorsement endorsements = 1;
   google.protobuf.Timestamp timestamp = 2;
+  // aggregated_signature is a BLS12-381 aggregate signature (96 bytes, G2
+  // compressed) over the COMMIT vote of this block. Populated once BLS
+  // signature aggregation is activated (IIP-52); empty for legacy blocks.
+  bytes aggregated_signature = 3;
+  // signer_bitmap encodes which delegates of the current epoch contributed to
+  // aggregated_signature. Bit i (LSB-first within each byte) corresponds to
+  // delegate i in the epoch's delegate list. Empty for legacy blocks.
+  bytes signer_bitmap = 4;
 }
 
 // body of a block

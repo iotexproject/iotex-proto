@@ -17,5 +17,11 @@ import "google/protobuf/timestamp.proto";
 message Endorsement {
     google.protobuf.Timestamp timestamp = 1;
     bytes endorser = 2;
+    // signature is the endorser's signature over the endorsed document.
+    // Pre-fork, this is a secp256k1 signature (65 bytes including recovery id);
+    // once BLS signature aggregation is activated (IIP-52) it is a BLS12-381
+    // signature (96 bytes, G2 compressed). The receiver dispatches on length
+    // and, for the BLS case, resolves the verifying public key from candidate
+    // state by the endorser address.
     bytes signature = 3;
 }
