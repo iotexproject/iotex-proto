@@ -57,6 +57,7 @@ message CandidateV2 {
   string selfStakingTokens = 7;
   string id = 8;
   bytes blsPubKey = 9;
+  uint64 deactivatedAt = 10;
 }
 
 message CandidateListV2 {
