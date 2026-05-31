@@ -152,6 +152,14 @@ message CandidateActivate {
   uint64 bucketIndex = 1;
 }
 
+message CandidateDeactivate {
+  uint32 op = 1;
+}
+
+message ScheduleCandidateDeactivation {
+  string delegate = 1;
+}
+
 message CandidateEndorsement {
   uint64 bucketIndex = 1;
   bool endorse = 2; // deprecated
@@ -314,6 +322,8 @@ message ActionCore {
     CandidateEndorsement candidateEndorsement = 51;
     CandidateTransferOwnership candidateTransferOwnership = 52;
     StakeMigrate stakeMigrate = 53;
+    CandidateDeactivate candidateDeactivate = 54;
+    ScheduleCandidateDeactivation scheduleCandidateDeactivation = 55;
 
     PutPollResult putPollResult = 50;
   }
