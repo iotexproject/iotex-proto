@@ -132,6 +132,12 @@ message CandidateBasicInfo {
   string operatorAddress = 2;
   string rewardAddress = 3;
   bytes blsPubKey = 4;
+  // BLS proof-of-possession: a 96-byte BLS signature over a
+  // domain-separated hash that includes blsPubKey and the candidate's
+  // owner address. Required (post-fork) for any action that introduces
+  // or rotates a blsPubKey, to prevent the classic BLS rogue-key
+  // aggregate forgery against IIP-52's same-message aggregation.
+  bytes blsPop = 5;
 }
 
 message CandidateRegister {
