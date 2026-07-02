@@ -58,6 +58,10 @@ message CandidateV2 {
   string id = 8;
   bytes blsPubKey = 9;
   uint64 deactivatedAt = 10;
+  // IIP-59: latest user-set voter reward commission rate (basis points, 0-10000).
+  // 0 = legacy (no auto-distribution). The per-epoch frozen value travels via
+  // iotextypes.Candidate.commissionRate inside PutPollResult.
+  uint64 commissionRate = 11;
 }
 
 message CandidateListV2 {

@@ -27,6 +27,9 @@ message Candidate {
   string rewardAddress = 4;
   bytes blsPubKey = 5; // BLS public key for the candidate
   string identity = 6;
+  // IIP-59: voter reward commission rate (basis points, 0-10000) snapshotted
+  // for this epoch by PutPollResult. 0 = legacy (no auto-distribution).
+  uint64 commissionRate = 7;
 }
 
 message CandidateList {
@@ -164,6 +167,13 @@ message CandidateEndorsement {
   uint64 bucketIndex = 1;
   bool endorse = 2; // deprecated
   uint32 op = 3;
+}
+
+// IIP-59: delegate sets the voter reward commission rate (basis points, 0-10000).
+// 0 = legacy (no auto-distribution); the protocol auto-splits the epoch reward
+// when rate > 0.
+message SetCommissionRate {
+  uint64 rate = 1;
 }
 
 message StartSubChain {
@@ -324,6 +334,7 @@ message ActionCore {
     StakeMigrate stakeMigrate = 53;
     CandidateDeactivate candidateDeactivate = 54;
     ScheduleCandidateDeactivation scheduleCandidateDeactivation = 55;
+    SetCommissionRate setCommissionRate = 56;
 
     PutPollResult putPollResult = 50;
   }
