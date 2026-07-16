@@ -440,6 +440,11 @@ message ClaimFromRewardingFund {
 enum RewardType {
   BlockReward = 0;
   EpochReward = 1;
+  // VoterRewardChunk drives one chunk of the IIP-59 era-boundary
+  // voter-reward drain on a non-epoch-boundary block. Emitted only
+  // while a drain cursor is live in the rewarding namespace; consumed
+  // by the chain's rewarding protocol.
+  VoterRewardChunk = 2;
 }
 
 message GrantReward {
