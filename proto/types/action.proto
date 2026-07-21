@@ -176,6 +176,16 @@ message SetCommissionRate {
   uint64 rate = 1;
 }
 
+// IIP-59: delegate flips the on-chain voter-reward distribution opt-in flag.
+// While opt_in is false the delegate stays on the legacy Hermes path; once
+// flipped to true the protocol splits both block and epoch rewards
+// per-voter using the frozen poll snapshot. Only the candidate owner may
+// submit this action.
+message SetVoterRewardOptIn {
+  bytes candidate_identifier = 1;
+  bool  opt_in               = 2;
+}
+
 message StartSubChain {
   // TODO: chainID chould be assigned by system and returned via a receipt
   uint32 chainID = 1;
@@ -335,6 +345,7 @@ message ActionCore {
     CandidateDeactivate candidateDeactivate = 54;
     ScheduleCandidateDeactivation scheduleCandidateDeactivation = 55;
     SetCommissionRate setCommissionRate = 56;
+    SetVoterRewardOptIn setVoterRewardOptIn = 57;
 
     PutPollResult putPollResult = 50;
   }
