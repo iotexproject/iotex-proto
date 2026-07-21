@@ -42,6 +42,14 @@ enum TransactionLogType {
   CLAIM_FROM_REWARDING_FUND = 9;
   BLOB_FEE = 10;
   PRIORITY_FEE = 11;
+  // IIP-62 productive inflation: per-block protocol mint into the staker reward
+  // pool. Sender is empty (protocol mint, no source); recipient is the rewarding
+  // pool address.
+  INFLATION_MINT_STAKER = 12;
+  // IIP-62 productive inflation: per-block protocol mint into the Machina DAO
+  // recipient account. Sender is empty (protocol mint, no source); recipient is
+  // the address configured in genesis.Rewarding.MachinaDaoAddress.
+  INFLATION_MINT_MACHINA = 13;
 }
 
 message TransactionStructLog {
