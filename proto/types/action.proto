@@ -346,6 +346,7 @@ message ActionCore {
     ScheduleCandidateDeactivation scheduleCandidateDeactivation = 55;
     SetCommissionRate setCommissionRate = 56;
     SetVoterRewardOptIn setVoterRewardOptIn = 57;
+    SetVoterRewardDestination setVoterRewardDestination = 58;
 
     PutPollResult putPollResult = 50;
   }
@@ -461,4 +462,12 @@ enum RewardType {
 message GrantReward {
   RewardType type = 1;
   uint64 height = 2;
+}
+
+// IIP-59: voter selects the account that receives direct voter-reward
+// payouts. An empty recipient clears the override and restores the voter as
+// the effective destination. Compound payouts continue to use the voter's
+// configured native staking bucket.
+message SetVoterRewardDestination {
+  bytes recipient = 1;
 }
