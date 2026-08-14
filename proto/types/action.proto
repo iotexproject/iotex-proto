@@ -182,14 +182,9 @@ message SetCommissionRate {
   uint64 rate = 1;
 }
 
-// IIP-59: delegate flips the on-chain voter-reward distribution opt-in flag.
-// While opt_in is false the delegate stays on the legacy Hermes path; once
-// flipped to true the protocol splits both block and epoch rewards
-// per-voter using the frozen poll snapshot. Only the candidate owner may
-// submit this action.
-message SetVoterRewardOptIn {
-  bool opt_in = 1;
-}
+// IIP-59: delegate enables protocol-native voter-reward distribution. This is
+// a one-way transition and only the candidate owner may submit the action.
+message SetVoterRewardOptIn {}
 
 message StartSubChain {
   // TODO: chainID chould be assigned by system and returned via a receipt
