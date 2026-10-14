@@ -74,12 +74,18 @@ message BlobTxSidecars {
 }
 
 message SetCodeAuthorization {
+  // chainID holds the authorization's chain ID when it fits in 32 bits.
   uint32 chainID = 1;
   bytes address = 2;
   uint64 nonce = 3;
   uint64 v = 4;
   bytes r = 5;
   bytes s = 6;
+  // chainIDBytes holds the authorization's chain ID, big-endian with no
+  // leading zero bytes, when it does not fit in 32 bits; chainID is then 0.
+  // It is left empty otherwise, so an authorization whose chain ID fits in
+  // chainID encodes, and hashes, the same as before this field existed.
+  bytes chainIDBytes = 7;
 }
 
 // create stake
