@@ -347,6 +347,9 @@ message ActionCore {
     SetCommissionRate setCommissionRate = 56;
     SetVoterRewardOptIn setVoterRewardOptIn = 57;
     SetVoterRewardDestination setVoterRewardDestination = 58;
+    // Quantum-safe staking buckets (IIP draft #86)
+    BindBucketGuard bindBucketGuard = 59;
+    GuardedBucketOp guardedBucketOp = 60;
 
     PutPollResult putPollResult = 50;
   }
@@ -470,4 +473,40 @@ message GrantReward {
 // configured native staking bucket.
 message SetVoterRewardDestination {
   bytes recipient = 1;
+}
+
+// NewGuard is the incoming guard key carried by GuardedBucketOp TRANSFER
+// (with a new guard) and ROTATE.
+message NewGuard {
+  uint32 algID = 1;
+  bytes publicKey = 2;
+  bytes acceptSig = 3;
+}
+
+// BindBucketGuard attaches a post-quantum guard key to a native bucket. It is
+// sent by the bucket owner; acceptSig is the new key's proof of possession.
+message BindBucketGuard {
+  uint64 bucketIndex = 1;
+  uint32 algID = 2;
+  bytes publicKey = 3;
+  bytes acceptSig = 4;
+}
+
+// GuardedBucketOp performs one operation on a guarded bucket. The sender only
+// sponsors gas; sig by the current guard key authorizes the bucket effect.
+message GuardedBucketOp {
+  uint64 bucketIndex = 1;
+  uint64 generation = 2;
+  uint64 nonce = 3;
+  uint64 deadline = 4;
+  uint32 op = 5;
+  bytes recipient = 6;
+  bytes newOwner = 7;
+  string candidateName = 8;
+  bytes expectedCandidateID = 9;
+  uint32 duration = 10;
+  bool autoStake = 11;
+  NewGuard newGuard = 12;
+  bool clearGuard = 13;
+  bytes sig = 14;
 }
