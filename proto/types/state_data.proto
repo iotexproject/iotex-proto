@@ -89,3 +89,14 @@ message ContractStakingBucketType {
 message ContractStakingBucketTypeList {
   repeated ContractStakingBucketType bucketTypes = 1;
 }
+
+// BucketGuard is the quantum-safe guard record of a native staking bucket
+// (IIP draft #86). An empty publicKey means the bucket is not guarded; a
+// record with empty publicKey but non-zero counters is a tombstone.
+message BucketGuard {
+  uint32 algID = 1;
+  bytes publicKey = 2;
+  uint64 generation = 3;
+  uint64 nonce = 4;
+  uint64 boundHeight = 5;
+}
