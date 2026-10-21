@@ -288,6 +288,45 @@ message PlumTransfer {
   string recipient = 4;
 }
 
+// Quantum-Safe Staking Buckets (QSB) draft messages.
+message NewGuard {
+  uint32 algID = 1;
+  bytes publicKey = 2;
+  bytes acceptSig = 3;
+}
+
+message BindBucketGuard {
+  uint64 bucketIndex = 1;
+  uint32 algID = 2;
+  bytes publicKey = 3;
+  bytes acceptSig = 4;
+}
+
+message GuardedBucketOp {
+  uint64 bucketIndex = 1;
+  uint64 generation = 2;
+  uint64 nonce = 3;
+  uint64 deadline = 4;
+  uint32 op = 5;
+  bytes recipient = 6;
+  bytes newOwner = 7;
+  string candidateName = 8;
+  bytes expectedCandidateID = 9;
+  uint32 duration = 10;
+  bool autoStake = 11;
+  NewGuard newGuard = 12;
+  bool clearGuard = 13;
+  bytes sig = 14;
+}
+
+message BucketGuard {
+  uint32 algID = 1;
+  bytes publicKey = 2;
+  uint64 generation = 3;
+  uint64 nonce = 4;
+  uint64 boundHeight = 5;
+}
+
 message ActionCore {
   uint32 version = 1;
   uint64 nonce = 2;
@@ -347,6 +386,10 @@ message ActionCore {
     SetCommissionRate setCommissionRate = 56;
     SetVoterRewardOptIn setVoterRewardOptIn = 57;
     SetVoterRewardDestination setVoterRewardDestination = 58;
+
+    // Quantum-Safe Staking Buckets
+    BindBucketGuard bindBucketGuard = 59;
+    GuardedBucketOp guardedBucketOp = 60;
 
     PutPollResult putPollResult = 50;
   }
