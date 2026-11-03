@@ -494,6 +494,9 @@ message BindBucketGuard {
 
 // GuardedBucketOp performs one operation on a guarded bucket. The sender only
 // sponsors gas; sig by the current guard key authorizes the bucket effect.
+// sponsor, when set, is the only sender allowed to submit the op. anchorHeight
+// and anchorHash name a recent block: the op is valid from that block until
+// deadline, and no later than anchorHeight plus the deadline window.
 message GuardedBucketOp {
   uint64 bucketIndex = 1;
   uint64 generation = 2;
@@ -509,4 +512,7 @@ message GuardedBucketOp {
   NewGuard newGuard = 12;
   bool clearGuard = 13;
   bytes sig = 14;
+  bytes sponsor = 15;
+  uint64 anchorHeight = 16;
+  bytes anchorHash = 17;
 }
