@@ -642,7 +642,7 @@ func (x *ContractStakingBucketTypeList) GetBucketTypes() []*ContractStakingBucke
 }
 
 // BucketGuard is the quantum-safe guard record of a native staking bucket
-// (IIP draft #86). An empty publicKey means the bucket is not guarded; a
+// (IIP-65). An empty publicKey means the bucket is not guarded; a
 // record with empty publicKey but non-zero counters is a tombstone.
 type BucketGuard struct {
 	state         protoimpl.MessageState

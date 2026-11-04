@@ -3473,7 +3473,7 @@ type ActionCore_SetVoterRewardDestination struct {
 }
 
 type ActionCore_BindBucketGuard struct {
-	// Quantum-safe staking buckets (IIP draft #86)
+	// Quantum-safe staking buckets (IIP-65)
 	BindBucketGuard *BindBucketGuard `protobuf:"bytes,59,opt,name=bindBucketGuard,proto3,oneof"`
 }
 

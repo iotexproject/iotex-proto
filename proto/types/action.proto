@@ -347,7 +347,7 @@ message ActionCore {
     SetCommissionRate setCommissionRate = 56;
     SetVoterRewardOptIn setVoterRewardOptIn = 57;
     SetVoterRewardDestination setVoterRewardDestination = 58;
-    // Quantum-safe staking buckets (IIP draft #86)
+    // Quantum-safe staking buckets (IIP-65)
     BindBucketGuard bindBucketGuard = 59;
     GuardedBucketOp guardedBucketOp = 60;
 
