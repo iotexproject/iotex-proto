@@ -37,6 +37,7 @@ message ReadStakingDataMethod {
 		COMPOSITE_BUCKETS_COUNT = 24;
 		COMPOSITE_TOTAL_STAKING_AMOUNT = 25;
 		CONTRACT_STAKING_BUCKET_TYPES = 26;
+		BUCKET_GUARD = 27;
 	}
 	Name method = 1;
 }
@@ -81,6 +82,10 @@ message ReadStakingDataRequest {
 		string contractAddress = 1;
 	}
 
+	message BucketGuard {
+		uint64 index = 1;
+	}
+
 	oneof request {
 		VoteBuckets buckets = 1;
 		VoteBucketsByVoter bucketsByVoter = 2;
@@ -92,5 +97,6 @@ message ReadStakingDataRequest {
 		TotalStakingAmount totalStakingAmount = 8;
 		BucketsCount bucketsCount = 9;
 		ContractStakingBucketTypes contractStakingBucketTypes = 10;
+		BucketGuard bucketGuard = 11;
 	}
 }

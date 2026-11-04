@@ -54,4 +54,10 @@ enum ReceiptStatus {
   ErrWriteAccount                   = 213;
   ErrWriteBucket                    = 214;
   ErrWriteCandidate                 = 215;
+  ErrBucketGuarded                  = 216;
+  ErrBucketNotGuarded               = 217;
+  ErrGuardMismatch                  = 218;
+  ErrGuardSignature                 = 219;
+  ErrGuardScope                     = 220;
+  ErrCandidateMismatch              = 221;
 }
