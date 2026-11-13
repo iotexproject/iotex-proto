@@ -18,6 +18,7 @@ import "proto/types/node.proto";
 import "proto/types/election.proto";
 import "proto/types/transaction_log.proto";
 import "google/protobuf/timestamp.proto";
+import "proto/types/bundle.proto";
 
 service APIService {
   // get the address detail of an address
@@ -463,8 +464,6 @@ message TraceTransactionStructLogsRequest {
 message TraceTransactionStructLogsResponse {
   repeated iotextypes.TransactionStructLog  structLogs = 1;
 }
-
-import "proto/types/bundle.proto";
 
 service BundleAPIService {
   // SendBundle sends a bundle of actions to the blockchain.
